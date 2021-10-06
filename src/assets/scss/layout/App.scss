@@ -1,0 +1,27 @@
+/** @license 3120 Group X
+  * Copyright (c) 3120 Group X, Inc. and its affiliates.
+  *
+  * Authors:
+  * 
+  */
+
+.App {
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justiy-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: grey;
+  color: white;
+}
+
+.nav-links {
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
