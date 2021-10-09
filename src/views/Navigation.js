@@ -9,7 +9,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../assets/scss/layout/App.scss";
 
-import DashboardPage from "./DashboardPage";
+import DashboardPage from "./Dashboard/DashboardPage";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
 import SignUpPage from "./SignUpPage";
