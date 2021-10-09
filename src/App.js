@@ -6,7 +6,7 @@
  */
 
 import "./assets/scss/layout/App.scss";
-import DashboardPage from "./views/DashboardPage";
+import DashboardPage from "./views/Dashboard/DashboardPage";
 import HomePage from "./views/HomePage";
 import Navigation from "./views/Navigation";
 
