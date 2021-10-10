@@ -7,12 +7,14 @@
 
 import React from "react";
 import NoteEditor from "./NoteEditor";
+import PomodoroTimer from "./PomodoroTimer";
 
 function DashboardPage() {
   return (
     <div>
       <h1>Dashboard page</h1>
-      <NoteEditor/>
+      <PomodoroTimer />
+      <NoteEditor />
     </div>
   );
 }
