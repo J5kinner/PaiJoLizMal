@@ -1,7 +1,7 @@
 /** @license 3120 Group X
  * Copyright (c) 3120 Group X, Inc. and its affiliates.
  *
- * Authors: 
+ * Authors: Elizabeth Laham @elizabetht94
  *
  */
 
@@ -11,8 +11,9 @@ import { FormControl,
          TextField } from '@mui/material'
 
 const NoteEditor = () => {
-    const [title, setTitle] = useState(0)
-    const [note, setNote] = useState(0)
+    const [title, setTitle] = useState('')
+    const [note, setNote] = useState('')
+    const maxCharacters = 200
 
     const handleTitleChange = (newTitle) => {
         setTitle(newTitle.target.value)
@@ -23,6 +24,7 @@ const NoteEditor = () => {
     }
 
     const handleAddNote = () => {
+        // handle posting note here
         alert("new note added with title:  " + title + " note: " + note )
     }
 
@@ -40,6 +42,9 @@ const NoteEditor = () => {
                 multiline
                 onChange={handleNoteChange}
                 minRows={10}
+                maxRows={10}
+                inputProps={{ maxLength: maxCharacters }}
+                helperText={`${note.length}/${maxCharacters}`}
                 sx={{ width: 400, backgroundColor: 'white'}}
             />
             </Box> 
