@@ -42,7 +42,6 @@ const LoginPage = () => {
     }
   }
 
-
   const handleUsernameChange = (event) => {
     setUsername(event.target.value)
   }

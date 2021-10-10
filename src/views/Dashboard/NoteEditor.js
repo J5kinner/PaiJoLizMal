@@ -8,7 +8,8 @@
 import React, { useState } from 'react'
 import { FormControl,
          Button, Box,
-         TextField } from '@mui/material'
+         TextField, 
+         Typography} from '@mui/material'
 
 const NoteEditor = () => {
     const [title, setTitle] = useState('')
@@ -29,8 +30,11 @@ const NoteEditor = () => {
     }
 
     return (
-      <Box sx={{width: 500, backgroundColor: '#EBE8E8' }}> 
-        <FormControl sx={{display: 'block', alignItems: 'left'}}>
+      <Box sx={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}> 
+     <Typography variant='h4'>
+          Enter your note here!
+      </Typography>  
+        <FormControl sx={{display: 'block'}}>
           <Box sx={{padding: 2}}>  
             <TextField placeholder="Title"
              onChange={handleTitleChange}
@@ -45,7 +49,7 @@ const NoteEditor = () => {
                 maxRows={10}
                 inputProps={{ maxLength: maxCharacters }}
                 helperText={`${note.length}/${maxCharacters}`}
-                sx={{ width: 400, backgroundColor: 'white'}}
+                sx={{ width: '100%', backgroundColor: 'white'}}
             />
             </Box> 
             <Button onClick={handleAddNote}>Save</Button>
