@@ -8,6 +8,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import {
     Box,
+    Tabs, Tab,
     Typography,
     Button, 
 } from '@mui/material'
@@ -74,6 +75,10 @@ const PomodoroTimer = () => {
         setTimerSeconds(0)
     }
 
+    const handleDurationChange = (e, time) => {
+        setDurationMinutes(time)
+    }
+
     const displayMinutes = timerMinutes < 10 ? `0${timerMinutes}` : timerMinutes
     const displaySeconds= timerSeconds < 10 ? `0${timerSeconds}` : timerSeconds
 
@@ -94,8 +99,23 @@ const PomodoroTimer = () => {
             </Box>
 
             {/* time selection area */}
-            <Box>
-
+            <Box sx={{
+                maxWidth: '100%',
+                padding: 2,
+                display: 'flex',
+                justifyContent: 'center',
+            }}>
+                <Tabs
+                    value={durationMinutes}
+                    onChange={handleDurationChange}
+                    variant='scrollable'
+                    scrollButtons='auto'
+                >
+                    {durationOptions.map((time, i) =>
+                        <Tab id={i} value={time} label={time}
+                            disabled={timerActive}/>
+                    )}
+                </Tabs>
             </Box>
         </Box>
     )
