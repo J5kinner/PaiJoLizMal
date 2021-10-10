@@ -1,49 +1,53 @@
-# Description
 
-- An outline of the application you were aiming to build, target users, data sources etc (similar to the proposal)
-- A reference to your second Github repository if you used one
-- A description of what you have been able to implement in this MVP, use your milestones to highlight what you've achieved
-- A guide to the project source code - where should we look for what you have done
-- A summary of what your next steps would be if you were to continue the project
-- A summary of the main roles and contributions of each team member and how you managed interaction and communication through the project
+# [Paijolizmal](https://reactjs.org/) &middot; ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)![npm version](https://img.shields.io/npm/v/react.svg?style=flat)![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-# Deployment
+``Paijolizmal`` is a progressive web application which is for tracking productivity collaboratively built with React, MongoDB, Express, SASS and hosted with Heroku.
+<p align="left"> 
+    <p>   <a href="https://reactnative.dev/" target="_blank"> <img src="https://reactnative.dev/img/header_logo.svg" alt="reactnative" width="40" height="40" /> </a>
+      <a href="https://www.mongodb.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40" />
+ <a href="https://expressjs.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40" /> </a>
+ <a href="https://getbootstrap.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40" /> </a>
+  <a href="https://heroku.com" target="_blank"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40" /> </a> 
 
-- A link to a deployed version of your application if available
-- Information on how to run and build the project, eg. if someone were to take over development
-- Information about any use of Continuous Integration you have implemented.
 
-# Screenshots
+* **Time Tracking:** Paijolizmal makes it painless to keep track of productivity of its users using a `pomodoro` to keep track of time when the user starts and finishes a task. 
+* **Transaction System:** After every `pomodoro` completion the user is rewarded with a coin which they can spend on creating special notes about their experience during their period of focused work. 
+* **Collaborative Homepage:** On the home page users notes will be visible to all users here where they can draw on inspiration or see other people working just as hard as they are, or even share their own tips on how they stayed productive in a fun and creative way. [HEROKU LINK HERE](https://reactnative.dev/).
 
-- A folder SCREENSHOTS containing screenshots (or maybe a video) of key pages in your application and a README.md file that describes what they show.
 
-## Available Scripts
 
-In the project directory, you can run:
+## MVP Implementation
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+You can improve it by sending pull requests to [this repository](https://github.com/reactjs/reactjs.org).
 
-### `npm test`
+## Where the most work has been done
+src  
+ ┣ assets  
+ ┃ ┣ img  
+ ┃ ┗ scss  
+ ┃ ┃ ┣ components  
+ ┃ ┃ ┣ layout  
+ ┃ ┃ ┗ pages  
+ ┣ components  
+ ┣ tests  
+ ┃ ┣ Dashboard  
+ ┣ App.js  
+ ┗ index.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Next Steps
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Communication & Roles
+### Communication
+[Trello](https://trello.com/b/Qfrxz3KY/group-project-comp3120) is where we keep track of our tasks
+[Discord Server](https://discord.com/) is where we communicate for meetings and general comms
+ ### Roles 
+ - Front-End Software Engineer: [Jonah Skinner](https://github.com/J5kinner)
+ - Full-Stack Software Engineer: [Elizabeth Laham](https://github.com/elizabetht94)
+ - Full-Stack Software Engineer: [Paige Anthony](https://github.com/paigelea)
+ - Back-End Software Engineer:  [Malachi Mashiah](https://github.com/Ner0theHer0)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
