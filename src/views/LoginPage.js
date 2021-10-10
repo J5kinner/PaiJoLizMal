@@ -8,7 +8,9 @@
 import { React, useState }  from "react";
 import { Box, Collapse,
          TextField, Button,
-         FormControl} from '@mui/material'
+         FormControl,
+         FormHelperText,
+         Alert,} from '@mui/material'
 
 const LoginPage = () => {
   // States to manage the form handling
@@ -17,15 +19,29 @@ const LoginPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('')
 
   // State to manage toggling between login/signup form
-  const [loginMode, setLoginMode] = useState (true)
+  const [loginMode, setLoginMode] = useState(true)
+
+  // States to manage errors / messages
+  const [validateFormError, setValidateFormError] = useState(false)
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false)
+  const [successSignUp, setSuccessSignUp] = useState(false)
 
   const toggleForm = () => {
+    // Reset field states 
+    setUsername("")
+    setPassword("")
+    setConfirmPassword("")
+    setValidateFormError(false)
+    setConfirmPasswordError(false)
+    setSuccessSignUp(false)
+
     if(loginMode) {
       setLoginMode(false)
     } else {
       setLoginMode(true)
     }
   }
+
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value)
@@ -39,35 +55,76 @@ const LoginPage = () => {
     setConfirmPassword(event.target.value)
   }
 
+  const validateLogInForm = () => {
+    // TODO: Handle incorrect credentials give
+    if(!username || !password) {
+      setValidateFormError(true)
+    } else {
+      // No errors found
+      setValidateFormError(false)
+      handleLogin()
+    }
+  }
+
   const handleLogin = () => {
-    // TODO: handle login request here
+    // TODO: handle login request here, alert is temp fix
     alert("Log in button pressed")
   }
 
-  const handleSignup = () => {
-    //TODO: handle sign up request here
-    alert("Sign up button pressed")
+  const displaySuccessSignUp = (
+    <Alert severity="success" sx={{ display: successSignUp ? 'flex' : 'none' }}> 
+    Account created successfully!</Alert>
+  )
 
+  const validateSignUpForm = () => {
+    // We only want one error to display at one time
+   if(!username || !password || !confirmPassword) {
+        setValidateFormError(true)
+        setConfirmPasswordError(false)
+        setSuccessSignUp(false)
+    } else if (password !== confirmPassword) {
+        setConfirmPasswordError(true)
+        setValidateFormError(false)
+        setSuccessSignUp(false)
+    } else {
+      // No errors found, okay to proceed to register
+      setValidateFormError(false)
+      setConfirmPasswordError(false)
+      setSuccessSignUp(true)
+      handleSignup()
+    }
+  }
+
+  const handleSignup = () => {  
+    //TODO: handle sign up request here
+    // Sign up complete
+    setUsername("")
+    setPassword("")
+    setConfirmPassword("")
   }
 
   const renderLoginForm = (
     <Box>
       <FormControl>
-        <Box>
-          <TextField label="Username"
-              required
+        <Box sx={{padding:2}}>
+          <TextField id="userName" label="Username"
+              value={username}
               onChange={handleUsernameChange}
               sx={{backgroundColor: 'white'}}/>
         </Box>
         <Box>
           <TextField label="Password"
-              required
               type="password"
+              value={password}
               onChange={handlePasswordChange}
               sx={{backgroundColor: 'white'}}/>
         </Box>
         <Box>
-          <Button onClick={handleLogin}>Log In</Button>
+        <FormHelperText error={validateFormError} sx={{display: `${validateFormError ? 'block' : 'none'}`}}>
+            Please ensure all fields have been completed.
+        </FormHelperText>
+          <Button onClick={validateLogInForm}>Log In
+          </Button>
         </Box>
       </FormControl>
 
@@ -78,31 +135,37 @@ const LoginPage = () => {
   const renderSignUpForm = (
     <Box>
     <FormControl>
-      <Box>
+      <Box sx={{padding: 2}}>
         <TextField label="Username"
-            required
             onChange={handleUsernameChange}
+            value={username}
             sx={{backgroundColor: 'white'}}/>
       </Box>    
-      <Box>
+      <Box sx={{padding: 0}}>
         <TextField label="Password"
-            required
             type="password"
             onChange={handlePasswordChange}
+            value={password}
+            error={confirmPasswordError}
             sx={{backgroundColor: 'white'}}/>
       </Box>
-      <Box>
+      <Box sx={{padding: 2}}>
         <TextField label=" Confirm Password"
-            required
             type="password"
+            value={confirmPassword}
+            error={confirmPasswordError}
+            helperText={confirmPasswordError ? 'Passwords do not match.': ''}
             onChange={handleConfirmPasswordChange}
             sx={{backgroundColor: 'white'}}/>
       </Box>
       <Box>
-        <Button onClick={handleSignup}>Create Account</Button>
+        <FormHelperText error={validateFormError} sx={{display: `${validateFormError ? 'block' : 'none'}`}}>
+            Please ensure all fields have been completed.
+        </FormHelperText>
+        <Button onClick={validateSignUpForm}>Create Account</Button>
+        {displaySuccessSignUp}
       </Box>
     </FormControl>
-
   </Box>
   )
 

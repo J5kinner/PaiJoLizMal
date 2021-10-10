@@ -1,7 +1,7 @@
 /** @license 3120 Group X
  * Copyright (c) 3120 Group X, Inc. and its affiliates.
  *
- * Authors: Elizabeth Laham @elizabetht94
+ * Authors: Elizabeth Laham 
  *
  */
 
