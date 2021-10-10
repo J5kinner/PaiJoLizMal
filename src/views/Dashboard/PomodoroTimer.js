@@ -5,7 +5,7 @@
  *
  */
 
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import {
     Box,
     Typography,
@@ -18,9 +18,14 @@ const PomodoroTimer = () => {
     const [timerActive, setTimerActive] = useState(false)
     const [timerMinutes, setTimerMinutes] = useState(0)
     const [timerSeconds, setTimerSeconds] = useState(0)
-    const [durationMinutes, setDurationMinutes] = useState(5)
+    const [durationMinutes, setDurationMinutes] = useState(durationOptions[0])
 
-    let interval = useRef()
+    useEffect(() => {
+        setTimerMinutes(durationMinutes)
+        setTimerSeconds(0)
+    }, [ durationMinutes ])
+
+    const interval = useRef()
 
     /*=== TIME METHODS ===*/
     const minutesToMillis = minutes => minutes * 1000 * 60
@@ -36,7 +41,7 @@ const PomodoroTimer = () => {
         const startTime = new Date().getTime() + minutesToMillis(durationMinutes)
 
         // perform timer update each second
-        interval = setInterval(() => {
+        interval.current = setInterval(() => {
             // detirmine change in time
             const now = new Date().getTime()
             const dt = startTime - now
@@ -57,12 +62,16 @@ const PomodoroTimer = () => {
     }
 
     /*=== BUTTON HANDLERS ===*/
-    const handleStartButtonClicked = () => {
-        setTimerActive(true)
+    const handleStartTimer = () => {
+        setTimerActive(!timerActive)
         startTimer()
-        return () => {
-            clearInterval(interval.current)
-        }
+    }
+
+    const handleStopTimer = () => {
+        clearInterval(interval.current)
+        setTimerActive(!timerActive)
+        setTimerMinutes(durationMinutes)
+        setTimerSeconds(0)
     }
 
     const displayMinutes = timerMinutes < 10 ? `0${timerMinutes}` : timerMinutes
@@ -70,14 +79,23 @@ const PomodoroTimer = () => {
 
     return (
         <Box>
+            {/* timer display */}
             <Box>
                 <Typography variant='h4'>Timer</Typography>
                 <Typography variant='h2'>
                     {displayMinutes} : {displaySeconds}
                 </Typography>
-                <Button onClick={() => handleStartButtonClicked()}>
+                <Button onClick={timerActive
+                    ? () => handleStopTimer()
+                    : () => handleStartTimer()}
+                >
                     {timerActive ? 'stop' : 'start'}
                 </Button>
+            </Box>
+
+            {/* time selection area */}
+            <Box>
+
             </Box>
         </Box>
     )
