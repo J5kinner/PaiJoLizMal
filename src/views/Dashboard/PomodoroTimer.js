@@ -29,6 +29,7 @@ const PomodoroTimer = () => {
     const interval = useRef()
 
     /*=== TIME METHODS ===*/
+
     const minutesToMillis = minutes => minutes * 1000 * 60
 
     const millisToMinutes = millis =>
@@ -38,6 +39,7 @@ const PomodoroTimer = () => {
         Math.floor((millis % (1000 * 60)) / (1000))
 
     /*=== INTERVAL HANDLERS ===*/
+
     const startTimer = () => {
         const startTime = new Date().getTime() + minutesToMillis(durationMinutes)
 
@@ -63,6 +65,7 @@ const PomodoroTimer = () => {
     }
 
     /*=== BUTTON HANDLERS ===*/
+
     const handleStartTimer = () => {
         setTimerActive(!timerActive)
         startTimer()
@@ -79,6 +82,7 @@ const PomodoroTimer = () => {
         setDurationMinutes(time)
     }
 
+    /*=== DISPLAY HELPERS ===*/
     const displayMinutes = timerMinutes < 10 ? `0${timerMinutes}` : timerMinutes
     const displaySeconds= timerSeconds < 10 ? `0${timerSeconds}` : timerSeconds
 
@@ -112,7 +116,7 @@ const PomodoroTimer = () => {
                     scrollButtons='auto'
                 >
                     {durationOptions.map((time, i) =>
-                        <Tab id={i} value={time} label={time}
+                        <Tab key={i} value={time} label={time}
                             disabled={timerActive}/>
                     )}
                 </Tabs>
