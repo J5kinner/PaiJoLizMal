@@ -19,7 +19,7 @@ The page will reload if you make edits.\
 
 You will also see any lint errors in the console.
 
-  ### `npm run server`
+  ### `npm run dev`
 
  
 Runs the back-end server for connection to the database for signing up and 
