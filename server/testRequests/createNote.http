@@ -1,0 +1,11 @@
+POST http://localhost:3001/api/note
+Content-Type: application/json
+
+// Background field optional. Not sending a background
+// colour defaults the colour to white (#000000)
+{  
+    "title": "test title21233",
+    "body": "note notey note",
+    "username": "dupetest2",
+    "background": "#010101"
+}

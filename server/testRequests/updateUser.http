@@ -1,0 +1,10 @@
+PUT http://localhost:3001/api/user
+Content-Type: application/json
+
+// Password field optional. Not sending a password
+// will result in only the username being changed
+{
+    "username": "dupetest4",
+    "newUsername": "dupetest4",
+    "password": "test"
+}
