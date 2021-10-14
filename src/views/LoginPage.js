@@ -6,6 +6,7 @@
  */
 
 import { React, useState }  from "react";
+import { useHistory } from "react-router-dom";
 import UserService from "../services/UserService";
 import { Box, Collapse,
          TextField, Button,
@@ -33,6 +34,8 @@ const LoginPage = () => {
   // Control wheely-spinny-thing
   const [loading, setLoading] = useState(false)
 
+  let history = useHistory()
+
   const toggleForm = () => {
     // Reset field states 
     setUsername("")
@@ -45,11 +48,16 @@ const LoginPage = () => {
     setLoading(false)
     setSuccessLogin(false)
 
+
     if(loginMode) {
       setLoginMode(false)
     } else {
       setLoginMode(true)
     }
+  }
+
+  if(successLogin) {
+    history.push('/dashboard')
   }
 
   const handleUsernameChange = (event) => {
