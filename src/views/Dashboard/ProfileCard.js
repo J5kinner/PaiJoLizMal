@@ -5,12 +5,12 @@
  *
  */
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Box, Collapse,
-    IconButton,
-    Link as LinkButton,
-    Typography, TextField,
+    IconButton, Link as LinkButton,
+    FormControl, TextField, FormHelperText,
+    Typography,
 } from '@mui/material'
 import {
     Edit as EditIcon,
@@ -18,28 +18,62 @@ import {
     Clear as ClearIcon,
 } from "@mui/icons-material"
  
-const ProfileCard = ({ user }) => {
+const ProfileCard = ({ user, setUsername }) => {
     const [editMode, setEditMode] = useState(false)
     const [editPassword, setEditPassowrd] = useState(false)
 
-    const [newUserInfo, setNewUserInfo] = useState({ username: user.name })
+    const [newUserInfo, setNewUserInfo] = useState({ username: '' })
     const [newPasswordInfo, setNewPasswordInfo] = useState({
         oldPassword: '',
         newPassword: '',
     })
+    
+    const [inputErrors, setInputErrors] = useState(0)
+
+    useEffect(() => {
+        setNewUserInfo({ username: user.username })
+    }, [ user ])
 
     /*=== BUTTON HANDLERS ===*/
 
     const handleEditButton = () => setEditMode(true)
 
     const handleSaveInfoButton = () => {
-        console.log('send to server...', newUserInfo)
+        //stop submit if form error identified
+        if (usernameError(newUserInfo.username)) {
+            setInputErrors({
+                ...inputErrors,
+                username: usernameError(newUserInfo.username)
+            })
+            return
+        }
+        console.log('send to server, update user...', newUserInfo)
+        
+        //update front-end user from response
+        console.log('recive updated user from server')
+        setUsername(newUserInfo.username)
 
         //force clear
         handleClearButton()
     }
 
     const handleSavePasswordButton = () => {
+        //stop submit if form error identified
+        if (passwordError(newPasswordInfo.oldPassword) ||
+            passwordError(
+                newPasswordInfo.newPassword,
+                newPasswordInfo.oldPassword)) {
+            setInputErrors({
+                ...inputErrors,
+                oldPassword: passwordError(newPasswordInfo.oldPassword),
+                newPassword: passwordError(
+                    newPasswordInfo.newPassword,
+                    newPasswordInfo.oldPassword
+                )
+            })
+            return
+        }
+        
         console.log('send to server...', newPasswordInfo)
 
         //force clear
@@ -47,11 +81,12 @@ const ProfileCard = ({ user }) => {
     }
 
     const handleClearButton = () => {
-        setNewUserInfo({ username: user.name })
+        setNewUserInfo({ username: user.username })
         setNewPasswordInfo({
             oldPassword: '',
             newPassword: '',
         })
+        setInputErrors(0)
         setEditPassowrd(false)
         setEditMode(false)
     }
@@ -70,6 +105,19 @@ const ProfileCard = ({ user }) => {
             ...newPasswordInfo,
             [name]: e.target.value
         })
+    }
+
+    /*=== ERROR CHECKERS ===*/
+
+    const usernameError = (username) => {
+        if (username.length < 1) return 'username must be minimum 1 characters.'
+        return false
+    }
+
+    const passwordError = (password, compare) => {
+        if (password.length < 3) return 'password must be minimum 3 characters.'
+        if (password===compare) return 'new password cannot equal old password.'
+        return false
     }
 
     /*=== RENDERERS ===*/
@@ -91,10 +139,16 @@ const ProfileCard = ({ user }) => {
             </Box>
 
             <Box sx={{ width: '30rem', mt: 2, }}>
-                <TextField fullWidth value={newUserInfo.username}
-                    InputLabelProps={{ shrink: true }}
-                    label="userName"
-                    onChange={handleInfoChange('username')} />
+                <FormControl fullWidth error={inputErrors.username ? true : false}>
+                    <TextField fullWidth error={inputErrors.username ? true : false}
+                        value={newUserInfo.username}
+                        InputLabelProps={{ shrink: true }}
+                        label="userName"
+                        onChange={handleInfoChange('username')} />
+                        <FormHelperText sx={{display: `${inputErrors.username ? 'block' : 'none'}` }}>
+                            {inputErrors.username}
+                        </FormHelperText>
+                </FormControl>
             </Box>
 
             <LinkButton onClick={() => setEditPassowrd(true)}>change password?</LinkButton>
@@ -113,25 +167,37 @@ const ProfileCard = ({ user }) => {
                 }}>
                 <Typography>Update password</Typography>
                 <IconButton sx={{ ml: 1,  }}>
-                    <CheckIcon onClick={handleSaveInfoButton} />
+                    <CheckIcon onClick={handleSavePasswordButton} />
                 </IconButton>
             </Box>
 
             <Box sx={{ width: '30rem', mt: 2, }}>
-                <TextField fullWidth value={newPasswordInfo.oldPassword}
-                    InputLabelProps={{ shrink: true }}
-                    type='password'
-                    label="oldPassword"
-                    onChange={handlePasswordChange('oldPassword')} />
+                <FormControl fullWidth error={inputErrors.oldPassword ? true : false}>
+                    <TextField fullWidth error={inputErrors.oldPassword ? true : false}
+                        value={newPasswordInfo.oldPassword}
+                        InputLabelProps={{ shrink: true }}
+                        type='password'
+                        label="oldPassword"
+                        onChange={handlePasswordChange('oldPassword')} />
+                        <FormHelperText sx={{display: `${inputErrors.oldPassword ? 'block' : 'none'}` }}>
+                            {inputErrors.oldPassword}
+                        </FormHelperText>
+                </FormControl>
             </Box>
 
             {/* provide new password */}
             <Box sx={{ width: '30rem', mt: 2, }}>
-                <TextField fullWidth value={newPasswordInfo.newPassword}
-                    InputLabelProps={{ shrink: true }}
-                    type='password'
-                    label="newPassword"
-                    onChange={handlePasswordChange('newPassword')} />
+                <FormControl fullWidth error={inputErrors.newPassword ? true : false}>
+                    <TextField fullWidth error={inputErrors.newPassword ? true : false}
+                        value={newPasswordInfo.newPassword}
+                        InputLabelProps={{ shrink: true }}
+                        type='password'
+                        label="newPassword"
+                        onChange={handlePasswordChange('newPassword')} />
+                        <FormHelperText sx={{display: `${inputErrors.newPassword ? 'block' : 'none'}` }}>
+                            {inputErrors.newPassword}
+                        </FormHelperText>
+                </FormControl>
             </Box>
 
             <LinkButton onClick={() => setEditPassowrd(false)}>change username?</LinkButton>
@@ -149,7 +215,7 @@ const ProfileCard = ({ user }) => {
                     justifyContent: 'center', alignItems: 'center',
                 }}>
                     <Typography variant='body1'>
-                        Hello {user.name}, would you like to edit your username and password
+                        Hello {user.username}, would you like to edit your username and password
                     </Typography>
                     <IconButton sx={{ ml: 1, display: `${editMode ? 'none' : ''}` }}>
                         <EditIcon onClick={handleEditButton} />
