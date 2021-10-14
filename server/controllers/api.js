@@ -32,19 +32,25 @@ apiRouter.post('/api/login', (request, response) => {
 })
 
 apiRouter.post('/api/createUser', (request, response) => {
-    const {username, name, password} = request.body
+    const {username, password} = request.body
 
-    bcrypt.hash(password, 10).then(result => {
-        const newUser = new User({
-            username: username,
-            name: name,
-            password: result,
-            totalTime: 0
-        })
-        newUser.save().then(result => {
-            return result
+    User.findOne({"username": username}).then(result => {
+        if (result) {
+            return response.status(401).json({error: "this username is taken"})
+        }
+        bcrypt.hash(password, 10).then(result => {
+            const newUser = new User({
+                username: username,
+                password: result,
+                totalTime: 0
+            })
+            newUser.save().then(result => {
+                response.status(200).json({message: `Successfully created user`, username: username})
+                return result
+            })
         })
     })
+
 })
 
 module.exports = apiRouter
