@@ -97,7 +97,7 @@ apiRouter.put('/api/user', (request, response) => {
 // Note related APIs
 
 // Create note
-apiRouter.post('/api/note', (request, response) => {
+apiRouter.post('/api/notes', (request, response) => {
 
     // Check token here
 
@@ -133,6 +133,13 @@ apiRouter.post('/api/note', (request, response) => {
     })
     newNote.save().then(result => {
         response.json(result)
+    })
+})
+
+// Get all
+apiRouter.get('/api/notes', (request, response) => {
+    Note.find({}).then(notes => {
+        response.json(notes)
     })
 })
 
