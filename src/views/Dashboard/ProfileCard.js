@@ -19,20 +19,57 @@ import {
 } from "@mui/icons-material"
  
 const ProfileCard = ({ user }) => {
-    const [editProfile, setEditProfile] = useState(false)
+    const [editMode, setEditMode] = useState(false)
     const [editPassword, setEditPassowrd] = useState(false)
+
+    const [newUserInfo, setNewUserInfo] = useState({ username: user.name })
+    const [newPasswordInfo, setNewPasswordInfo] = useState({
+        oldPassword: '',
+        newPassword: '',
+    })
 
     /*=== BUTTON HANDLERS ===*/
 
-    const handleEditButton = () => setEditProfile(true)
+    const handleEditButton = () => setEditMode(true)
 
-    const handleSaveInfoButton = () => setEditProfile(false)
+    const handleSaveInfoButton = () => {
+        console.log('send to server...', newUserInfo)
 
-    const handleSavePasswordButton = () => setEditProfile(false)
+        //force clear
+        handleClearButton()
+    }
+
+    const handleSavePasswordButton = () => {
+        console.log('send to server...', newPasswordInfo)
+
+        //force clear
+        handleClearButton()
+    }
 
     const handleClearButton = () => {
+        setNewUserInfo({ username: user.name })
+        setNewPasswordInfo({
+            oldPassword: '',
+            newPassword: '',
+        })
         setEditPassowrd(false)
-        setEditProfile(false)
+        setEditMode(false)
+    }
+
+    /*=== INPUT HANDLERS ===*/
+
+    const handleInfoChange = name => e => {
+        setNewUserInfo({
+            ...newUserInfo,
+            [name]: e.target.value
+        })
+    }
+
+    const handlePasswordChange = name => e => {
+        setNewPasswordInfo({
+            ...newPasswordInfo,
+            [name]: e.target.value
+        })
     }
 
     /*=== RENDERERS ===*/
@@ -48,16 +85,16 @@ const ProfileCard = ({ user }) => {
                     justifyContent: 'center', alignItems: 'center',
                 }}>
                 <Typography>Update username</Typography>
-                <IconButton sx={{ ml: 1, display: `${editProfile ? '' : 'none'}` }}>
+                <IconButton sx={{ ml: 1, display: `${editMode ? '' : 'none'}` }}>
                     <CheckIcon onClick={handleSaveInfoButton} />
                 </IconButton>
             </Box>
 
             <Box sx={{ width: '30rem', mt: 2, }}>
-                <TextField fullWidth value={user.name}
+                <TextField fullWidth value={newUserInfo.username}
                     InputLabelProps={{ shrink: true }}
                     label="userName"
-                    onChange={() => console.log('updating old password')} />
+                    onChange={handleInfoChange('username')} />
             </Box>
 
             <LinkButton onClick={() => setEditPassowrd(true)}>change password?</LinkButton>
@@ -81,20 +118,20 @@ const ProfileCard = ({ user }) => {
             </Box>
 
             <Box sx={{ width: '30rem', mt: 2, }}>
-                <TextField fullWidth
+                <TextField fullWidth value={newPasswordInfo.oldPassword}
                     InputLabelProps={{ shrink: true }}
                     type='password'
                     label="oldPassword"
-                    onChange={() => console.log('inputting old password')} />
+                    onChange={handlePasswordChange('oldPassword')} />
             </Box>
 
             {/* provide new password */}
             <Box sx={{ width: '30rem', mt: 2, }}>
-                <TextField fullWidth
+                <TextField fullWidth value={newPasswordInfo.newPassword}
                     InputLabelProps={{ shrink: true }}
                     type='password'
                     label="newPassword"
-                    onChange={() => console.log('inputting new password')} />
+                    onChange={handlePasswordChange('newPassword')} />
             </Box>
 
             <LinkButton onClick={() => setEditPassowrd(false)}>change username?</LinkButton>
@@ -114,19 +151,19 @@ const ProfileCard = ({ user }) => {
                     <Typography variant='body1'>
                         Hello {user.name}, would you like to edit your username and password
                     </Typography>
-                    <IconButton sx={{ ml: 1, display: `${editProfile ? 'none' : ''}` }}>
+                    <IconButton sx={{ ml: 1, display: `${editMode ? 'none' : ''}` }}>
                         <EditIcon onClick={handleEditButton} />
                     </IconButton>
-                    <IconButton sx={{ ml: 1, display: `${editProfile ? '' : 'none'}` }}>
+                    <IconButton sx={{ ml: 1, display: `${editMode ? '' : 'none'}` }}>
                         <ClearIcon onClick={handleClearButton} />
                     </IconButton>
                 </Box>
 
                 {/* display edit profile form */}
-                <Collapse in={editProfile && !editPassword}>
+                <Collapse in={editMode && !editPassword}>
                     {renderInfoForm}
                 </Collapse>
-                <Collapse in={editProfile && editPassword}>
+                <Collapse in={editMode && editPassword}>
                     {renderPasswordForm}
                 </Collapse>
 
