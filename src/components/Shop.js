@@ -5,7 +5,7 @@ function Shop() {
     return (
         <div className="shop">
             <p>Please select the note you would like to buy</p>
-            <ShopItem/>
+            <ShopItem title="Blue Border" cost="3" color="blue"/>
 
             
         </div>
