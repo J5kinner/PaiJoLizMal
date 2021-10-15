@@ -1,0 +1,30 @@
+@import '../../global/_colors.scss';
+
+.dash-page {
+    display: flex;
+    justify-content: center;
+
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    width: 95vw;
+    justify-content: center;
+    background: $white;
+
+}
+.profile {
+    display: flex;
+}
+
+.pomo {
+    display: flex;
+}
+
+.shop-front {
+    display: flex;
+    width: 95vw;
+    
+    background: $smoke;
+}
