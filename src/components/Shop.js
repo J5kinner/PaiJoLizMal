@@ -8,14 +8,21 @@ const items = [
   { id: 3, title: "This is a blue note", cost: 3, color: "blue" },
 ];
 
+
+const buyHandler = (props) => {
+    console.log("Buying a " + props + " note");
+
+}
+
 function Shop(props) {
   return (
     <div className="shop">
-      <p>Please select the note you would like to buy</p>
+      <h3>Please select the note you would like to buy</h3>
       <ul className="list">
         {items.map((item) => (
           <li key={item.id}>
             <ShopItem title={item.title} cost={item.cost} color={item.color} />
+        <button onClick={buyHandler(item.color)}>Buy</button>
           </li>
         ))}
       </ul>

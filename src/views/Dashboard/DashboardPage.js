@@ -33,8 +33,12 @@ function DashboardPage() {
 
   return (
     <div className="dash-page">
+      <div className="title">
+      <h1>Dashboard page</h1>
+      </div>
+
       <div className="dashboard">
-        <h1>Dashboard page</h1>
+
         <div className="profile">
           <ProfileCard user={user} />
         
