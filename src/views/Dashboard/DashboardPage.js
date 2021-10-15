@@ -6,6 +6,7 @@
  */
 
  import React, { useState } from "react";
+import Shop from "../../components/Shop";
  import NoteEditor from "./NoteEditor";
  import PomodoroTimer from "./PomodoroTimer";
  import ProfileCard from "./ProfileCard";
@@ -34,7 +35,11 @@
              <h1>Dashboard page</h1>
              <ProfileCard user={user} />
              <PomodoroTimer setUserBalance={setUserBalance} />
+             <div className="shop-front">
+             <Shop/>
              <NoteEditor />
+             </div>
+
          </div>
      );
  }

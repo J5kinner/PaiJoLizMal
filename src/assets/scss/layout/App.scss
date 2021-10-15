@@ -1,9 +1,11 @@
 /** @license 3120 Group X
   * Copyright (c) 3120 Group X, Inc. and its affiliates.
   *
-  * Authors:
+  * Authors: @J5kinner
   * 
   */
+
+  @import '../../global/_colors.scss';
 
 .App {
   text-align: center;
@@ -14,7 +16,7 @@ nav {
   justiy-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: grey;
+  background: $smoke;
   color: white;
 }
 
