@@ -5,7 +5,7 @@
  *
  */
 
-import { React, useState }  from "react";
+import { React, useState }  from "react"
 
 import Box from '@mui/material/Box'
 import Collapse from '@mui/material/Collapse'
@@ -14,8 +14,13 @@ import Button from '@mui/material/Button'
 import FormControl from '@mui/material/FormControl'
 import FormHelperText from '@mui/material/FormHelperText'
 import Alert from '@mui/material/Alert'
+import CircularProgress from '@mui/material/CircularProgress'
+
+import { useHistory } from "react-router-dom"
+import UserService from "../services/UserService"
 
 const LoginPage = () => {
+  const [user, setUser] = useState(null)
   // States to manage the form handling
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -27,7 +32,14 @@ const LoginPage = () => {
   // States to manage errors / messages
   const [validateFormError, setValidateFormError] = useState(false)
   const [confirmPasswordError, setConfirmPasswordError] = useState(false)
+  const [loginError, setLoginError] = useState(false)
   const [successSignUp, setSuccessSignUp] = useState(false)
+  const [successLogin, setSuccessLogin] = useState(false)
+  
+  // Control wheely-spinny-thing
+  const [loading, setLoading] = useState(false)
+
+  let history = useHistory()
 
   const toggleForm = () => {
     // Reset field states 
@@ -37,12 +49,20 @@ const LoginPage = () => {
     setValidateFormError(false)
     setConfirmPasswordError(false)
     setSuccessSignUp(false)
+    setLoginError(false)
+    setLoading(false)
+    setSuccessLogin(false)
+
 
     if(loginMode) {
       setLoginMode(false)
     } else {
       setLoginMode(true)
     }
+  }
+
+  if(successLogin) {
+    history.push('/dashboard')
   }
 
   const handleUsernameChange = (event) => {
@@ -64,13 +84,27 @@ const LoginPage = () => {
     } else {
       // No errors found
       setValidateFormError(false)
+      setLoading(true)
       handleLogin()
     }
   }
 
-  const handleLogin = () => {
-    // TODO: handle login request here, alert is temp fix
-    alert("Log in button pressed")
+  const handleLogin = async () => {
+      const user = await UserService.login(username, password)
+      setUser(user)
+      if (!user.error) {
+        setUsername('')
+        setPassword('')
+        setLoading(false)
+        setLoginError(false)
+        setSuccessLogin(true)
+        window.localStorage.setItem('jwt', user.token)
+        window.localStorage.setItem('loggedInUser', JSON.stringify(user)) 
+      } else {
+        setLoading(false)
+        setLoginError(true)
+      }
+      
   }
 
   const displaySuccessSignUp = (
@@ -125,8 +159,16 @@ const LoginPage = () => {
         <FormHelperText error={validateFormError} sx={{display: `${validateFormError ? 'block' : 'none'}`}}>
             Please ensure all fields have been completed.
         </FormHelperText>
+        <FormHelperText error={loginError} sx={{display: `${loginError ? 'block' : 'none'}`}}>
+            Failed login. Please check your credentials are correct.
+        </FormHelperText>
           <Button onClick={validateLogInForm}>Log In
           </Button>
+          {loading && (
+          <CircularProgress
+            size={16}
+          />
+        )}
         </Box>
       </FormControl>
 
