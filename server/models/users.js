@@ -15,7 +15,8 @@ mongoose.connect(url)
 const userSchema = new mongoose.Schema({
   username: String,
   password: String,
-  totalTime: Number
+  totalTime: Number,
+  coins: Number
 })
 
 userSchema.set('toJSON', {
