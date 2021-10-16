@@ -1,0 +1,52 @@
+/** @license 3120 Group X
+ * Copyright (c) 3120 Group X, Inc. and its affiliates.
+ *
+ * Authors: @J5kinner
+ *
+ */
+ 
+@import "../../global/_colors.scss";
+
+.shop {
+  background-color: $light-smoke;
+  margin: 1em;
+  width: 100%;
+  padding-right: 1em;
+
+}
+
+.shop-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-item-area {
+  display: flex;
+  .desc {
+    display: block;
+    padding-left: 1em;
+    text-align: left;
+    width:20%;
+  }
+  .btn-buy {
+      display: block;
+      padding: 2em;
+  }
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.shop-item-red {
+  border: 5px solid $red;
+}
+
+.shop-item-green {
+  border: 5px solid $green;
+}
+
+.shop-item-blue {
+  border: 5px solid $blue;
+}
