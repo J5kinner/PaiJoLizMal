@@ -93,6 +93,7 @@ const LoginPage = () => {
         setLoading(false)
         setLoginError(false)
         setSuccessLogin(true)
+        window.localStorage.setItem('jwt', user.token)
         window.localStorage.setItem('loggedInUser', JSON.stringify(user)) 
       } else {
         setLoading(false)

@@ -16,19 +16,26 @@ const register = (username, password) => axios
     .post(`${baseUrl}/createUser`, {username, password})
     .then(res => res.data)
     .catch(err => {
-            return {error: "Register failed"}
+        if (err.response.state === 401) return {error: "Username taken"}
+        return {error: "Register failed"}
     })
 
 
 
-// Call to update user stats
+// Call to update user stats 
+const update = (username, newUsername, password) => axios
+    .put(`${baseUrl}/user`, {username, newUsername, password})
+    .then(res => res.data)
+    .catch(err => {
+        if (err.response.state === 401) return {error: "User not found"}
+        else return {error: "Update failed"}
+    })
 
 
-// Call to update user password
 
 // Call to update coin balance
 
 // Call to get user time?
 
-const UserService = { login, register }
+const UserService = { login, register, update }
 export default UserService
