@@ -1,4 +1,5 @@
 import axios from 'axios'
+import bcryptjs from 'bcryptjs'
 
 const baseUrl = 'http://localhost:3001/api'
 
@@ -12,26 +13,30 @@ const login = (username, password) => axios
     })
 
 // Call to register a user
-const register = (username, password) => axios
-    .post(`${baseUrl}/createUser`, {username, password})
+const register = async (username, password) => {
+    let hashedPassword = await bcryptjs.hash(password, 10)
+    axios
+    .post(`${baseUrl}/user`, {username, password: hashedPassword})
     .then(res => res.data)
     .catch(err => {
         if (err.response.state === 401) return {error: "Username taken"}
         return {error: "Register failed"}
-    })
+    })}
 
 
 
-// Call to update user stats 
-const update = (username, newUsername, password) => axios
-    .put(`${baseUrl}/user`, {username, newUsername, password})
+// Call to update user info
+const update = async (username, newUsername, password) => {
+    let hashedPassword = await bcryptjs.hash(password, 10)
+    axios
+    .put(`${baseUrl}/user`, {username, newUsername, password: hashedPassword})
     .then(res => res.data)
     .catch(err => {
         if (err.response.state === 401) return {error: "User not found"}
         else return {error: "Update failed"}
-    })
+    })}
 
-
+// Call to update user stats
 
 // Call to update coin balance
 
