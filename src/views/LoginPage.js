@@ -134,6 +134,7 @@ const LoginPage = () => {
   const handleSignup = () => {  
     //TODO: handle sign up request here
     // Sign up complete
+    UserService.register(username, password)
     setUsername("")
     setPassword("")
     setConfirmPassword("")

@@ -25,7 +25,7 @@ apiRouter.post('/api/login', (request, response) => {
                     username: result.username
                 }
                 const token = jwt.sign(usrForToken, "secret")
-                return response.status(200).json({token, username: result.username})
+                return response.status(200).json({token, user: result})
             } else {
                 return response.status(401).json({error: "invalid username or password"})
             }
@@ -45,7 +45,8 @@ apiRouter.post('/api/user', (request, response) => {
         const newUser = new User({
             username: username,
             password: password,
-            totalTime: 0
+            totalTime: 0,
+            coins: 0
         })
         newUser.save().then(result => {
             response.status(200).json({message: `Successfully created user`, username: username})
