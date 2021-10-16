@@ -6,17 +6,19 @@
  */
 
 import React, { useEffect, useState } from 'react'
-import {
-    Box, Collapse,
-    IconButton, Link as LinkButton,
-    FormControl, TextField, FormHelperText,
-    Typography,
-} from '@mui/material'
-import {
-    Edit as EditIcon,
-    Check as CheckIcon,
-    Clear as ClearIcon,
-} from "@mui/icons-material"
+
+import Box from '@mui/material/Box'
+import Collapse from '@mui/material/Collapse'
+import IconButton from '@mui/material/IconButton'
+import {default as LinkButton} from '@mui/material/Link'
+import FormControl from '@mui/material/FormControl'
+import TextField from '@mui/material/TextField'
+import FormHelperText from '@mui/material/FormHelperText'
+import Typography from '@mui/material/Typography'
+
+import {default as EditIcon} from '@mui/icons-material/Edit'
+import {default as CheckIcon} from '@mui/icons-material/Check'
+import {default as ClearIcon} from '@mui/icons-material/Clear'
  
 const ProfileCard = ({ user, setUsername }) => {
     const [editMode, setEditMode] = useState(false)

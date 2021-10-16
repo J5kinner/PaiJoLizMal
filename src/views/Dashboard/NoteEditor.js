@@ -6,10 +6,12 @@
  */
 
 import React, { useState } from 'react'
-import { FormControl,
-         Button, Box,
-         TextField, 
-         Typography} from '@mui/material'
+
+import Box from '@mui/material/Box'
+import FormControl from '@mui/material/FormControl'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
 
 const NoteEditor = () => {
     const [title, setTitle] = useState('')

@@ -6,11 +6,14 @@
  */
 
 import { React, useState }  from "react";
-import { Box, Collapse,
-         TextField, Button,
-         FormControl,
-         FormHelperText,
-         Alert,} from '@mui/material'
+
+import Box from '@mui/material/Box'
+import Collapse from '@mui/material/Collapse'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import FormControl from '@mui/material/FormControl'
+import FormHelperText from '@mui/material/FormHelperText'
+import Alert from '@mui/material/Alert'
 
 const LoginPage = () => {
   // States to manage the form handling

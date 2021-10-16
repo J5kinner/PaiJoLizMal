@@ -6,10 +6,10 @@
  */
 
  import React, { useEffect, useState } from "react"
- import {
-     Box, Modal,
-     Typography,
- } from '@mui/material'
+
+import Box from '@mui/material/Box'
+import Modal from '@mui/material/Modal'
+import Typography from '@mui/material/Typography'
   
  const ErrorPopUp = ({ trigger, onClose, errorMsg }) => {
      const [open, setOpen] = useState(false)

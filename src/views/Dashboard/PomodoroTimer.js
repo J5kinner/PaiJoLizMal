@@ -6,12 +6,13 @@
  */
 
  import React, { useEffect, useRef, useState } from "react"
- import {
-     Box,
-     Tabs, Tab,
-     Typography,
-     Button, 
- } from '@mui/material'
+
+import Box from '@mui/material/Box'
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+
  import EarnedPopUp from "./EarnedPopUp"
  import ErrorPopUp from "./ErrorPopUp"
  
