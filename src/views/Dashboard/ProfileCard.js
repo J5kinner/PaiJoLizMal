@@ -55,6 +55,7 @@ const ProfileCard = ({ user, setUsername }) => {
         UserService.update(user.username, newUserInfo.username, null)
         //update front-end user from response
         .then(updatedUser => setUsername(updatedUser.username))
+        .catch(err => console.log('set a page error', err))
 
         //force clear
         handleClearButton()
@@ -80,7 +81,7 @@ const ProfileCard = ({ user, setUsername }) => {
         //update user password in db
         UserService.update(user.username, user.username, newPasswordInfo.newPassword)
         .then(updatedUser => console.log(updatedUser))
-        .catch(err => console.log('err', err))
+        .catch(err => console.log('set a page error', err))
 
         //force clear
         handleClearButton()
