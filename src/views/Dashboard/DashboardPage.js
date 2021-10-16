@@ -5,7 +5,7 @@
  *
  */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Shop from "../../components/Shop";
 import NoteEditor from "./NoteEditor";
 import PomodoroTimer from "./PomodoroTimer";
@@ -22,34 +22,41 @@ const randomUser = {
 };
 
 function DashboardPage() {
-  const [user, setUser] = useState(randomUser);
+    const [user, setUser] = useState(randomUser);
 
-  const setUserBalance = (newBalance) => {
-    let difference = newBalance - user.balance;
-    setUser({ ...user, balance: newBalance });
+    const setUserBalance = (newBalance) => {
+        let difference = newBalance - user.balance;
+        setUser({ ...user, balance: newBalance });
 
-    return difference;
-  };
+        return difference;
+    };
 
-  return (
-    <div className="dash-page">
-      <div className="title">
-        <h1>Dashboard page</h1>
-      </div>
-      <div className="dashboard">
-        <div className="profile">
-          <ProfileCard user={user} />
-          <div className="pomo">
-            <PomodoroTimer setUserBalance={setUserBalance} />
-          </div>
+    useEffect(() => {
+        setUser({
+            ...user,
+            username: JSON.parse(window.localStorage.getItem('loggedInUser')).username
+        })
+    }, [])
+
+    return (
+        <div className="dash-page">
+            <div className="title">
+                <h1>Dashboard page</h1>
+            </div>
+            <div className="dashboard">
+                <div className="profile">
+                    <ProfileCard user={user} />
+                </div>
+                <div className="pomo">
+                    <PomodoroTimer setUserBalance={setUserBalance} />
+                </div>
+                <div className="shop-front">
+                    <Shop user={user}/>
+                    <NoteEditor />
+                </div>
+            </div>
         </div>
-        <div className="shop-front">
-          <Shop user={user}/>
-          <NoteEditor />
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default DashboardPage;
