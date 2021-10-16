@@ -1,10 +1,15 @@
+/** @license 3120 Group X
+ * Copyright (c) 3120 Group X, Inc. and its affiliates.
+ *
+ * Authors: @J5kinner
+ *
+ */
+
 import React from "react";
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import '../assets/scss/components/Shop.scss'
-
 
 
 const Note = (props) => {
@@ -32,30 +37,3 @@ const Note = (props) => {
 
 export default Note;
 
-// const NoteCard = (
-//       <React.Fragment>
-//         <CardContent>
-//           <Typography variant="h5" component="div">
-//               Title
-//           </Typography>
-//           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-//             Username
-//           </Typography>
-//           <Typography variant="body2">
-//             well meaning and kindly.
-//             <br />
-//             {'"a benevolent smile"'}
-//           </Typography>
-//         </CardContent>
-    
-//       </React.Fragment>
-  
-// );
-
-// export default function Note() {
-//     return (
-//         <Box sx={{ minWidth: 275 }}>
-//         <Card variant="outlined">{NoteCard}</Card>
-//       </Box>
-//     )
-// };

@@ -34,20 +34,17 @@ function DashboardPage() {
   return (
     <div className="dash-page">
       <div className="title">
-      <h1>Dashboard page</h1>
+        <h1>Dashboard page</h1>
       </div>
-
       <div className="dashboard">
-
         <div className="profile">
           <ProfileCard user={user} />
-        
-        <div className="pomo">
-          <PomodoroTimer setUserBalance={setUserBalance} />
-        </div>
+          <div className="pomo">
+            <PomodoroTimer setUserBalance={setUserBalance} />
+          </div>
         </div>
         <div className="shop-front">
-          <Shop />
+          <Shop user={user}/>
           <NoteEditor />
         </div>
       </div>

@@ -1,3 +1,10 @@
+/** @license 3120 Group X
+ * Copyright (c) 3120 Group X, Inc. and its affiliates.
+ *
+ * Authors: @J5kinner
+ *
+ */
+
 import React from "react";
 import Note from "./Note.js";
 import "../assets/scss/components/Shop.scss";
