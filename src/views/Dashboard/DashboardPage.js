@@ -24,6 +24,10 @@ const randomUser = {
 function DashboardPage() {
     const [user, setUser] = useState(randomUser);
 
+    const setUsername = (newUsername) => {
+        setUser({ ...user, username: newUsername})
+    }
+
     const setUserBalance = (newBalance) => {
         let difference = newBalance - user.balance;
         setUser({ ...user, balance: newBalance });
@@ -45,7 +49,7 @@ function DashboardPage() {
             </div>
             <div className="dashboard">
                 <div className="profile">
-                    <ProfileCard user={user} />
+                    <ProfileCard user={user} setUsername={setUsername} />
                 </div>
                 <div className="pomo">
                     <PomodoroTimer setUserBalance={setUserBalance} />

@@ -82,7 +82,8 @@ apiRouter.put('/api/user', (request, response) => {
             return response.status(401).json({error: "user not found"})
         }
         if (password) {
-            User.updateOne({username: username}, {$set: {username: newUsername, password: result}})
+            // User.updateOne({username: username}, {$set: {username: newUsername, password: result}})
+            User.updateOne({username: username}, {$set: {username: newUsername, password: password}})
             .then(() => {
                 return response.status(200).json({message: `Successfully updated user`, username: newUsername})
             })

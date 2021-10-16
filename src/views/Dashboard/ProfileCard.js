@@ -19,6 +19,7 @@ import Typography from '@mui/material/Typography'
 import {default as EditIcon} from '@mui/icons-material/Edit'
 import {default as CheckIcon} from '@mui/icons-material/Check'
 import {default as ClearIcon} from '@mui/icons-material/Clear'
+import UserService from '../../services/UserService'
  
 const ProfileCard = ({ user, setUsername }) => {
     const [editMode, setEditMode] = useState(false)
@@ -49,11 +50,11 @@ const ProfileCard = ({ user, setUsername }) => {
             })
             return
         }
-        console.log('send to server, update user...', newUserInfo)
-        
+
+        //update user in db
+        UserService.update(user.username, newUserInfo.username, null)
         //update front-end user from response
-        console.log('recive updated user from server')
-        setUsername(newUserInfo.username)
+        .then(updatedUser => setUsername(updatedUser.username))
 
         //force clear
         handleClearButton()
@@ -75,8 +76,11 @@ const ProfileCard = ({ user, setUsername }) => {
             })
             return
         }
-        
-        console.log('send to server...', newPasswordInfo)
+
+        //update user password in db
+        UserService.update(user.username, user.username, newPasswordInfo.newPassword)
+        .then(updatedUser => console.log(updatedUser))
+        .catch(err => console.log('err', err))
 
         //force clear
         handleClearButton()
