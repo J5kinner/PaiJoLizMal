@@ -1,3 +1,10 @@
+/** @license 3120 Group X
+ * Copyright (c) 3120 Group X, Inc. and its affiliates.
+ *
+ * Authors: Elizabeth Laham - @elizabetht94
+ *
+ */
+
 import axios from 'axios'
 import bcryptjs from 'bcryptjs'
 
@@ -25,11 +32,22 @@ const register = async (username, password) => {
 
 
 
-// Call to update user info
-const update = async (username, newUsername, password) => {
-    let hashedPassword = await bcryptjs.hash(password, 10)
-    return axios
-    .put(`${baseUrl}/user`, {username, newUsername, password: hashedPassword})
+// Call to update user password
+const updatePassword = async (oldPassword, newPassword) => {
+    username = localStorage.getItem('loggedInUser').username
+    let hashedPassword = await bcryptjs.hash(newPassword, 10)
+    axios
+    .put(`${baseUrl}/user`, {username, username, password: hashedPassword})
+    .then(res => res.data)
+    .catch(err => {
+        if (err.response.state === 401) return {error: "User not found"}
+        else return {error: "Update failed"}
+    })}
+
+ // Call to update only usename   
+const updateUsername = async (username, newUsername) => {
+    axios
+    .put(`${baseUrl}/user`, {username, newUsername, password: null})
     .then(res => res.data)
     .catch(err => {
         if (err.response.state === 401) return {error: "User not found"}
@@ -43,5 +61,5 @@ const update = async (username, newUsername, password) => {
 
 // Call to get user time?
 
-const UserService = { login, register, update }
+const UserService = { login, register, updatePassword, updateUsername }
 export default UserService
