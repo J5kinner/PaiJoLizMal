@@ -13,8 +13,8 @@ const getAllNotes = () => axios
     // })
 
 // Post new note
-const postNewNotes = (title, body, username, background) => axios
-    .post(`${baseUrl}/notes`, {title, body, username, background})
+const postNewNotes = (note) => axios
+    .post(`${baseUrl}/notes`, { note })
     .then(res => res.data)
     .catch(err => {
         if (err.response.state === 401) return {error: "User not found"}
