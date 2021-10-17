@@ -6,6 +6,7 @@
  */
 
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import Box from '@mui/material/Box'
 import Collapse from '@mui/material/Collapse'
@@ -20,6 +21,7 @@ import {default as EditIcon} from '@mui/icons-material/Edit'
 import {default as CheckIcon} from '@mui/icons-material/Check'
 import {default as ClearIcon} from '@mui/icons-material/Clear'
 import UserService from '../../services/UserService'
+import { logout } from '../../services/Authentication'
  
 const ProfileCard = ({ user, setUsername }) => {
     const [editMode, setEditMode] = useState(false)
@@ -32,6 +34,8 @@ const ProfileCard = ({ user, setUsername }) => {
     })
     
     const [inputErrors, setInputErrors] = useState(0)
+
+    const history = useHistory()
 
     useEffect(() => {
         setNewUserInfo({ username: user.username })
@@ -50,14 +54,14 @@ const ProfileCard = ({ user, setUsername }) => {
             })
             return
         }
+
+        //TODO
+        //add alert to user that logout is required upon username change
+
         //update user in db
         UserService
-        .update(user.username, newUserInfo.username, 'test')
-        .then(newUserName => {
-            setUsername(newUserName.username)
-            console.log(newUserName)
-            console.log(newUserName.username)
-        })
+        .updateUsername(user.username, newUserInfo.username)
+        .then(logout(() => history.push('/login')))
         .catch(err => console.log('paige note.. set a page error', err))
 
         //force clear
@@ -82,8 +86,8 @@ const ProfileCard = ({ user, setUsername }) => {
         }
 
         //update user password in db
-        UserService.update(user.username, user.username, newPasswordInfo.newPassword)
-        .then(updatedUser => console.log(updatedUser))
+        UserService
+        .updatePassword(newPasswordInfo.oldPassword, newPasswordInfo.newPassword)
         .catch(err => console.log('set a page error', err))
 
         //force clear

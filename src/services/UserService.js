@@ -34,7 +34,7 @@ const register = async (username, password) => {
 
 // Call to update user password
 const updatePassword = async (oldPassword, newPassword) => {
-    username = localStorage.getItem('loggedInUser').username
+    const username = JSON.parse(localStorage.getItem('loggedInUser')).username
     let hashedPassword = await bcryptjs.hash(newPassword, 10)
     axios
     .put(`${baseUrl}/user`, {username, username, password: hashedPassword})

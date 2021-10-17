@@ -34,8 +34,6 @@ function DashboardPage({ user, setUser }) {
         return difference;
     }
 
-    console.log(user)
-
     return (
         <div className="dash-page">
             <div className="title">
