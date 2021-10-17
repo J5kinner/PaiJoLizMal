@@ -45,31 +45,6 @@ export const authenticate = (data, next) => {
     }
 };
 
-/*
-    update logged in user password
-*/
-export const updatePassword = (oldPassword, newPassword) => {
-    const history = useHistory()
-    if(typeof window !== 'undefined') {
-        user = localStorage.getItem('loggedInUser', user.username)
-        UserService
-        .updatePassword(user, oldPassword, newPassword)
-
-    }
-}
-
-/*
-    update logged in user password
-*/
-export const updateUsername = (oldUsername, newUsername) => {
-    const history = useHistory()
-    if(typeof window !== 'undefined') {
-        UserService
-        .updateUsername(oldUsername, newUsername)
-        alert("User updated, logging you out.")
-        logout(() => history.push('/login'))
-    }
-}
 
 /*
     cancel user session logging out user
