@@ -28,13 +28,14 @@ const register = async (username, password) => {
 // Call to update user info
 const update = async (username, newUsername, password) => {
     let hashedPassword = await bcryptjs.hash(password, 10)
-    axios
+    return axios
     .put(`${baseUrl}/user`, {username, newUsername, password: hashedPassword})
     .then(res => res.data)
     .catch(err => {
         if (err.response.state === 401) return {error: "User not found"}
         else return {error: "Update failed"}
-    })}
+    })
+}
 
 // Call to update user stats
 

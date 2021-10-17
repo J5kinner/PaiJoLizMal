@@ -5,7 +5,7 @@
  *
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Shop from "../../components/Shop";
 import NoteEditor from "./NoteEditor";
 import PomodoroTimer from "./PomodoroTimer";
@@ -13,13 +13,13 @@ import ProfileCard from "./ProfileCard";
 import "../../assets/scss/views/Dashboard.scss";
 
 const randomUser = {
-  name: "TestUser",
+  username: "TestUser",
   balance: 50,
   stats: {
     totalTime: 300,
     totalSessions: 10,
-  },
-};
+  }
+}
 
 function DashboardPage() {
     const [user, setUser] = useState(randomUser);
@@ -33,14 +33,9 @@ function DashboardPage() {
         setUser({ ...user, balance: newBalance });
 
         return difference;
-    };
+    }
 
-    useEffect(() => {
-        setUser({
-            ...user,
-            username: JSON.parse(window.localStorage.getItem('loggedInUser')).username
-        })
-    }, [])
+    console.log(user)
 
     return (
         <div className="dash-page">

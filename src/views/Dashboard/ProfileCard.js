@@ -50,12 +50,15 @@ const ProfileCard = ({ user, setUsername }) => {
             })
             return
         }
-
         //update user in db
-        UserService.update(user.username, newUserInfo.username, null)
-        //update front-end user from response
-        .then(updatedUser => setUsername(updatedUser.username))
-        .catch(err => console.log('set a page error', err))
+        UserService
+        .update(user.username, newUserInfo.username, 'test')
+        .then(newUserName => {
+            setUsername(newUserName.username)
+            console.log(newUserName)
+            console.log(newUserName.username)
+        })
+        .catch(err => console.log('paige note.. set a page error', err))
 
         //force clear
         handleClearButton()
