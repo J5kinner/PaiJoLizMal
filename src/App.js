@@ -7,11 +7,14 @@
 
 import "./assets/scss/layout/App.scss";
 import Navigation from "./views/Navigation";
+import { BrowserRouter as Router } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <Navigation />
+      <Router>
+        <Navigation />
+      </Router>
     </div>
   );
 }
