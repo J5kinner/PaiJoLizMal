@@ -12,20 +12,21 @@ import Typography from '@mui/material/Typography';
 import '../assets/scss/components/Shop.scss'
 
 
-const Note = (props) => {
+const Note = ({note}) => {
+  console.log("hello", note)
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
-        <div className={"shop-item shop-item-" + props.color}>
+        <div className={"shop-item shop-item-" + note.background}>
         <Typography variant="h5" >
-          Title of post
+          {note.title}
         </Typography>
 
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          Username
+          {note.username}
         </Typography>
         <Typography variant="body2">
-          Well meaning and kindly.
+          {note.body}
           <br />
           {'"a benevolent smile"'}
         </Typography>
