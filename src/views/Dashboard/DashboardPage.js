@@ -21,9 +21,9 @@ const randomUser = {
   },
 };
 
-function DashboardPage() {
-  const [user, setUser] = useState(randomUser);
-
+function DashboardPage({ user, setUser }) {
+  //const [user, setUser] = useState(randomUser);
+  console.log("dashboard user yayy", user)
   const setUserBalance = (newBalance) => {
     let difference = newBalance - user.balance;
     setUser({ ...user, balance: newBalance });
