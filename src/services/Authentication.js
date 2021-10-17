@@ -39,7 +39,7 @@ export const authenticate = (data, next) => {
         localStorage.setItem('jwt', data.token)
         // Uncomment once we have getUser route
         // localStorage.setItem('loggedInUser', JSON.stringify({username: data.user.username}))
-        localStorage.setItem('loggedInUser', JSON.stringify({user: data.user}))
+        localStorage.setItem('loggedInUser', JSON.stringify(data.user))
         next();
         window.location.reload()
     }

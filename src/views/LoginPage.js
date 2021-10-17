@@ -5,15 +5,20 @@
  *
  */
 
-import { React, useState }  from "react";
-import { Redirect } from 'react-router-dom'
-import { useHistory } from "react-router-dom";
+import { React, useState }  from "react"
+
+import Box from '@mui/material/Box'
+import Collapse from '@mui/material/Collapse'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import FormControl from '@mui/material/FormControl'
+import FormHelperText from '@mui/material/FormHelperText'
+import Alert from '@mui/material/Alert'
+import CircularProgress from '@mui/material/CircularProgress'
+
+import { Redirect, useHistory } from "react-router-dom"
+import UserService from "../services/UserService"
 import { login, authenticate, isAuthenticated, register } from '../services/Authentication'
-import { Box, Collapse,
-         TextField, Button,
-         FormControl,
-         FormHelperText,
-         Alert, CircularProgress} from '@mui/material'
 
 const LoginPage = () => {
   const [user, setUser] = useState(null)
@@ -93,17 +98,23 @@ const LoginPage = () => {
       login(username, password)
       .then((user) => {
       //setUser(user)
+      console.log(user)
       if (!user.error) {
+        console.log(1)
         setUsername('')
+        console.log(2)
         setPassword('')
+        console.log(3)
         setLoading(false)
+        console.log(4)
         setLoginError(false)
-        // window.localStorage.setItem('jwt', user.token)
-        // window.localStorage.setItem('loggedInUser', JSON.stringify(user)) 
+        console.log(5)
         setSuccessLogin(true)
+        console.log(6)
         authenticate(user, () => {
           setUser(user)
         })
+        console.log('MADE IT')
         
       } else {
         setLoading(false)
