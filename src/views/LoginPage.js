@@ -16,8 +16,9 @@ import FormHelperText from '@mui/material/FormHelperText'
 import Alert from '@mui/material/Alert'
 import CircularProgress from '@mui/material/CircularProgress'
 
-import { useHistory } from "react-router-dom"
+import { Redirect, useHistory } from "react-router-dom"
 import UserService from "../services/UserService"
+import { login, authenticate, isAuthenticated, register } from '../services/Authentication'
 
 const LoginPage = () => {
   const [user, setUser] = useState(null)
@@ -61,10 +62,15 @@ const LoginPage = () => {
     }
   }
 
-  if(successLogin) {
-    history.push('/dashboard')
+  const redirectUser = () => {
+    if(successLogin && isAuthenticated) {
+      return(
+        <Redirect to={{
+          pathname: "/dashboard"
+        }}/>
+      )
+    }
   }
-
   const handleUsernameChange = (event) => {
     setUsername(event.target.value)
   }
@@ -78,7 +84,6 @@ const LoginPage = () => {
   }
 
   const validateLogInForm = () => {
-    // TODO: Handle incorrect credentials give
     if(!username || !password) {
       setValidateFormError(true)
     } else {
@@ -89,21 +94,28 @@ const LoginPage = () => {
     }
   }
 
-  const handleLogin = async () => {
-      const user = await UserService.login(username, password)
-      setUser(user)
+  const handleLogin = () => {
+      login(username, password)
+      .then((user) => {
+      //setUser(user)
       if (!user.error) {
         setUsername('')
         setPassword('')
         setLoading(false)
         setLoginError(false)
+        // window.localStorage.setItem('jwt', user.token)
+        // window.localStorage.setItem('loggedInUser', JSON.stringify(user)) 
         setSuccessLogin(true)
-        window.localStorage.setItem('jwt', user.token)
-        window.localStorage.setItem('loggedInUser', JSON.stringify(user))
+        authenticate(user, () => {
+          setUser(user)
+        })
+        
       } else {
         setLoading(false)
         setLoginError(true)
+
       }
+    })
       
   }
 
@@ -132,9 +144,7 @@ const LoginPage = () => {
   }
 
   const handleSignup = () => {  
-    //TODO: handle sign up request here
-    // Sign up complete
-    UserService.register(username, password)
+    register(username, password)
     setUsername("")
     setPassword("")
     setConfirmPassword("")
@@ -236,6 +246,7 @@ const LoginPage = () => {
         </Collapse>
         
       </Box>
+      {redirectUser()}
     </div>
   )
 }
