@@ -17,7 +17,7 @@ const Shop = ({ user }) => {
     { id: 3, title: "This is a blue note", cost: 51, color: "blue" },
   ]);
 
-let [coins, setCoins] = useState(user.balance);
+let [coins, setCoins] = useState(user.coins);
  
   /**
    * BuyHandler takes away the cost value from the balance
@@ -51,7 +51,7 @@ let [coins, setCoins] = useState(user.balance);
             <ShopItem title={item.title} cost={item.cost} color={item.color} />
             <button
               onClick={() =>
-                handleBuy(user.balance, item.id, item.cost, item.color)
+                handleBuy(user.coins, item.id, item.cost, item.color)
               }
               className="btn"
             >

@@ -243,7 +243,7 @@ const ProfileCard = ({ user, setUsername }) => {
                     {renderPasswordForm}
                 </Collapse>
 
-                <Typography variant='h6'>${user.balance}</Typography>
+                <Typography variant='h6'>${user.coins}</Typography>
             </Box>
 
             

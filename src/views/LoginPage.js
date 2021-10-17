@@ -98,17 +98,23 @@ const LoginPage = () => {
       login(username, password)
       .then((user) => {
       //setUser(user)
+      console.log(user)
       if (!user.error) {
+        console.log(1)
         setUsername('')
+        console.log(2)
         setPassword('')
+        console.log(3)
         setLoading(false)
+        console.log(4)
         setLoginError(false)
-        // window.localStorage.setItem('jwt', user.token)
-        // window.localStorage.setItem('loggedInUser', JSON.stringify(user)) 
+        console.log(5)
         setSuccessLogin(true)
+        console.log(6)
         authenticate(user, () => {
           setUser(user)
         })
+        console.log('MADE IT')
         
       } else {
         setLoading(false)
