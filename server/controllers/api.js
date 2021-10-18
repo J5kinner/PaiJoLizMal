@@ -119,25 +119,38 @@ apiRouter.post('/api/notes', (request, response) => {
     //     return res.status(401).json({error: "invalid token"})
     // }
 
-
-
     const {title, body, username, background} = request.body
-    var bg = background
 
     if (!title || !body || !username) {
-        return response.status(401).json({error: "title, body or user missing"})
+        return response.status(400).json({error: "title, body or user missing"})
     }
-    if (!background) {
-        bg = "#000000"
-    }
-    const newNote = new Note({
-        title: title,
-        body: body,
-        username: username,
-        background: bg
-    })
-    newNote.save().then(result => {
-        response.json(result)
+
+    User.findOne({"username": username}).then(user => {
+        if (!user) {
+            return response.status(401).json({error: "user not found"})
+        }
+        NoteType.findOne({background: background}).then(typeExists => {
+
+            if (!typeExists) {
+                return response.status(400).json({error: "invalid note type"})
+            }
+
+            if (user.coins < typeExists.cost) {
+                return response.status(400).json({error: "insufficient funds"})
+            }
+            const newNote = new Note({
+                title: title,
+                body: body,
+                username: username,
+                background: background
+            })
+            newNote.save().then(result => {
+                User.updateOne({username: username}, {$set: {coins: user.coins - typeExists.cost}})
+                .then(() => {
+                    return response.status(200).json(result)
+                })
+            })
+        })
     })
 })
 
