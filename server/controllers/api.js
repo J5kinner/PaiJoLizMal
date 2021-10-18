@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 
 const User = require('../models/users')
 const Note = require('../models/notes')
+const NoteType = require('../models/noteTypes')
 const apiRouter = express.Router()
 
 // User related APIs
@@ -118,6 +119,8 @@ apiRouter.post('/api/notes', (request, response) => {
     //     return res.status(401).json({error: "invalid token"})
     // }
 
+
+
     const {title, body, username, background} = request.body
     var bg = background
 
@@ -141,6 +144,13 @@ apiRouter.post('/api/notes', (request, response) => {
 // Get all
 apiRouter.get('/api/notes', (request, response) => {
     Note.find({}).then(notes => {
+        response.json(notes)
+    })
+})
+
+// Get types
+apiRouter.get('/api/notes/types', (request, response) => {
+    NoteType.find({}).then(notes => {
         response.json(notes)
     })
 })
