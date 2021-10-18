@@ -18,6 +18,7 @@ import { isAuthenticated, logout } from "../services/Authentication";
 import DashboardPage from "./Dashboard/DashboardPage";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
+import AuthRoute from "./AuthRoute";
 import SignUpPage from "./SignUpPage";
 
 export default function Navigation() {
@@ -41,28 +42,34 @@ export default function Navigation() {
           <li>
             <Link to="/">Paijolizmal</Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
+          {!user && (
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          )}
           {user && (
             <li>
               <button onClick={() => logout(logoutHandler)}>Logout</button>
             </li>
           )}
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
         </ul>
       </nav>
       <hr />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/dashboard">
-          <DashboardPage user={user} setUser={setUser} />
-        </Route>
-        <Route path="/login" component={LoginPage} />
-        <Route path="/signup" component={SignUpPage} />
-      </Switch>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/signup" component={SignUpPage} />
+          <AuthRoute
+            path="/dashboard"
+            component={DashboardPage}
+            user={user}
+            setUser={setUser}
+            exact
+          />
+        </Switch>
     </div>
   );
 }
