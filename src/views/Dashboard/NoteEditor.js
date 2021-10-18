@@ -1,7 +1,7 @@
 /** @license 3120 Group X
  * Copyright (c) 3120 Group X, Inc. and its affiliates.
  *
- * Authors: Elizabeth Laham 
+ * Authors: Elizabeth Laham, @J5kinner
  *
  */
 
@@ -36,7 +36,7 @@ const NoteEditor = () => {
      <Typography variant='h4'>
           Enter your note here!
       </Typography>  
-        <FormControl sx={{display: 'block'}}>
+        <FormControl sx={{ border: '5px solid red', display: 'block'}}>
           <Box sx={{padding: 2}}>  
             <TextField placeholder="Title"
              onChange={handleTitleChange}

@@ -6,14 +6,14 @@
  */
 
 import React from "react";
-import Note from "./Note.js";
-import "../assets/scss/components/Shop.scss";
+import ShopNote from "./ShopNote.js";
+import "../../assets/scss/components/Shop.scss";
 
 
 const ShopItem = (props) => {
   return (
     <div className="shop-item-area">
-      <Note color={props.color} />
+      <ShopNote color={props.color} title={props.title} username={props.username} />
       <div className="shop-item-area desc">
         <p>Description:{props.title}</p>
         <br />

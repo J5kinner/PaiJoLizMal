@@ -28,7 +28,6 @@ const Note = ({note}) => {
         <Typography variant="body2">
           {note.body}
           <br />
-          {'"a benevolent smile"'}
         </Typography>
         </div>
       </CardContent>

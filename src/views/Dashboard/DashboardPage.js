@@ -6,7 +6,7 @@
  */
 
 import React, { useState } from "react";
-import Shop from "../../components/Shop";
+import Shop from "../../components/shop/Shop";
 import NoteEditor from "./NoteEditor";
 import PomodoroTimer from "./PomodoroTimer";
 import ProfileCard from "./ProfileCard";
