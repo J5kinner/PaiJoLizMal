@@ -5,7 +5,7 @@
  *
  */
 
-import React, { useState } from "react";
+import React from "react";
 import Shop from "../../components/shop/Shop";
 import NoteEditor from "./NoteEditor";
 import PomodoroTimer from "./PomodoroTimer";
