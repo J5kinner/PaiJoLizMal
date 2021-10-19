@@ -16,8 +16,7 @@ import FormHelperText from '@mui/material/FormHelperText'
 import Alert from '@mui/material/Alert'
 import CircularProgress from '@mui/material/CircularProgress'
 
-import { Redirect, useHistory } from "react-router-dom"
-import UserService from "../services/UserService"
+import { Redirect } from "react-router-dom"
 import { login, authenticate, isAuthenticated, register } from '../services/Authentication'
 
 const LoginPage = () => {
@@ -39,8 +38,6 @@ const LoginPage = () => {
   
   // Control wheely-spinny-thing
   const [loading, setLoading] = useState(false)
-
-  let history = useHistory()
 
   const toggleForm = () => {
     // Reset field states 
