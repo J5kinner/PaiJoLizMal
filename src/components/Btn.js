@@ -3,7 +3,7 @@ import "../assets/scss/components/Button.scss";
 
 const Btn = (props) => {
   return (
-    <button onClick={props.handler} className="btn-cancel">
+    <button onClick={props.handler} className={props.class}>
       {props.text}
     </button>
   );

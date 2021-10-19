@@ -18,14 +18,8 @@ const Shop = ({ user }) => {
     { id: 3, title: "Blue Note Title", cost: 51, color: "blue" },
   ]);
 
-  //TESTING MODE for coins
-  let [coins, setCoins] = useState(50);
-
-  //PRODUCTION CODE for coins generated from pomodoro
-  //problem with returning money gives back weird values
-  // let [coins, setCoins] = useState(user.coins);
-
-  const [buyState, setBuyState] = useState("not-bought");
+  const intialIncome = user.coins;
+  const [coins, setCoins] = useState(intialIncome);
 
   /**
    * BuyHandler takes away the cost value from the balance
@@ -37,47 +31,97 @@ const Shop = ({ user }) => {
    * @param cost - cost of the purchase
    * @return the cost and colour of the chosen note being purchased
    */
-  const handleBuy = (userBalance, id, cost, color) => {
-    coins = userBalance;
-    if (userBalance < cost) {
-      alert("Sorry you don't have enough coins");
-    } else {
-      //update coins after purchase
-      setCoins(coins - cost);
-      setBuyState("bought")
+
+  const shopList = [
+    { id: 1, title: "Red Note Title", cost: 1, color: "red", isBought: false },
+    {
+      id: 2,
+      title: "Green Note Title",
+      cost: 50,
+      color: "green",
+      isBought: false,
+    },
+    {
+      id: 3,
+      title: "Blue Note Title",
+      cost: 51,
+      color: "blue",
+      isBought: false,
+    },
+  ];
+
+  const ShopApp = () => {
+    const [list, setList] = React.useState(shopList);
+    function handleToggleBuy(id, isBought, cost) {
+      const userCoins = intialIncome;
+      if (isBought) {
+        const newCoins = userCoins + cost;
+        setCoins(newCoins);
+
+        console.log("selling, income: " + newCoins + " cost: " + cost);
+      } else {
+        const newCoins = userCoins - cost;
+
+        setCoins(newCoins);
+
+        console.log("Buying, income: " + newCoins + " cost: " + cost);
+      }
+      const newList = list.map((item) => {
+        if (item.id === id) {
+          const updatedItem = {
+            ...item,
+            isBought: !item.isBought,
+          };
+
+          return updatedItem;
+        }
+
+        return item;
+      });
+      setList(newList);
     }
+
+    return <List list={list} onToggleBuy={handleToggleBuy} />;
   };
 
-
-  const handleCancel = (userBalance, cost) => {
-    const total = userBalance + cost;
-    setCoins(total);
-    setBuyState("not-bought")
-  };
+  const List = ({ list, onToggleBuy }) => (
+    <ul className="list">
+      {list.map((item) => (
+        <li key={item.id}>
+          <ShopItem
+            title={item.title}
+            username={user.username}
+            cost={item.cost}
+            color={item.color}
+          />
+          {item.isBought ? (
+            <button
+              type="button"
+              onClick={() => onToggleBuy(item.id, item.isBought, item.cost)}
+            >
+              {" "}
+              X
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => onToggleBuy(item.id, item.isBought, item.cost)}
+            >
+              {" "}
+              Buy
+            </button>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
     <div className="shop">
       <h3>Please select the note you would like to buy</h3>
       <p>Current Balance: {coins}</p>
       <ul className="list">
-        {items.map((item) => (
-          <li key={item.id}>
-            <ShopItem title={item.title} username={user.username} cost={item.cost} color={item.color} />
-            <div>
-              {buyState === "not-bought" && (
-            <button
-              onClick={() =>
-                handleBuy(coins, item.id, item.cost, item.color)
-              }
-              className="btn"
-            >
-              Buy{" "}
-            </button>)}
-            {buyState === "bought" && <Btn handler={ () => handleCancel(coins, item.cost)} text="X"/>}
-           
-            </div>
-          </li>
-        ))}
+        <ShopApp />
       </ul>
     </div>
   );
