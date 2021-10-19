@@ -6,12 +6,17 @@ const baseUrl = 'http://localhost:3001/api'
 const getAllNotes = () => axios
     .get(`${baseUrl}/notes`)
     .then(res => {
-        console.log("res.data", res.data)
         return res.data})
     // .catch(err =>{
 
     //     return {error: "Could not retrieve notes"}
     // })
+
+// Get note types
+const getNoteTypes = () => axios
+    .get(`${baseUrl}/notes/types`)
+    .then(res => {
+        return res.data})
 
 
 // Post new note
@@ -28,6 +33,6 @@ const postNewNote = (body, title, background) => {
 
 // Add background colour
 
-const NoteService = { getAllNotes, postNewNote}
+const NoteService = { getAllNotes, getNoteTypes, postNewNote}
 export default NoteService
 
