@@ -6,29 +6,42 @@
  */
 
 import React, { useState } from 'react'
-
+import NoteService from '../../services/NoteService'
 import Box from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
+import { useHistory } from 'react-router-dom'
 
 const NoteEditor = () => {
     const [title, setTitle] = useState('')
-    const [note, setNote] = useState('')
+    const [body, setBody] = useState('')
+    const background = 'white'
     const maxCharacters = 200
+    const history = useHistory()
 
     const handleTitleChange = (newTitle) => {
         setTitle(newTitle.target.value)
     }
 
     const handleNoteChange = (newNote) => {
-        setNote(newNote.target.value)
+        setBody(newNote.target.value)
+    }
+
+    const redirectToHomepage = () => {
+        console.log("note added", body, title, background)
+        history.push('/')
+
     }
 
     const handleAddNote = () => {
-        // handle posting note here
-        alert("new note added with title:  " + title + " note: " + note )
+        NoteService
+        .postNewNote(body, title, background)
+        .then(() => redirectToHomepage())
+        .catch(err => console.log("there was an error"))
+
+        
     }
 
     return (
@@ -50,7 +63,7 @@ const NoteEditor = () => {
                 minRows={10}
                 maxRows={10}
                 inputProps={{ maxLength: maxCharacters }}
-                helperText={`${note.length}/${maxCharacters}`}
+                helperText={`${body.length}/${maxCharacters}`}
                 sx={{ width: '100%', backgroundColor: 'white'}}
             />
             </Box> 
