@@ -7,7 +7,27 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import "./assets/scss/layout/index.scss";
-import App from "./App";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+
+import "./assets/scss/layout/index.scss"
+import App from "./App"
+
+const outerTheme = createTheme({
+    typography: {
+        title: {
+            fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+            fontWeight: '800',
+            fontSize: '2rem',
+            lineHeight: 1.2,
+            letterSpacing: '-0.00833em'
+        }
+    }
+  })
+
+ReactDOM.render(
+    <ThemeProvider theme={outerTheme}>
+        <App />
+    </ThemeProvider>,
+    document.getElementById("root")
+)

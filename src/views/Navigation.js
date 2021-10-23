@@ -12,6 +12,7 @@ import {
   Link,
   useHistory,
 } from "react-router-dom";
+import Box from '@mui/material/Box'
 import "../assets/scss/layout/App.scss";
 import { isAuthenticated, logout } from "../services/Authentication";
 import DashboardPage from "./Dashboard/DashboardPage";
@@ -19,6 +20,7 @@ import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
 import AuthRoute from "./AuthRoute";
 import SignUpPage from "./SignUpPage";
+import Header from "../components/header/Header";
 
 export default function Navigation() {
   const [user, setUser] = useState(false);
@@ -36,39 +38,22 @@ export default function Navigation() {
 
   return (
     <div className="App">
-      <nav>
-        <ul className="nav-links">
-          <li>
-            <Link to="/">Paijolizmal</Link>
-          </li>
-          {!user && (
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          )}
-          {user && (
-            <li>
-              <button onClick={() => logout(logoutHandler)}>Logout</button>
-            </li>
-          )}
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-        </ul>
-      </nav>
-      <hr />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/signup" component={SignUpPage} />
-          <AuthRoute
-            path="/dashboard"
-            component={DashboardPage}
-            user={user}
-            setUser={setUser}
-            exact
-          />
-        </Switch>
+        <Header />
+
+        <Box sx={{ mt: 10 }}>
+            <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/signup" component={SignUpPage} />
+            <AuthRoute
+                path="/dashboard"
+                component={DashboardPage}
+                user={user}
+                setUser={setUser}
+                exact
+            />
+            </Switch>
+        </Box>
     </div>
   );
 }
