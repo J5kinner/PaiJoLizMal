@@ -39,9 +39,9 @@ const Header = () => {
                     boxShadow: 'none', 
                 }}
             >
-                <Toolbar sx={{ color: '#000', padding: 1 }}>
+                <Toolbar sx={{ color: '#000' }}>
                     <Link to="/"
-                        style={{ textDecoration: 'none' }}
+                        style={{ textDecoration: 'none', padding: 1 }}
                     >
                         <Typography variant='title' color={Colours.teal}>Pai</Typography>
                         <Typography variant='title' color={Colours.mustard}>jo</Typography>
