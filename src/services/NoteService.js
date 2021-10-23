@@ -22,8 +22,10 @@ const getNoteTypes = () => axios
 // Post new note
 const postNewNote = (body, title, background) => {
     const username = JSON.parse(localStorage.getItem('loggedInUser')).username
+    const token = localStorage.getItem('jwt')
     return axios
-    .post(`${baseUrl}/notes`, { title, body, username, background })
+    .post(`${baseUrl}/notes`, { title, body, username, background },
+    { headers: { Authorization: `Bearer ${token}` }})
     .then(res => res.data)
     .catch(err => {
         if (err.response.state === 401) return {error: "User not found"}
