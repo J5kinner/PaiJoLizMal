@@ -6,7 +6,6 @@
  */
 
 import { React, useState }  from "react"
-
 import Box from '@mui/material/Box'
 import Collapse from '@mui/material/Collapse'
 import TextField from '@mui/material/TextField'
@@ -144,7 +143,7 @@ const LoginPage = () => {
   }
   
   const renderLoginForm = (
-    <Box sx={{maxWidth: '250px', minHeight:'320px'}}>
+    <Box sx={{minWidth: '300px', minHeight:'300px', maxHeight:'300px'}}>
       <FormControl>
         <Box sx={{padding:'2px', marginTop:'30px'}}>
           <TextField id="userName" label="Username"
@@ -166,8 +165,8 @@ const LoginPage = () => {
         <FormHelperText error={loginError} sx={{display: `${loginError ? 'block' : 'none'}`}}>
             Failed login. Please check your credentials are correct.
         </FormHelperText>
-          <Box sx={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems: 'center', marginTop:'50px'}}>
-            <Btn text="Log in" class="logInButton" handler={validateLogInForm}/>
+          <Box sx={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems: 'center', marginTop:'30%'}}>
+            <Btn text="Log In" class="logInButton" handler={validateLogInForm}/>
             {loading && (
             <CircularProgress
               size={20} 
@@ -183,15 +182,15 @@ const LoginPage = () => {
   )
 
   const renderSignUpForm = (
-    <Box>
+    <Box sx={{minWidth: '300px', minHeight:'300px', maxHeight:'300px'}}>
     <FormControl>
-      <Box sx={{padding: 2}}>
+      <Box sx={{padding: '2px', marginTop:'30px'}}>
         <TextField label="Username"
             onChange={handleUsernameChange}
             value={username}
             sx={{backgroundColor: 'white'}}/>
       </Box>    
-      <Box sx={{padding: 0}}>
+      <Box sx={{padding: '2px'}}>
         <TextField label="Password"
             type="password"
             onChange={handlePasswordChange}
@@ -199,7 +198,7 @@ const LoginPage = () => {
             error={confirmPasswordError}
             sx={{backgroundColor: 'white'}}/>
       </Box>
-      <Box sx={{padding: 2}}>
+      <Box sx={{padding: '2px'}}>
         <TextField label=" Confirm Password"
             type="password"
             value={confirmPassword}
@@ -212,8 +211,10 @@ const LoginPage = () => {
         <FormHelperText error={validateFormError} sx={{display: `${validateFormError ? 'block' : 'none'}`}}>
             Please ensure all fields have been completed.
         </FormHelperText>
-        <Button onClick={validateSignUpForm}>Create Account</Button>
-        {displaySuccessSignUp}
+        <Box sx={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems: 'center', marginTop:'12%'}}>
+          <Btn text="Sign Up" class="logInButton" handler={validateSignUpForm}/>
+          {displaySuccessSignUp}
+        </Box>
       </Box>
     </FormControl>
   </Box>
@@ -227,12 +228,12 @@ const LoginPage = () => {
       {/* Log in form */}
       <Box sx={{maxWidth: '340px'}}>
         <Collapse in={loginMode}>
-          <Box sx={{borderStyle: 'solid', borderWidth:'0.01px', borderRadius:'5px'}}>
-            <Box sx={{ backgroundColor: '#2A9D8F', padding: '2px', borderBottom: 'solid', borderRadius:'5px', borderWidth: '0.01px'}}>
+          <Box sx={{borderStyle: 'solid', borderWidth:'0.01px', borderRadius:'30px'}}>
+            <Box sx={{ backgroundColor: '#2A9D8F', padding: '2px', borderBottom: 'solid', borderRadius:'30px', borderWidth: '0.01px'}}>
               <Box sx={{padding: '10px', marginTop:'25px'}}>
                 <Typography align='left' variant='h4'sx={{color: 'white'}} ><b> Welcome <br /> Back</b></Typography>
               </Box>
-              <Box sx={{padding: '5px', paddingLeft: '10px'}}>
+              <Box sx={{padding: '5px', paddingLeft: '10px', paddingBottom:'20px'}}>
                   <Typography align='left' variant='h6'sx={{color: 'white'}}>Hi, kindly sign in below</Typography>
               </Box>
             </Box>
@@ -247,9 +248,22 @@ const LoginPage = () => {
 
         {/* Sign up form */}
         <Collapse in={!loginMode}>
-        <h3> Create an account with Paijolizmal</h3>
-          {renderSignUpForm}
-          <Button onClick={toggleForm}>Have an account? Log in</Button>
+        <Box sx={{borderStyle: 'solid', borderWidth:'0.01px', borderRadius:'25px'}}>
+            <Box sx={{ backgroundColor: '#2A9D8F', padding: '2px', borderBottom: 'solid', borderRadius:'25px', borderWidth: '0.01px'}}>
+              <Box sx={{padding: '10px', marginTop:'25px'}}>
+                <Typography align='left' variant='h4'sx={{color: 'white'}} ><b> Create <br /> Account</b></Typography>
+              </Box>
+              <Box sx={{padding: '5px', paddingLeft: '10px', paddingBottom:'20px'}}>
+                  <Typography align='left' variant='h6'sx={{color: 'white'}}>Please fill in details below</Typography>
+              </Box>
+            </Box>
+            <Box sx={{display: 'flex', justifyContent: 'center', flexDirection:'column',
+                      alignItems: 'center'}}>
+            {renderSignUpForm}
+            <p>Already have an account? 
+            <Button onClick={toggleForm} sx={{color: 'orange'}}>Log In</Button></p>
+            </Box>
+          </Box>
         </Collapse>
         
       </Box>
