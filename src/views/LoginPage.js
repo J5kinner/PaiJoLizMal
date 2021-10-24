@@ -15,9 +15,10 @@ import FormControl from '@mui/material/FormControl'
 import FormHelperText from '@mui/material/FormHelperText'
 import Alert from '@mui/material/Alert'
 import CircularProgress from '@mui/material/CircularProgress'
-
+import Btn from '../components/Btn'
 import { Redirect } from "react-router-dom"
 import { login, authenticate, isAuthenticated, register } from '../services/Authentication'
+import  Typography from "@mui/material/Typography"
 
 const LoginPage = () => {
   const [user, setUser] = useState(null)
@@ -94,32 +95,21 @@ const LoginPage = () => {
   const handleLogin = () => {
       login(username, password)
       .then((user) => {
-      //setUser(user)
-      console.log(user)
       if (!user.error) {
-        console.log(1)
         setUsername('')
-        console.log(2)
         setPassword('')
-        console.log(3)
         setLoading(false)
-        console.log(4)
         setLoginError(false)
-        console.log(5)
         setSuccessLogin(true)
-        console.log(6)
         authenticate(user, () => {
           setUser(user)
         })
-        console.log('MADE IT')
         
       } else {
         setLoading(false)
         setLoginError(true)
-
       }
     })
-      
   }
 
   const displaySuccessSignUp = (
@@ -152,17 +142,17 @@ const LoginPage = () => {
     setPassword("")
     setConfirmPassword("")
   }
-
+  
   const renderLoginForm = (
-    <Box>
+    <Box sx={{maxWidth: '250px', minHeight:'320px'}}>
       <FormControl>
-        <Box sx={{padding:2}}>
+        <Box sx={{padding:'2px', marginTop:'30px'}}>
           <TextField id="userName" label="Username"
               value={username}
               onChange={handleUsernameChange}
               sx={{backgroundColor: 'white'}}/>
         </Box>
-        <Box>
+        <Box sx={{padding:'2px'}}>
           <TextField label="Password"
               type="password"
               value={password}
@@ -176,13 +166,15 @@ const LoginPage = () => {
         <FormHelperText error={loginError} sx={{display: `${loginError ? 'block' : 'none'}`}}>
             Failed login. Please check your credentials are correct.
         </FormHelperText>
-          <Button onClick={validateLogInForm}>Log In
-          </Button>
-          {loading && (
-          <CircularProgress
-            size={16}
-          />
+          <Box sx={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems: 'center', marginTop:'50px'}}>
+            <Btn text="Log in" class="logInButton" handler={validateLogInForm}/>
+            {loading && (
+            <CircularProgress
+              size={20} 
+              sx={{padding: '2px', marginTop: '10px'}}
+            />
         )}
+          </Box>
         </Box>
       </FormControl>
 
@@ -229,15 +221,27 @@ const LoginPage = () => {
 
 
   return (
-    <div>
-      <h1>Login page</h1> 
+    <Box sx={{display: 'flex',
+    justifyContent: 'center', flexDirection:'column',
+     alignItems: 'center'}}>
       {/* Log in form */}
-      <Box>
+      <Box sx={{maxWidth: '340px'}}>
         <Collapse in={loginMode}>
-          <Box>
-          <h3>Log in to your Paijolizmal account</h3>
+          <Box sx={{borderStyle: 'solid', borderWidth:'0.01px', borderRadius:'5px'}}>
+            <Box sx={{ backgroundColor: '#2A9D8F', padding: '2px', borderBottom: 'solid', borderRadius:'5px', borderWidth: '0.01px'}}>
+              <Box sx={{padding: '10px', marginTop:'25px'}}>
+                <Typography align='left' variant='h4'sx={{color: 'white'}} ><b> Welcome <br /> Back</b></Typography>
+              </Box>
+              <Box sx={{padding: '5px', paddingLeft: '10px'}}>
+                  <Typography align='left' variant='h6'sx={{color: 'white'}}>Hi, kindly sign in below</Typography>
+              </Box>
+            </Box>
+            <Box sx={{display: 'flex', justifyContent: 'center', flexDirection:'column',
+                      alignItems: 'center'}}>
             {renderLoginForm}
-            <Button onClick={toggleForm}>Don't have an account? Sign up</Button>
+            <p>Don't have an account? 
+            <Button onClick={toggleForm} sx={{color: 'orange'}}>Sign up</Button></p>
+            </Box>
           </Box>
         </Collapse>
 
@@ -250,7 +254,7 @@ const LoginPage = () => {
         
       </Box>
       {redirectUser()}
-    </div>
+    </Box>
   )
 }
 
