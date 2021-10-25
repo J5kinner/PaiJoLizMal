@@ -19,6 +19,7 @@ import CloseIcon from '@mui/icons-material/Close'
 
 import Colours from '../../assets/Colours'
 import HeaderMenu from "./HeaderMenu"
+import { isAuthenticated, logout } from "../../services/Authentication"
 
 const Header = () => {
     const [menuAnchorEl, setMenuAnchorEl] = useState(null)
@@ -28,6 +29,8 @@ const Header = () => {
 
     const handleMenuToggle = () => setMenuAnchorEl(!isMenuOpen)
     const handleMenuClose = () => setMenuAnchorEl(false)
+
+    const handleLogout = () => logout(() => console.log('do nothing'))
 
     /*=== RENDERERS ===*/
 
@@ -82,16 +85,28 @@ const Header = () => {
                         </Link>
 
                         <Link to="/login"
+                            onClick={handleLogout}
                             style={{ textDecoration: 'none' }}
                         >
                             <Typography variant='h6'
                                 color={Colours.white}
                                 sx={{ ml: 5,
+                                    display: `${isAuthenticated() ? 'none' : 'block' }`,
                                     '&:hover': { color: Colours.carrot, },
                                     '&:active': { color: Colours.rust, },
                                 }}
                             >
                                 Login
+                            </Typography>
+                            <Typography variant='h6'
+                                color={Colours.white}
+                                sx={{ ml: 5,
+                                    display: `${isAuthenticated() ? 'block' : 'none' }`,
+                                    '&:hover': { color: Colours.carrot, },
+                                    '&:active': { color: Colours.rust, },
+                                }}
+                            >
+                                Logout
                             </Typography>
                         </Link>
                     </Box>
