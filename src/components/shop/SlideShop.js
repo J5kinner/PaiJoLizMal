@@ -139,7 +139,6 @@ const SlideShop = ({ user }) => {
           {" "}
           <NoteEditor noteColor="5px solid blue"editTitle="A wonderful blue note" />
         </div>
-        <div>4</div>
       </AwesomeSlider>
     </div>
   );
