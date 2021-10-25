@@ -7,6 +7,8 @@
 
 import React from "react";
 
+import Box  from "@mui/material/Box";
+import Grid  from "@mui/material/Grid";
 import Typography  from "@mui/material/Typography";
 
 import Shop from "../../components/shop/Shop";
@@ -14,6 +16,7 @@ import NoteEditor from "./NoteEditor";
 import PomodoroTimer from "./PomodoroTimer";
 import ProfileCard from "./ProfileCard";
 import "../../assets/scss/views/Dashboard.scss";
+import Colours from "../../assets/Colours";
 
 const randomUser = {
   username: "TestUser",
@@ -38,22 +41,28 @@ function DashboardPage({ user, setUser }) {
     }
 
     return (
-        <div className="dash-page">
-            <Typography variant='title'>Dashboard</Typography>
+        <Box>
+            <Box>
+                <Grid container
+                    columns={{ xs: 1, sm: 1, md: 3, lg: 3, xl: 3 }}
+                    justifyContent='center'
+                >
+                    <Grid item xs={1} sm={1} md={1} lg={1} xl={1}>
+                        <ProfileCard user={user} setUsername={setUsername} />
+                    </Grid>
+                    <Grid item xs={1} sm={1} md={2} lg={2} xl={2}>
+                        <PomodoroTimer setUserBalance={setUserBalance} />
+                    </Grid>
+                </Grid>
+            </Box>
             <div className="dashboard">
-                <div className="profile">
-                    <ProfileCard user={user} setUsername={setUsername} />
-                </div>
-                <div className="pomo">
-                    <PomodoroTimer setUserBalance={setUserBalance} />
-                </div>
                 <div className="shop-front">
                     <Shop user={user}/>
                     <NoteEditor />
                 </div>
             </div>
-        </div>
-    );
+        </Box>
+    )
 }
 
 export default DashboardPage;
