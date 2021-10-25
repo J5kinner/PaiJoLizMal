@@ -132,7 +132,7 @@ import { duration } from "@mui/material"
     const displayMinutes = timerMinutes < 10 ? `0${timerMinutes}` : timerMinutes
     const displaySeconds= timerSeconds < 10 ? `0${timerSeconds}` : timerSeconds
 
-    const minutesToPercent = 100 - (100 / durationMinutes * timerMinutes) - 1
+    const minutesToPercent = (100 / durationMinutes * timerMinutes) - 1
     const secondsToPercent = 100 - (100 / 60 * timerSeconds) - 1
 
     const handleCloseErrorPopUp = () => {
@@ -154,13 +154,13 @@ import { duration } from "@mui/material"
                 errorMsg={errorMsg} />
 
             {/* timer display */}
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Box>
-                    <Progressbar progress={minutesToPercent}
+            <Box sx={{ mt: 5, display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{display : `${timerMinutes > 0 ? 'block' : 'none'}`}}>
+                    <Progressbar progress={timerActive ? minutesToPercent : 100}
                         radius={80} strokeColor={Colours.carrot} />
                 </Box>
                 <Box>
-                    <Progressbar progress={secondsToPercent}
+                    <Progressbar progress={timerActive ? secondsToPercent : 100}
                         radius={80} strokeColor={Colours.rust} />
                 </Box>
             </Box>
