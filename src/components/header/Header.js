@@ -12,7 +12,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Collapse from '@mui/material/Collapse'
 import IconButton from '@mui/material/IconButton'
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
@@ -25,12 +25,14 @@ const Header = () => {
     const [menuAnchorEl, setMenuAnchorEl] = useState(null)
     const isMenuOpen = Boolean(menuAnchorEl)
 
+    const history = useHistory()
+
     /*=== HANDLERS ===*/
 
     const handleMenuToggle = () => setMenuAnchorEl(!isMenuOpen)
     const handleMenuClose = () => setMenuAnchorEl(false)
 
-    const handleLogout = () => logout(() => console.log('do nothing'))
+    const handleLogout = () => logout(() => history.push('/login'))
 
     /*=== RENDERERS ===*/
 
