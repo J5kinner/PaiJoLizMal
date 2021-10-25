@@ -6,6 +6,7 @@
  */
 
 import React from "react";
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -15,24 +16,25 @@ import '../assets/scss/components/Shop.scss'
 
 
 const Note = ({ note }) => {
-    console.log("hello", note)
-
     return (
-        <Card sx={{ height: 200, boxShadow: 0, background: Colours.gray }}>
+        <Card sx={{
+            height: 200, boxShadow: 0,
+            background: `${note.background ? note.background : Colours.gray}`,
+        }}>
             <CardContent>
-                <div className={"shop-item shop-item-" + note.background}>
+                <Box color={note.text ? note.text : 'inherit'}>
                     <Typography variant="h5" >
                         {note.title}
                     </Typography>
 
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    <Typography sx={{ mb: 1.5 }} color="inherit">
                         {note.username}
                     </Typography>
                     <Typography variant="body2">
                         {note.body}
                         <br />
                     </Typography>
-                </div>
+                </Box>
             </CardContent>
         </Card>
     )
