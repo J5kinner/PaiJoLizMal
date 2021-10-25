@@ -71,18 +71,18 @@ function HomePage() {
     )
 
     return (
-        <div>
+        <Box>
             <Box sx={{ display: 'flex' }}>
-                <Typography variant='title'>Rants</Typography>
+                <Typography variant='h4'><b>Rants</b></Typography>
                 <Box sx={{ flexGrow: 1 }} />
                 <Box onClick={handleFilterMenuToggle} sx={{
-                    ml: 5, display: 'flex', alignItems: 'center',
+                    display: 'flex', alignItems: 'center',
                     '&:hover': { color: Colours.carrot, },
                     '&:active': { color: Colours.rust, },
                 }}>
-                    <Typography variant='title' color='inherit'
+                    <Typography variant='h4' color='inherit'
                         sx={{ display: { xs: 'none', md: 'block' } }}>
-                        Filter
+                        <b>Filter</b>
                     </Typography>
                     <KeyboardArrowDownIcon color='inherit'
                         sx={{ width: 32, height: 32, }}
@@ -96,7 +96,7 @@ function HomePage() {
                 
             {/* render menus */}
             {renderFilterMenu}
-        </div>
+        </Box>
     );
 }
 

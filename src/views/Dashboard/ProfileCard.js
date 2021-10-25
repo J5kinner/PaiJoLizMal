@@ -17,11 +17,15 @@ import TextField from '@mui/material/TextField'
 import FormHelperText from '@mui/material/FormHelperText'
 import Typography from '@mui/material/Typography'
 
-import {default as EditIcon} from '@mui/icons-material/Edit'
-import {default as CheckIcon} from '@mui/icons-material/Check'
-import {default as ClearIcon} from '@mui/icons-material/Clear'
+import CheckIcon from '@mui/icons-material/Check'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
+
 import UserService from '../../services/UserService'
 import { logout } from '../../services/Authentication'
+import Colours from '../../assets/Colours'
+import { Button } from '@mui/material'
  
 const ProfileCard = ({ user, setUsername }) => {
     const [editMode, setEditMode] = useState(false)
@@ -141,18 +145,18 @@ const ProfileCard = ({ user, setUsername }) => {
             width: '100%',
             display: 'flex', flexDirection: 'column', alignItems: 'center'
         }}>
-            {/* update user name */}
+            {/* input old password */}
             <Box fullWidth sx={{
-                    display: 'flex',
-                    justifyContent: 'center', alignItems: 'center',
-                }}>
+                display: 'flex',
+                justifyContent: 'center', alignItems: 'center',
+            }}>
                 <Typography>Update username</Typography>
-                <IconButton sx={{ ml: 1, display: `${editMode ? '' : 'none'}` }}>
+                <IconButton color='inherit' sx={{ ml: 1 }}>
                     <CheckIcon onClick={handleSaveInfoButton} />
                 </IconButton>
             </Box>
 
-            <Box sx={{ width: '30rem', mt: 2, }}>
+            <Box sx={{ width: '100%', mt: 2, }}>
                 <FormControl fullWidth error={inputErrors.username ? true : false}>
                     <TextField fullWidth error={inputErrors.username ? true : false}
                         value={newUserInfo.username}
@@ -176,16 +180,17 @@ const ProfileCard = ({ user, setUsername }) => {
         }}>
             {/* input old password */}
             <Box fullWidth sx={{
-                    display: 'flex',
-                    justifyContent: 'center', alignItems: 'center',
-                }}>
+                display: 'flex',
+                justifyContent: 'center', alignItems: 'center',
+            }}>
                 <Typography>Update password</Typography>
-                <IconButton sx={{ ml: 1,  }}>
+                <IconButton color='inherit' sx={{ ml: 1,  }}>
                     <CheckIcon onClick={handleSavePasswordButton} />
                 </IconButton>
             </Box>
 
-            <Box sx={{ width: '30rem', mt: 2, }}>
+            {/* provide old password */}
+            <Box sx={{ width: '100%', mt: 2, }}>
                 <FormControl fullWidth error={inputErrors.oldPassword ? true : false}>
                     <TextField fullWidth error={inputErrors.oldPassword ? true : false}
                         value={newPasswordInfo.oldPassword}
@@ -200,7 +205,7 @@ const ProfileCard = ({ user, setUsername }) => {
             </Box>
 
             {/* provide new password */}
-            <Box sx={{ width: '30rem', mt: 2, }}>
+            <Box sx={{ width: '100%', mt: 2, }}>
                 <FormControl fullWidth error={inputErrors.newPassword ? true : false}>
                     <TextField fullWidth error={inputErrors.newPassword ? true : false}
                         value={newPasswordInfo.newPassword}
@@ -218,39 +223,87 @@ const ProfileCard = ({ user, setUsername }) => {
         </Box>
     )
 
-    return (
-        <Box>
-            <Typography variant='h4'>Profile</Typography>
+    console.log(user)
 
-            <Box>
-                {/* display user info */}
-                <Box fullWidth sx={{
-                    display: 'flex',
-                    justifyContent: 'center', alignItems: 'center',
-                }}>
-                    <Typography variant='body1'>
-                        Hello {user.username}, would you like to edit your username and password
-                    </Typography>
-                    <IconButton sx={{ ml: 1, display: `${editMode ? 'none' : ''}` }}>
-                        <EditIcon onClick={handleEditButton} />
-                    </IconButton>
-                    <IconButton sx={{ ml: 1, display: `${editMode ? '' : 'none'}` }}>
-                        <ClearIcon onClick={handleClearButton} />
-                    </IconButton>
+    return (
+        <Box color={Colours.white} sx={{
+            padding: 2,
+            borderRadius: 3, background: Colours.steel
+        }}>
+            {/* user info display */}
+            <Box sx={{
+                display: 'flex', flexDirection: 'column',
+                flexGrow: 1, alignItems: 'flex-start',
+            }}>
+                <Typography textAlign='left' variant='h4' color='inherit'>Intro</Typography>
+                <Typography textAlign='left' variant='body1' color='inherit'>
+                    Hello there, {user.username} (emoji)
+                </Typography>
+                <Typography textAlign='left' variant='body1' color='inherit'>
+                    Bank = {user.coins} coins available
+                </Typography>
+
+                <Box sx={{ mt: 2, mb: 2, }}>
+                    <Button variant='contained' color='primary'
+                        onClick={handleEditButton}
+                        sx={{ display: `${editMode ? 'none' : ''}` }}
+                    >
+                        edit name/password
+                    </Button>
+                    <Button variant='contained' color='primary'
+                        onClick={handleClearButton}
+                        sx={{ display: `${editMode ? '' : 'none'}` }}
+                    >
+                        cancel
+                    </Button>
                 </Box>
 
                 {/* display edit profile form */}
-                <Collapse in={editMode && !editPassword}>
+                <Collapse sx={{ width: '100%' }} in={editMode && !editPassword}>
                     {renderInfoForm}
                 </Collapse>
-                <Collapse in={editMode && editPassword}>
+                <Collapse sx={{ width: '100%' }} in={editMode && editPassword}>
                     {renderPasswordForm}
                 </Collapse>
-
-                <Typography variant='h6'>${user.coins}</Typography>
             </Box>
 
-            
+            {/* stats display */}
+            <Box sx={{
+                display: 'flex', flexDirection: 'column',
+                flexGrow: 1, alignItems: 'flex-start',
+            }}>
+                <Typography variant='h4' color='inherit'>Stats</Typography>
+                <Box sx={{
+                    mt: 1, display: 'flex',
+                    justifyContent: 'flex-start', alignitems: 'center'
+                }}>
+                    <AccessTimeIcon/>
+                    <Typography textAlign='left' variant='body1' color='inherit'>
+                        100 HR (total time)
+                    </Typography>
+                </Box>
+                
+                <Box sx={{
+                    mt: 1, display: 'flex',
+                    justifyContent: 'flex-start', alignitems: 'center'
+                }}>
+                    <ChatBubbleOutlineIcon/>
+                    <Typography textAlign='left' variant='body1' color='inherit'>
+                        5 RANTS (total posts)
+                    </Typography>
+                </Box>
+                
+                <Box sx={{
+                    mt: 1, display: 'flex',
+                    justifyContent: 'flex-start', alignitems: 'center'
+                }}>
+                    <EmojiEventsIcon/>
+                    <Typography textAlign='left' variant='body1' color='inherit'>
+                        60 COINS (most earnings)
+                    </Typography>
+                </Box>
+                
+            </Box>
         </Box>
     )
  }

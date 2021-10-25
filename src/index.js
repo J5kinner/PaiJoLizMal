@@ -12,8 +12,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import "./assets/scss/layout/index.scss"
 import App from "./App"
+import Colours from "./assets/Colours";
 
 const outerTheme = createTheme({
+    palette: {
+        primary: {
+            main: Colours.teal,
+        },
+    },
     typography: {
         title: {
             fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
