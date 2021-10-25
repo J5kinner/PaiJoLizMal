@@ -9,14 +9,11 @@ import React from "react";
 
 import Box  from "@mui/material/Box";
 import Grid  from "@mui/material/Grid";
-import Typography  from "@mui/material/Typography";
 
-import Shop from "../../components/shop/Shop";
-import NoteEditor from "./NoteEditor";
+import SlideShop from "../../components/shop/SlideShop";
 import PomodoroTimer from "./PomodoroTimer";
 import ProfileCard from "./ProfileCard";
 import "../../assets/scss/views/Dashboard.scss";
-import Colours from "../../assets/Colours";
 
 const randomUser = {
   username: "TestUser",
@@ -57,8 +54,7 @@ function DashboardPage({ user, setUser }) {
             </Box>
             <div className="dashboard">
                 <div className="shop-front">
-                    <Shop user={user}/>
-                    <NoteEditor />
+                    <SlideShop user={user}/>
                 </div>
             </div>
         </Box>
