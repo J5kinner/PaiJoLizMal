@@ -34,10 +34,12 @@ const register = async (username, password) => {
 
 // Call to update user password
 const updatePassword = async (oldPassword, newPassword) => {
-    const username = JSON.parse(localStorage.getItem('loggedInUser')).username
+    const token = JSON.parse(localStorage.getItem('jwt'))
     let hashedPassword = await bcryptjs.hash(newPassword, 10)
+    const username = JSON.parse(localStorage.getItem('loggedInUser')).username
     axios
-    .put(`${baseUrl}/user`, {username, username, password: hashedPassword})
+    .put(`${baseUrl}/user`, {username, username, password: hashedPassword}, {
+        headers: { Authorization: `Bearer ${token}` }})
     .then(res => res.data)
     .catch(err => {
         if (err.response.state === 401) return {error: "User not found"}
@@ -46,8 +48,10 @@ const updatePassword = async (oldPassword, newPassword) => {
 
  // Call to update only usename   
 const updateUsername = async (username, newUsername) => {
-    axios
-    .put(`${baseUrl}/user`, {username, newUsername, password: null})
+    const token = localStorage.getItem('jwt')
+     axios
+    .put(`${baseUrl}/user`, {username, newUsername, password: null}, 
+    { headers: { Authorization: `Bearer ${token}` }})
     .then(res => res.data)
     .catch(err => {
         if (err.response.state === 401) return {error: "User not found"}

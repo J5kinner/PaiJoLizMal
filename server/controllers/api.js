@@ -7,6 +7,16 @@ const Note = require('../models/notes')
 const NoteType = require('../models/noteTypes')
 const apiRouter = express.Router()
 
+const SECRET = "secret"
+
+const getTokenFrom = request => {
+    const authorization = request.get('authorization') 
+    if (authorization && authorization.toLowerCase().startsWith('bearer ')) { 
+           return authorization.substring(7)  
+        }  
+    return null
+}
+
 // User related APIs
 
 // Login
@@ -25,7 +35,7 @@ apiRouter.post('/api/login', (request, response) => {
                     id: result._id,
                     username: result.username
                 }
-                const token = jwt.sign(usrForToken, "secret")
+                const token = jwt.sign(usrForToken, SECRET)
                 return response.status(200).json({token, user: result})
             } else {
                 return response.status(401).json({error: "invalid username or password"})
@@ -62,20 +72,20 @@ apiRouter.put('/api/user', (request, response) => {
 
     // Check token here
 
-    // const token = getTokenFrom(request)
+    const token = getTokenFrom(request)
 
-    // let decodedToken = null
+    let decodedToken = null
 
-    // try {
-    //     decodedToken = jwt.verify(token, SECRET)
-    // }
-    // catch (error) {
-    //     decodedToken = {id: null}
-    // }
+    try {
+        decodedToken = jwt.verify(token, "secret")
+    }
+    catch (error) {
+        decodedToken = {id: null}
+    }
 
-    // if (!token || !decodedToken.id) {
-    //     return res.status(401).json({error: "invalid token"})
-    // }
+    if (!token || !decodedToken.id) {
+        return res.status(401).json({error: "invalid token"})
+    }
 
     const {username, newUsername, password} = request.body
 
@@ -104,20 +114,20 @@ apiRouter.post('/api/notes', (request, response) => {
 
     // Check token here
 
-    // const token = getTokenFrom(request)
+    const token = getTokenFrom(request)
 
-    // let decodedToken = null
+    let decodedToken = null
 
-    // try {
-    //     decodedToken = jwt.verify(token, SECRET)
-    // }
-    // catch (error) {
-    //     decodedToken = {id: null}
-    // }
+    try {
+        decodedToken = jwt.verify(token, SECRET)
+    }
+    catch (error) {
+        decodedToken = {id: null}
+    }
 
-    // if (!token || !decodedToken.id) {
-    //     return res.status(401).json({error: "invalid token"})
-    // }
+    if (!token || !decodedToken.id) {
+        return res.status(401).json({error: "invalid token"})
+    }
 
     const {title, body, username, background} = request.body
 
