@@ -151,7 +151,7 @@ const ProfileCard = ({ user, setUsername }) => {
                 justifyContent: 'center', alignItems: 'center',
             }}>
                 <Typography>Update username</Typography>
-                <IconButton color='inherit' sx={{ ml: 1, display: `${editMode ? '' : 'none'}` }}>
+                <IconButton color='inherit' sx={{ ml: 1 }}>
                     <CheckIcon onClick={handleSaveInfoButton} />
                 </IconButton>
             </Box>
@@ -184,7 +184,7 @@ const ProfileCard = ({ user, setUsername }) => {
                 justifyContent: 'center', alignItems: 'center',
             }}>
                 <Typography>Update password</Typography>
-                <IconButton sx={{ ml: 1,  }}>
+                <IconButton color='inherit' sx={{ ml: 1,  }}>
                     <CheckIcon onClick={handleSavePasswordButton} />
                 </IconButton>
             </Box>

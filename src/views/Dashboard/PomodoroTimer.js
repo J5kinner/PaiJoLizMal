@@ -5,7 +5,8 @@
  *
  */
 
- import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
+import Progressbar from 'react-customizable-progressbar'
 
 import Box from '@mui/material/Box'
 import Tabs from '@mui/material/Tabs'
@@ -15,6 +16,8 @@ import Button from '@mui/material/Button'
 
  import EarnedPopUp from "./EarnedPopUp"
  import ErrorPopUp from "./ErrorPopUp"
+import Colours from "../../assets/Colours"
+import { duration } from "@mui/material"
  
  const durationOptions = [ 60, 50, 40, 30, 20, 10, 1 ]
  
@@ -125,37 +128,52 @@ import Button from '@mui/material/Button'
      const handleDurationChange = (e, time) => setDurationMinutes(time)
  
      /*=== DISPLAY HELPERS ===*/
- 
-     const displayMinutes = timerMinutes < 10 ? `0${timerMinutes}` : timerMinutes
-     const displaySeconds= timerSeconds < 10 ? `0${timerSeconds}` : timerSeconds
- 
-     const handleCloseErrorPopUp = () => {
-         setOpenErrorPopUp(false)
-         setErrorMsg(0)
-     }
- 
-     const handleCloseEarnedPopUp = () => {
-         setOpenEarnedPopUp(false)
-         setSessionInfo(0)
-     }
- 
+
+    const displayMinutes = timerMinutes < 10 ? `0${timerMinutes}` : timerMinutes
+    const displaySeconds= timerSeconds < 10 ? `0${timerSeconds}` : timerSeconds
+
+    const minutesToPercent = 100 - (100 / durationMinutes * timerMinutes) - 1
+    const secondsToPercent = 100 - (100 / 60 * timerSeconds) - 1
+
+    const handleCloseErrorPopUp = () => {
+        setOpenErrorPopUp(false)
+        setErrorMsg(0)
+    }
+
+    const handleCloseEarnedPopUp = () => {
+        setOpenEarnedPopUp(false)
+        setSessionInfo(0)
+    }
+
      return (
          <Box>
-             {/* popup displays */}
-             <EarnedPopUp trigger={openEarnedPopUp} onClose={handleCloseEarnedPopUp}
-                 sessionInfo={sessionInfo} />
-             <ErrorPopUp trigger={openErrorPopUp} onClose={handleCloseErrorPopUp}
-                 errorMsg={errorMsg} />
- 
-             {/* timer display */}
+            {/* popup displays */}
+            <EarnedPopUp trigger={openEarnedPopUp} onClose={handleCloseEarnedPopUp}
+                sessionInfo={sessionInfo} />
+            <ErrorPopUp trigger={openErrorPopUp} onClose={handleCloseErrorPopUp}
+                errorMsg={errorMsg} />
+
+            {/* timer display */}
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box>
+                    <Progressbar progress={minutesToPercent}
+                        radius={80} strokeColor={Colours.carrot} />
+                </Box>
+                <Box>
+                    <Progressbar progress={secondsToPercent}
+                        radius={80} strokeColor={Colours.rust} />
+                </Box>
+            </Box>
+
              <Box>
-                 <Typography variant='h4'>Timer</Typography>
                  <Typography variant='h2'>
                      {displayMinutes} : {displaySeconds}
                  </Typography>
-                 <Button onClick={timerActive
-                     ? () => handleStopTimer()
-                     : () => handleStartTimer()}
+                 <Button
+                    variant='contained'
+                    onClick={timerActive
+                        ? () => handleStopTimer()
+                        : () => handleStartTimer()}
                  >
                      {timerActive ? 'stop' : 'start'}
                  </Button>
