@@ -15,6 +15,7 @@ import IconButton from '@mui/material/IconButton'
 import { Link } from "react-router-dom"
 
 import MenuIcon from '@mui/icons-material/Menu'
+import CloseIcon from '@mui/icons-material/Close'
 
 import Colours from '../../assets/Colours'
 import HeaderMenu from "./HeaderMenu"
@@ -25,11 +26,12 @@ const Header = () => {
 
     /*=== HANDLERS ===*/
 
-    const handleMenuOpen = () => setMenuAnchorEl(!isMenuOpen)
+    const handleMenuToggle = () => setMenuAnchorEl(!isMenuOpen)
+    const handleMenuClose = () => setMenuAnchorEl(false)
 
     /*=== RENDERERS ===*/
 
-    const renderMenu = (<HeaderMenu close={handleMenuOpen} />)
+    const renderMenu = (<HeaderMenu close={handleMenuClose} />)
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -40,7 +42,7 @@ const Header = () => {
                 }}
             >
                 <Toolbar sx={{ color: '#000' }}>
-                    <Link to="/"
+                    <Link to="/" onClick={handleMenuClose}
                         style={{ textDecoration: 'none', padding: 1 }}
                     >
                         <Typography variant='title' color={Colours.teal}>Pai</Typography>
@@ -52,8 +54,15 @@ const Header = () => {
                     <Box sx={{ flexGrow: 1 }}/>
 
                     <Box sx={{ display: { xs: 'flex', sm: 'none'} }}>
-                        <IconButton size="large" onClick={handleMenuOpen}>
-                            <MenuIcon sx={{ fill: Colours.white }} />
+                        <IconButton size="large" onClick={handleMenuToggle}>
+                            <MenuIcon sx={{
+                                fill: Colours.white,
+                                display: `${isMenuOpen ? 'none' : '' }`}}
+                            />
+                            <CloseIcon sx={{
+                                fill: Colours.white,
+                                display: `${isMenuOpen ? '' : 'none' }`}}
+                            />
                         </IconButton>
                     </Box>
 

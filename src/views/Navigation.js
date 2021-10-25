@@ -40,7 +40,7 @@ export default function Navigation() {
     <div className="App">
         <Header />
 
-        <Box sx={{ mt: 10 }}>
+        <Box sx={{ mt: 10, ml: 5, mr: 5 }}>
             <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/login" component={LoginPage} />

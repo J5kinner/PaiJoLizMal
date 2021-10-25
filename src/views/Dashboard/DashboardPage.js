@@ -6,6 +6,9 @@
  */
 
 import React from "react";
+
+import Typography  from "@mui/material/Typography";
+
 import Shop from "../../components/shop/Shop";
 import NoteEditor from "./NoteEditor";
 import PomodoroTimer from "./PomodoroTimer";
@@ -36,9 +39,7 @@ function DashboardPage({ user, setUser }) {
 
     return (
         <div className="dash-page">
-            <div className="title">
-                <h1>Dashboard page</h1>
-            </div>
+            <Typography variant='title'>Dashboard</Typography>
             <div className="dashboard">
                 <div className="profile">
                     <ProfileCard user={user} setUsername={setUsername} />
