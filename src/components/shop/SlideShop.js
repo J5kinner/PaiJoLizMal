@@ -15,6 +15,7 @@ import "../../assets/scss/components/Button.scss";
 
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
+import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 
 const SlideShop = ({ user }) => {
   const [items] = useState([
@@ -126,7 +127,8 @@ const SlideShop = ({ user }) => {
       <h3>Please select the note you would like to buy</h3>
       <p>Current Balance: {coins}</p>
       {/* <ShopApp /> */}
-      <AwesomeSlider>
+      <div>
+      <AwesomeSlider >
         <div>
           {" "}
           <NoteEditor noteColor="5px solid red" editTitle="A wonderful Red note" />
@@ -140,6 +142,7 @@ const SlideShop = ({ user }) => {
           <NoteEditor noteColor="5px solid blue"editTitle="A wonderful blue note" />
         </div>
       </AwesomeSlider>
+      </div>
     </div>
   );
 };
