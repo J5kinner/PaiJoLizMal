@@ -1,0 +1,7 @@
+POST  http://localhost:3001/api/timer
+Content-Type: application/json
+
+{
+    "username": "p",
+    "duration": 1
+}

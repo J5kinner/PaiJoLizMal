@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 
 const User = require('../models/users')
 const Note = require('../models/notes')
+const Timer = require('../models/timer')
 const NoteType = require('../models/noteTypes')
 const apiRouter = express.Router()
 
@@ -89,21 +90,26 @@ apiRouter.put('/api/user', (request, response) => {
 
     const {username, newUsername, password} = request.body
 
-    User.findOne({"username": username}).then(exists => {
-        if (!exists) {
-            return response.status(401).json({error: "user not found"})
+    User.findOne({"username": newUsername}).then(exists => {
+        if (exists) {
+            return response.status(401).json({error: "this username is not available"})
         }
-        if (password) {
-            // User.updateOne({username: username}, {$set: {username: newUsername, password: result}})
-            User.updateOne({username: username}, {$set: {username: newUsername, password: password}})
-            .then(() => {
-                return response.status(200).json({message: `Successfully updated user`, username: newUsername})
-            })
-        } else {
-            User.updateOne({username: username}, {$set: {username: newUsername}}).then(() => {
-                return response.status(200).json({message: `Successfully updated user`, username: newUsername})
-            })
-        }
+        User.findOne({"username": username}).then(exists => {
+            if (!exists) {
+                return response.status(401).json({error: "user not found"})
+            }
+            if (password) {
+                // User.updateOne({username: username}, {$set: {username: newUsername, password: result}})
+                User.updateOne({username: username}, {$set: {username: newUsername, password: password}})
+                .then(() => {
+                    return response.status(200).json({message: `Successfully updated user`, username: newUsername})
+                })
+            } else {
+                User.updateOne({username: username}, {$set: {username: newUsername}}).then(() => {
+                    return response.status(200).json({message: `Successfully updated user`, username: newUsername})
+                })
+            }
+        })
     })
 })
 
@@ -175,6 +181,77 @@ apiRouter.get('/api/notes', (request, response) => {
 apiRouter.get('/api/notes/types', (request, response) => {
     NoteType.find({}).then(notes => {
         response.json(notes)
+    })
+})
+
+// Timer
+
+// Start timer
+apiRouter.post('/api/timer', (request, response) => {
+    // const token = getTokenFrom(request)
+
+    // let decodedToken = null
+
+    // try {
+    //     decodedToken = jwt.verify(token, SECRET)
+    // }
+    // catch (error) {
+    //     decodedToken = {id: null}
+    // }
+
+    // if (!token || !decodedToken.id) {
+    //     return res.status(401).json({error: "invalid token"})
+    // }
+    const {username, duration} = request.body
+
+    Timer.findOneAndDelete({"user": username}).then(() => {
+        const newTimer = new Timer({
+            user: username,
+            startTime: Date.now(),
+            duration: duration
+        })
+        newTimer.save().then(result => {
+            response.status(200).json({message: `Successfully stored timer`})
+            return result
+        })
+    })
+})
+
+// Finish timer
+apiRouter.put('/api/timer', (request, response) => {
+    // const token = getTokenFrom(request)
+
+    // let decodedToken = null
+
+    // try {
+    //     decodedToken = jwt.verify(token, SECRET)
+    // }
+    // catch (error) {
+    //     decodedToken = {id: null}
+    // }
+
+    // if (!token || !decodedToken.id) {
+    //     return res.status(401).json({error: "invalid token"})
+    // }
+    const {username} = request.body
+
+    Timer.findOne({"user": username}).then(currentTimer => {
+
+        if (!currentTimer) {
+            return response.status(404).json({error: "timer not found"})
+        }
+        var now = Date.now()
+        var diffMs = now - currentTimer.startTime
+
+        if (((diffMs/1000) + 2) < (currentTimer.duration*60)) {
+            return response.status(400).json({error: "this timer is not valid"})
+        }
+        User.updateOne({username: username}, {$inc: {coins: currentTimer.duration}}).then(() => {
+            Timer.deleteOne({"user": username}).then(() => {
+                return response.status(200).json({message: `Successfully finished timer`})
+            })
+        })
+        
     })
 })
 
