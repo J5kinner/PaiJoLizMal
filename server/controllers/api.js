@@ -91,7 +91,7 @@ apiRouter.put('/api/user', (request, response) => {
     const {username, newUsername, password} = request.body
 
     User.findOne({"username": newUsername}).then(exists => {
-        if (exists) {
+        if (exists && (newUsername != username)) {
             return response.status(401).json({error: "this username is not available"})
         }
         User.findOne({"username": username}).then(exists => {
