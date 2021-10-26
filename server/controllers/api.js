@@ -161,9 +161,10 @@ apiRouter.post('/api/notes', (request, response) => {
                 background: background
             })
             newNote.save().then(result => {
-                User.updateOne({username: username}, {$set: {coins: user.coins - typeExists.cost}})
+                var bal = user.coins - typeExists.cost
+                User.updateOne({username: username}, {$set: {coins: bal}})
                 .then(() => {
-                    return response.status(200).json(result)
+                    return response.status(200).json({note: result, updatedBalance: bal})
                 })
             })
         })
