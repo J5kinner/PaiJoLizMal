@@ -17,7 +17,7 @@ import Button from '@mui/material/Button'
  import EarnedPopUp from "./EarnedPopUp"
  import ErrorPopUp from "./ErrorPopUp"
 import Colours from "../../assets/Colours"
-import { duration } from "@mui/material"
+// import { duration } from "@mui/material"
  
  const durationOptions = [ 60, 50, 40, 30, 20, 10, 1 ]
  

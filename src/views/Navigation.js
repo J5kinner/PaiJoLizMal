@@ -9,12 +9,11 @@ import React, { useEffect, useState } from "react";
 import {
   Switch,
   Route,
-  Link,
-  useHistory,
+  // useHistory,
 } from "react-router-dom";
 import Box from '@mui/material/Box'
 import "../assets/scss/layout/App.scss";
-import { isAuthenticated, logout } from "../services/Authentication";
+import { isAuthenticated } from "../services/Authentication";
 import DashboardPage from "./Dashboard/DashboardPage";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
@@ -24,7 +23,7 @@ import Header from "../components/header/Header";
 
 export default function Navigation() {
   const [user, setUser] = useState(false);
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -34,7 +33,7 @@ export default function Navigation() {
     }
   }, []);
 
-  const logoutHandler = () => history.push("/login");
+  // const logoutHandler = () => history.push("/login");
 
   return (
     <div className="App">

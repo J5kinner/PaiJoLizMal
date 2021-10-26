@@ -15,14 +15,14 @@ import PomodoroTimer from "./PomodoroTimer";
 import ProfileCard from "./ProfileCard";
 import "../../assets/scss/views/Dashboard.scss";
 
-const randomUser = {
-  username: "TestUser",
-  balance: 50,
-  stats: {
-    totalTime: 300,
-    totalSessions: 10,
-  }
-}
+// const randomUser = {
+//   username: "TestUser",
+//   balance: 50,
+//   stats: {
+//     totalTime: 300,
+//     totalSessions: 10,
+//   }
+// }
 
 function DashboardPage({ user, setUser }) {
 

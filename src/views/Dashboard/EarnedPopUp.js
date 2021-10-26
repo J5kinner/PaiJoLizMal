@@ -17,6 +17,7 @@ const EarnedPopUp = ({ trigger, onClose, sessionInfo }) => {
     useEffect(() => {
         if (trigger) handleOpen()
         else handleClose()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ trigger ])
 
     const handleOpen = () => setOpen(true)

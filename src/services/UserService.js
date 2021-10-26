@@ -38,6 +38,7 @@ const updatePassword = async (oldPassword, newPassword) => {
     let hashedPassword = await bcryptjs.hash(newPassword, 10)
     const username = JSON.parse(localStorage.getItem('loggedInUser')).username
     axios
+    // eslint-disable-next-line no-dupe-keys
     .put(`${baseUrl}/user`, {username, username, password: hashedPassword}, {
         headers: { Authorization: `Bearer ${token}` }})
     .then(res => res.data)
