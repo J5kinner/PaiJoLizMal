@@ -11,6 +11,7 @@ import "../../assets/scss/components/Shop.scss";
 import "../../assets/scss/components/Button.scss";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
+import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 
 const SlideShop = ({ user }) => {
   const intialIncome = user.coins;
