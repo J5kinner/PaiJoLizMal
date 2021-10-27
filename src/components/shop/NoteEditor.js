@@ -57,7 +57,7 @@ const NoteEditor = ({ noteColor, editTitle, theme }) => {
           <TextField
             placeholder="Title"
             onChange={handleTitleChange}
-            sx={{ backgroundColor: "white", width: 200 }}
+            sx={{ backgroundColor: "white", width: 400 }}
           />
         </Box>
         <Box>

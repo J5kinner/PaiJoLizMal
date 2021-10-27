@@ -11,7 +11,6 @@ import "../../assets/scss/components/Shop.scss";
 import "../../assets/scss/components/Button.scss";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
-import "react-awesome-slider/dist/custom-animations/cube-animation.css";
 
 const SlideShop = ({ user }) => {
   const intialIncome = user.coins;
@@ -21,10 +20,10 @@ const SlideShop = ({ user }) => {
     <div className="shop">
       <h3>Please select the note you would like to buy</h3>
       <p>Current Balance: {coins}</p>
-      {/* <ShopApp /> */}
+      
       <div>
 
-        <AwesomeSlider>
+        <AwesomeSlider className="slider">
           <div>
             {" "}
             <NoteEditor
