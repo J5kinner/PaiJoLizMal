@@ -14,10 +14,10 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useHistory } from "react-router-dom";
 
-const NoteEditor = ({noteColor, editTitle}) => {
+const NoteEditor = ({ noteColor, editTitle, theme }) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const background = "white";
+  const background = theme;
   const maxCharacters = 200;
   const history = useHistory();
 
@@ -27,7 +27,6 @@ const NoteEditor = ({noteColor, editTitle}) => {
 
   const handleNoteChange = (newNote) => {
     setBody(newNote.target.value);
-
   };
 
   const redirectToHomepage = () => {
@@ -50,8 +49,10 @@ const NoteEditor = ({noteColor, editTitle}) => {
         alignItems: "center",
       }}
     >
-      <Typography variant="h4" color="white">{editTitle}</Typography>
-      <FormControl sx={{ border:noteColor , display: "block" }}>
+      <Typography variant="h4" color="white">
+        {editTitle}
+      </Typography>
+      <FormControl sx={{ border: noteColor, display: "block" }}>
         <Box sx={{ padding: 2 }}>
           <TextField
             placeholder="Title"
