@@ -189,20 +189,20 @@ apiRouter.get('/api/notes/types', (request, response) => {
 
 // Start timer
 apiRouter.post('/api/timer', (request, response) => {
-    // const token = getTokenFrom(request)
+    const token = getTokenFrom(request)
 
-    // let decodedToken = null
+    let decodedToken = null
 
-    // try {
-    //     decodedToken = jwt.verify(token, SECRET)
-    // }
-    // catch (error) {
-    //     decodedToken = {id: null}
-    // }
+    try {
+        decodedToken = jwt.verify(token, SECRET)
+    }
+    catch (error) {
+        decodedToken = {id: null}
+    }
 
-    // if (!token || !decodedToken.id) {
-    //     return res.status(401).json({error: "invalid token"})
-    // }
+    if (!token || !decodedToken.id) {
+        return res.status(401).json({error: "invalid token"})
+    }
     const {username, duration} = request.body
 
     Timer.findOneAndDelete({"user": username}).then(() => {
@@ -220,20 +220,20 @@ apiRouter.post('/api/timer', (request, response) => {
 
 // Finish timer
 apiRouter.put('/api/timer', (request, response) => {
-    // const token = getTokenFrom(request)
+    const token = getTokenFrom(request)
 
-    // let decodedToken = null
+    let decodedToken = null
 
-    // try {
-    //     decodedToken = jwt.verify(token, SECRET)
-    // }
-    // catch (error) {
-    //     decodedToken = {id: null}
-    // }
+    try {
+        decodedToken = jwt.verify(token, SECRET)
+    }
+    catch (error) {
+        decodedToken = {id: null}
+    }
 
-    // if (!token || !decodedToken.id) {
-    //     return res.status(401).json({error: "invalid token"})
-    // }
+    if (!token || !decodedToken.id) {
+        return res.status(401).json({error: "invalid token"})
+    }
     const {username} = request.body
 
     Timer.findOne({"user": username}).then(currentTimer => {

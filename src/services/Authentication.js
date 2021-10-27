@@ -7,7 +7,6 @@
  */
 
 import UserService from "./UserService";
-// import { useHistory } from "react-router-dom"
 
 /*
     register new user to the system

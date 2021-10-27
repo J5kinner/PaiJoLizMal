@@ -1,3 +1,11 @@
+/** @license 3120 Group X
+ * Copyright (c) 3120 Group X, Inc. and its affiliates.
+ *
+ * Authors: Elizabeth Laham - @elizabetht94
+ *
+ */
+
+
 import axios from 'axios'
 
 const baseUrl = 'http://localhost:3001/api'
@@ -7,10 +15,7 @@ const getAllNotes = () => axios
     .get(`${baseUrl}/notes`)
     .then(res => {
         return res.data})
-    // .catch(err =>{
 
-    //     return {error: "Could not retrieve notes"}
-    // })
 
 // Get note types
 const getNoteTypes = () => axios
@@ -33,7 +38,6 @@ const postNewNote = (body, title, background) => {
     })
 }
 
-// Add background colour
 
 const NoteService = { getAllNotes, getNoteTypes, postNewNote}
 export default NoteService
