@@ -5,7 +5,7 @@
  *
  */
 
-import React, { useState } from "react";
+import React from "react";
 import NoteEditor from "./NoteEditor.js";
 import "../../assets/scss/components/Shop.scss";
 import "../../assets/scss/components/Button.scss";
@@ -14,13 +14,10 @@ import "react-awesome-slider/dist/styles.css";
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 
 const SlideShop = ({ user }) => {
-  const intialIncome = user.coins;
-  const [coins] = useState(intialIncome);
 
   return (
     <div className="shop">
       <h3>Please select the note you would like to buy</h3>
-      <p>Current Balance: {coins}</p>
       
       <div>
 
@@ -30,7 +27,9 @@ const SlideShop = ({ user }) => {
             <NoteEditor
               noteColor="5px solid red"
               editTitle="A wonderful Red note"
-              theme="red"
+              type="red"
+              user={user}
+              price="10"
             />
           </div>
           <div>
@@ -38,7 +37,10 @@ const SlideShop = ({ user }) => {
             <NoteEditor
               noteColor="5px solid green"
               editTitle="A wonderful green note"
-              theme="green"
+              type="green"
+              user={user}
+              price="20"
+
             />
           </div>
           <div>
@@ -46,7 +48,10 @@ const SlideShop = ({ user }) => {
             <NoteEditor
               noteColor="5px solid blue"
               editTitle="A wonderful blue note"
-              theme="blue"
+              type="blue"
+              user={user}
+              price="30"
+
             />
           </div>
         </AwesomeSlider>

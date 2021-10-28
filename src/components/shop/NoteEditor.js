@@ -14,10 +14,11 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useHistory } from "react-router-dom";
 
-const NoteEditor = ({ noteColor, editTitle, theme }) => {
+const NoteEditor = ({ noteColor, editTitle, type, user, price, setUserBalance }) => {
+  const [coins, setCoins] = useState(user.coins);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const background = theme;
+  const background = type;
   const maxCharacters = 200;
   const history = useHistory();
 
@@ -35,9 +36,16 @@ const NoteEditor = ({ noteColor, editTitle, theme }) => {
   };
 
   const handleAddNote = () => {
-    NoteService.postNewNote(body, title, background)
-      .then(() => redirectToHomepage())
-      .catch((err) => console.log("there was an error"));
+    if(user.coins >= price) {
+      const postPurchaseCoins = coins - price;
+      
+      console.log(postPurchaseCoins);
+
+
+    // NoteService.postNewNote(body, title, background)
+    //   .then(() => redirectToHomepage())
+    //   .catch((err) => console.log("there was an error"));
+    }
   };
 
   return (
@@ -72,7 +80,7 @@ const NoteEditor = ({ noteColor, editTitle, theme }) => {
             sx={{ width: "100%", backgroundColor: "white" }}
           />
         </Box>
-        <Button onClick={handleAddNote}>Save</Button>
+        <Button onClick={handleAddNote}>Submit</Button>
       </FormControl>
     </Box>
   );
