@@ -11,7 +11,11 @@ import "../../assets/scss/components/Shop.scss";
 import "../../assets/scss/components/Button.scss";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
+<<<<<<< HEAD
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
+=======
+import "react-awesome-slider/dist/custom-animations/cube-animation.css";
+>>>>>>> 2e1d450 (cleaning up a dirty merge)
 
 const SlideShop = ({ user, setUserBalance }) => {
 
