@@ -17,6 +17,7 @@ const SlideShop = ({ user, setUserBalance }) => {
 
   return (
     <div className="shop">
+<<<<<<< HEAD
       <div className="overlay">
       <div className="text">Please select your note</div>
       </div>
@@ -59,6 +60,26 @@ const SlideShop = ({ user, setUserBalance }) => {
           </div>
         </AwesomeSlider>
 
+=======
+      <h3>Please select the note you would like to buy</h3>
+      <p>Current Balance: {coins}</p>
+      {/* <ShopApp /> */}
+      <div>
+      <AwesomeSlider >
+        <div>
+          {" "}
+          <NoteEditor noteColor="5px solid red" editTitle="A wonderful Red note" />
+        </div>
+        <div>
+          {" "}
+          <NoteEditor noteColor="5px solid green" editTitle="A wonderful green note"/>
+        </div>
+        <div>
+          {" "}
+          <NoteEditor noteColor="5px solid blue"editTitle="A wonderful blue note" />
+        </div>
+      </AwesomeSlider>
+>>>>>>> 73a4a35 (sliding animation)
       </div>
     </div>
   );
