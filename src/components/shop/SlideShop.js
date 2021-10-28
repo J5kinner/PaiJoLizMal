@@ -13,11 +13,13 @@ import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 
-const SlideShop = ({ user }) => {
+const SlideShop = ({ user, setUserBalance }) => {
 
   return (
     <div className="shop">
-      <h3>Please select the note you would like to buy</h3>
+      <div className="overlay">
+      <div className="text">Please select your note</div>
+      </div>
       
       <div>
 
@@ -30,6 +32,7 @@ const SlideShop = ({ user }) => {
               type="red"
               user={user}
               price="10"
+              setBalance={setUserBalance}
             />
           </div>
           <div>
@@ -40,7 +43,7 @@ const SlideShop = ({ user }) => {
               type="green"
               user={user}
               price="20"
-
+              setBalance={setUserBalance}
             />
           </div>
           <div>
@@ -51,7 +54,7 @@ const SlideShop = ({ user }) => {
               type="blue"
               user={user}
               price="30"
-
+              setBalance={setUserBalance}
             />
           </div>
         </AwesomeSlider>

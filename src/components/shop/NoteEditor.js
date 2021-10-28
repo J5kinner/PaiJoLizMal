@@ -12,12 +12,17 @@ import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import ErrorPopUp from "../../views/Dashboard/ErrorPopUp.js";
 import { useHistory } from "react-router-dom";
 
 const NoteEditor = ({ noteColor, editTitle, type, user, price, setUserBalance }) => {
   const [coins, setCoins] = useState(user.coins);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [openErrorPopUp, setOpenErrorPopUp] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(0);
+
+
   const background = type;
   const maxCharacters = 200;
   const history = useHistory();
@@ -36,17 +41,27 @@ const NoteEditor = ({ noteColor, editTitle, type, user, price, setUserBalance })
   };
 
   const handleAddNote = () => {
-    if(user.coins >= price) {
+    if(coins >= price) {
       const postPurchaseCoins = coins - price;
+      const postIncome = setCoins(postPurchaseCoins);
       
-      console.log(postPurchaseCoins);
+      console.log(coins);
 
 
     // NoteService.postNewNote(body, title, background)
     //   .then(() => redirectToHomepage())
     //   .catch((err) => console.log("there was an error"));
+    } else {
+      setOpenErrorPopUp(true);
     }
   };
+
+  //handleConfirm
+  const handleCloseLowCoinsPopUp = () => {
+    setOpenErrorPopUp(false);
+    setErrorMsg(0);
+}
+
 
   return (
     <Box
@@ -57,8 +72,16 @@ const NoteEditor = ({ noteColor, editTitle, type, user, price, setUserBalance })
         alignItems: "center",
       }}
     >
+      <ErrorPopUp trigger={openErrorPopUp} onClose={handleCloseLowCoinsPopUp}
+                errorMsg={errorMsg} />
+
       <Typography variant="h4" color="white">
         {editTitle}
+
+      </Typography>
+      <Typography variant="h4" color="white">
+      
+        ${price}
       </Typography>
       <FormControl sx={{ border: noteColor, display: "block" }}>
         <Box sx={{ padding: 2 }}>
