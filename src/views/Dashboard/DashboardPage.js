@@ -54,7 +54,7 @@ function DashboardPage({ user, setUser }) {
             </Box>
             <div className="dashboard">
                 <div className="shop-front">
-                    <SlideShop user={user}/>
+                    <SlideShop user={user} setUserBalance={setUserBalance} />
                 </div>
             </div>
         </Box>
