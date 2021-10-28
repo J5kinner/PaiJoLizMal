@@ -15,6 +15,8 @@ import FormHelperText from "@mui/material/FormHelperText";
 import Alert from "@mui/material/Alert";
 import CircularProgress from "@mui/material/CircularProgress";
 import Btn from "../components/Btn";
+import AuthRoute from "./AuthRoute";
+import DashboardPage from "./Dashboard/DashboardPage"
 import { Redirect } from "react-router-dom";
 import {
   login,
@@ -23,6 +25,7 @@ import {
   register,
 } from "../services/Authentication";
 import Typography from "@mui/material/Typography";
+import { Dashboard } from "@mui/icons-material";
 
 const LoginPage = () => {
   // eslint-disable-next-line no-unused-vars
@@ -65,16 +68,13 @@ const LoginPage = () => {
   };
 
   const redirectUser = () => {
-    if (successLogin && isAuthenticated) {
-      return (
-        <Redirect
-          to={{
-            pathname: "/dashboard",
-          }}
-        />
-      );
-    }
-  };
+    if (successLogin && isAuthenticated()) {
+        return <Redirect to= {{
+            pathname:"/dashboard"  
+            }}
+            /> 
+     }
+  }
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
@@ -188,7 +188,7 @@ const LoginPage = () => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              marginTop: "30%",
+              marginTop: "30%"
             }}
           >
             <Btn
