@@ -43,14 +43,14 @@ const NoteEditor = ({ noteColor, editTitle, type, user, price, setUserBalance })
   const handleAddNote = () => {
     if(coins >= price) {
       const postPurchaseCoins = coins - price;
-      const postIncome = setCoins(postPurchaseCoins);
+      setCoins(postPurchaseCoins);
       
       console.log(coins);
 
 
-    // NoteService.postNewNote(body, title, background)
-    //   .then(() => redirectToHomepage())
-    //   .catch((err) => console.log("there was an error"));
+    NoteService.postNewNote(body, title, background)
+      .then(() => redirectToHomepage())
+      .catch((err) => console.log("there was an error"));
     } else {
       setOpenErrorPopUp(true);
     }
