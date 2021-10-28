@@ -29,7 +29,7 @@ import { Dashboard } from "@mui/icons-material";
 
 const LoginPage = () => {
   // eslint-disable-next-line no-unused-vars
-  const [ user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
   // States to manage the form handling
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -69,11 +69,11 @@ const LoginPage = () => {
 
   const redirectUser = () => {
     if (successLogin && isAuthenticated()) {
-        return <Redirect to= {{
-            pathname:"/dashboard"  
-            }}
-            /> 
-     }
+      return <Redirect to={{
+        pathname: "/dashboard"
+      }}
+      />
+    }
   }
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -172,16 +172,20 @@ const LoginPage = () => {
         <Box>
           <FormHelperText
             error={validateFormError}
-            sx={{ display: `${validateFormError ? "block" : "none"}` }}
+            sx={{ display: `${validateFormError ? "flex" : "none"}` }}
           >
             Please ensure all fields have been completed.
           </FormHelperText>
           <FormHelperText
             error={loginError}
-            sx={{ display: `${loginError ? "block" : "none"}` }}
+            sx={{ display: `${loginError ? "flex" : "none"}`, flexDirection:'column' }}
           >
-            Failed login. Please check your credentials are correct.
+            Incorrect username or password.
           </FormHelperText>
+          {/* <Alert severity="error"
+          sx={{ display: `${loginError ? "flex" : "none"}` }}>
+            Incorrect username or password.
+          </Alert> */}
           <Box
             sx={{
               display: "flex",
@@ -243,7 +247,7 @@ const LoginPage = () => {
         <Box>
           <FormHelperText
             error={validateFormError}
-            sx={{ display: `${validateFormError ? "block" : "none"}` }}
+            sx={{ display: `${validateFormError ? "flex" : "none"}` }}
           >
             Please ensure all fields have been completed.
           </FormHelperText>
