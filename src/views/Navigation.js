@@ -26,8 +26,8 @@ export default function Navigation() {
   // const history = useHistory();
 
   useEffect(() => {
-    if (isAuthenticated) {
-      setUser(isAuthenticated());
+    if (isAuthenticated()) {
+        if (!user) setUser(isAuthenticated());
     } else {
       setUser(false);
     }

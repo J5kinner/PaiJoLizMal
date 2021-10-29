@@ -66,7 +66,7 @@ const ProfileCard = ({ user, setUsername }) => {
         UserService
         .updateUsername(user.username, newUserInfo.username)
         .then(logout(() => history.push('/login')))
-        .catch(err => console.log('paige note.. set a page error', err))
+        .catch(err => console.log('set a page error', err))
 
         //force clear
         handleClearButton()
@@ -222,8 +222,6 @@ const ProfileCard = ({ user, setUsername }) => {
             <LinkButton onClick={() => setEditPassowrd(false)}>change username?</LinkButton>
         </Box>
     )
-
-    console.log(user)
 
     return (
         <Box color={Colours.white} sx={{

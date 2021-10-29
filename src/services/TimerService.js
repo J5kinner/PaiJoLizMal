@@ -11,17 +11,19 @@
 
  
  const startTimer = (duration) => {
-    const token = JSON.parse(localStorage.getItem('jwt'))
+    const token = localStorage.getItem('jwt')
     const username = JSON.parse(localStorage.getItem('loggedInUser')).username
-    axios
+    
+    return axios
     .post(`${baseUrl}/timer`, {username, duration}, {
         headers: { Authorization: `Bearer ${token}` }})
     .then(res => res.data)
  }
+
  const stopTimer = () => {
-    const token = JSON.parse(localStorage.getItem('jwt'))
+    const token = localStorage.getItem('jwt')
     const username = JSON.parse(localStorage.getItem('loggedInUser')).username
-    axios
+    return axios
     .put(`${baseUrl}/timer`, {username}, {
         headers: { Authorization: `Bearer ${token}` }})
     .then(res => res.data)
