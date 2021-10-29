@@ -85,7 +85,7 @@ apiRouter.put('/api/user', (request, response) => {
     }
 
     if (!token || !decodedToken.id) {
-        return res.status(401).json({error: "invalid token"})
+        return response.status(401).json({error: "invalid token"})
     }
 
     const {username, newUsername, password} = request.body
@@ -132,7 +132,7 @@ apiRouter.post('/api/notes', (request, response) => {
     }
 
     if (!token || !decodedToken.id) {
-        return res.status(401).json({error: "invalid token"})
+        return response.status(401).json({error: "invalid token"})
     }
 
     const {title, body, username, background} = request.body
@@ -201,7 +201,7 @@ apiRouter.post('/api/timer', (request, response) => {
     }
 
     if (!token || !decodedToken.id) {
-        return res.status(401).json({error: "invalid token"})
+        return response.status(401).json({error: "invalid token"})
     }
     const {username, duration} = request.body
 
@@ -232,7 +232,7 @@ apiRouter.put('/api/timer', (request, response) => {
     }
 
     if (!token || !decodedToken.id) {
-        return res.status(401).json({error: "invalid token"})
+        return response.status(401).json({error: "invalid token"})
     }
     const {username} = request.body
 
@@ -247,9 +247,10 @@ apiRouter.put('/api/timer', (request, response) => {
         if (((diffMs/1000) + 2) < (currentTimer.duration*60)) {
             return response.status(400).json({error: "this timer is not valid"})
         }
-        User.updateOne({username: username}, {$inc: {coins: currentTimer.duration}}).then(() => {
+        User.findOneAndUpdate({username: username}, {$inc: {coins: currentTimer.duration}}).then(u => {
             Timer.deleteOne({"user": username}).then(() => {
-                return response.status(200).json({message: `Successfully finished timer`})
+                var bal = u.coins + currentTimer.duration
+                return response.status(200).json({message: `Successfully finished timer`, balance: bal})
             })
         })
         
