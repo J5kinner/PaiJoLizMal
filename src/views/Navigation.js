@@ -56,6 +56,3 @@ export default function Navigation() {
     </div>
   );
 }
-
-// You can think of these components as "pages"
-// in your app.

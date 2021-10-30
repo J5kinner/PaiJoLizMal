@@ -15,15 +15,19 @@ import Typography from "@mui/material/Typography";
 import ErrorPopUp from "../../views/Dashboard/ErrorPopUp.js";
 import { useHistory } from "react-router-dom";
 
-const NoteEditor = ({ noteColor, editTitle, type, user, price, setUserBalance }) => {
+const NoteEditor = ({
+  noteColor,
+  editTitle,
+  type,
+  user,
+  price
+}) => {
   const [coins, setCoins] = useState(0);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [openErrorPopUp, setOpenErrorPopUp] = useState(false);
   const [errorMsg, setErrorMsg] = useState(0);
   const [errorText, setErrorText] = useState(0);
-
-
 
   const background = type;
   const maxCharacters = 200;
@@ -43,21 +47,18 @@ const NoteEditor = ({ noteColor, editTitle, type, user, price, setUserBalance })
   };
 
   const handleAddNote = () => {
-    console.log(user.coins);
-    if(user.coins >= price) {
+    if (user.coins >= price) {
       setCoins(user.coins);
       const postPurchaseCoins = coins - price;
       setCoins(postPurchaseCoins);
-      
-      console.log(postPurchaseCoins);
-
-
-    NoteService.postNewNote(body, title, background)
-      .then(() => redirectToHomepage())
-      .catch((err) => console.log("there was an error"));
+      NoteService.postNewNote(body, title, background)
+        .then(() => redirectToHomepage())
+        .catch((err) => console.log("there was an error"));
     } else {
       setErrorMsg("Insufficient Coins");
-      setErrorText("You don't have enough coins to unlock this note. Try the timer with less time to earn coins faster!");
+      setErrorText(
+        "You don't have enough coins to unlock this note. Try the timer with less time to earn coins faster!"
+      );
       setOpenErrorPopUp(true);
     }
   };
@@ -66,8 +67,7 @@ const NoteEditor = ({ noteColor, editTitle, type, user, price, setUserBalance })
   const handleCloseLowCoinsPopUp = () => {
     setOpenErrorPopUp(false);
     setErrorMsg(0);
-}
-
+  };
 
   return (
     <Box
@@ -78,15 +78,17 @@ const NoteEditor = ({ noteColor, editTitle, type, user, price, setUserBalance })
         alignItems: "center",
       }}
     >
-      <ErrorPopUp trigger={openErrorPopUp} onClose={handleCloseLowCoinsPopUp}
-                errorMsg={errorMsg}  errorText={errorText} />
+      <ErrorPopUp
+        trigger={openErrorPopUp}
+        onClose={handleCloseLowCoinsPopUp}
+        errorMsg={errorMsg}
+        errorText={errorText}
+      />
 
       <Typography variant="h4" color="white">
         {editTitle}
-
       </Typography>
       <Typography variant="h4" color="white">
-      
         ${price}
       </Typography>
       <FormControl sx={{ border: noteColor, display: "block" }}>
