@@ -16,11 +16,13 @@ import ErrorPopUp from "../../views/Dashboard/ErrorPopUp.js";
 import { useHistory } from "react-router-dom";
 
 const NoteEditor = ({ noteColor, editTitle, type, user, price, setUserBalance }) => {
-  const [coins, setCoins] = useState(user.coins);
+  const [coins, setCoins] = useState(0);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [openErrorPopUp, setOpenErrorPopUp] = useState(false);
   const [errorMsg, setErrorMsg] = useState(0);
+  const [errorText, setErrorText] = useState(0);
+
 
 
   const background = type;
@@ -41,17 +43,21 @@ const NoteEditor = ({ noteColor, editTitle, type, user, price, setUserBalance })
   };
 
   const handleAddNote = () => {
-    if(coins >= price) {
+    console.log(user.coins);
+    if(user.coins >= price) {
+      setCoins(user.coins);
       const postPurchaseCoins = coins - price;
       setCoins(postPurchaseCoins);
       
-      console.log(coins);
+      console.log(postPurchaseCoins);
 
 
     NoteService.postNewNote(body, title, background)
       .then(() => redirectToHomepage())
       .catch((err) => console.log("there was an error"));
     } else {
+      setErrorMsg("Insufficient Coins");
+      setErrorText("You don't have enough coins to unlock this note. Try the timer with less time to earn coins faster!");
       setOpenErrorPopUp(true);
     }
   };
@@ -73,7 +79,7 @@ const NoteEditor = ({ noteColor, editTitle, type, user, price, setUserBalance })
       }}
     >
       <ErrorPopUp trigger={openErrorPopUp} onClose={handleCloseLowCoinsPopUp}
-                errorMsg={errorMsg} />
+                errorMsg={errorMsg}  errorText={errorText} />
 
       <Typography variant="h4" color="white">
         {editTitle}

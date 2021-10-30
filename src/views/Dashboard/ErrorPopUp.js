@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 
-const ErrorPopUp = ({ trigger, onClose, errorMsg }) => {
+const ErrorPopUp = ({ trigger, onClose, errorMsg, errorText }) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -45,6 +45,8 @@ const ErrorPopUp = ({ trigger, onClose, errorMsg }) => {
           }}
         >
           <Typography variant="h6">{errorMsg}</Typography>
+          <Typography variant="p">{errorText}</Typography>
+
         </Box>
       </Modal>
     </Box>
