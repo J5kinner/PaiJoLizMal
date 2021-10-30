@@ -31,7 +31,7 @@ export default function Navigation() {
     } else {
       setUser(false);
     }
-  }, []);
+  }, [user]);
 
   // const logoutHandler = () => history.push("/login");
 
