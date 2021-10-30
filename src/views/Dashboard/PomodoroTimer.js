@@ -17,6 +17,7 @@ import Button from '@mui/material/Button'
  import EarnedPopUp from "./EarnedPopUp"
  import ErrorPopUp from "./ErrorPopUp"
 import Colours from "../../assets/Colours"
+import TimerService from "../../services/TimerService"
 // import { duration } from "@mui/material"
  
  const durationOptions = [ 60, 50, 40, 30, 20, 10, 1 ]
@@ -57,6 +58,10 @@ import Colours from "../../assets/Colours"
  
          console.log('initialise timer sesson')
          console.log('send start time and duration to server')
+
+         TimerService
+         .startTimer(durationMinutes)
+         
          console.log('count down ...')
  
          // perform timer update each second
@@ -75,33 +80,33 @@ import Colours from "../../assets/Colours"
                  setTimerActive(false)
                  setTimerMinutes(durationMinutes)
                  setTimerSeconds(0)
- 
-                 console.log('end sesson')
-                 console.log('send end time to server ...')
-                 console.log('server handles check, then transaction')
-                 console.log('recieve success back from server')
-                 console.log('response provides transaction info')
- 
-                 //if response is fail
-                 if (false) {
-                     setErrorMsg('Oops! Your session was invalid.')
-                     setOpenErrorPopUp(true)
-                     return
-                 }
-                 
-                 //if response success, get this info from server response
-                 let updatedSessionNum = 30
-                 let updatedUserBalance = 100
- 
-                 //update user and session information
-                 let amountEarned = setUserBalance(updatedUserBalance)
-                 setSessionInfo({
-                     sessionNum: updatedSessionNum,
-                     duration: durationMinutes,
-                     earned: amountEarned,
+
+                 TimerService
+                 .stopTimer()
+                 .then(res => {
+                     console.log(res)
+                     //if pomodor session failed give error
+                    if(res.error || !res.balance) {
+                        setErrorMsg('Oops! Your session was invalid.')
+                        setOpenErrorPopUp(true)
+                        return
+                    }
+
+                    //if response success, get this info from server response
+                    let updatedSessionNum = 30
+                    let updatedUserBalance = res.balance
+    
+                    //update user and session information
+                    let amountEarned = setUserBalance(updatedUserBalance)
+                    setSessionInfo({
+                        sessionNum: updatedSessionNum,
+                        duration: durationMinutes,
+                        earned: amountEarned,
+                    })
+                    //trigger popup
+                    setOpenEarnedPopUp(true)
+
                  })
-                 //trigger popup
-                 setOpenEarnedPopUp(true)
  
              } else {
                  // update timer values
