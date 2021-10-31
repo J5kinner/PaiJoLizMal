@@ -11,43 +11,71 @@
   margin: 1em;
   width: 100%;
   padding-right: 1em;
+  position: relative;
 }
 
 .shop-item-white {
   border: 5px solid $white;
+  transform: skew(20deg);
 }
 
-.shop-item-red {
-  border: 5px solid $red;
+.editor {
+  transform: skew(20deg);
 }
 
-.shop-item-green {
-  border: 5px solid $green;
+.editor-red {
+  background-color: $orange;
+  width: 100%;
+  height: 100%;
+  transform: skew(-20deg);
+  padding-top: 10em;
+  .backgroun-red {
+    background-color: white;
+  }
 }
 
-.shop-item-blue {
-  border: 5px solid $blue;
+.editor-green {
+  background-color: $green;
+  width: 100%;
+  height: 100%;
+  transform: skew(-20deg);
+  padding-top: 10em;
+}
+
+.editor-blue {
+  background-color: $yellow;
+  width: 100%;
+  height: 100%;
+  transform: skew(-20deg);
+  padding-top: 10em;
 }
 
 .text {
   position: absolute;
-  top: 50%;
+  top: 60px;
   left: 50%;
-  font-size: 50px;
+  font-size: 45px;
   color: white;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 .overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  justify-content: space-between;
+  padding: 20px 10%;
+  width: 80%;
+  height: 10%;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 101;
   cursor: pointer;
+}
+
+.slider {
+  display: inline-block;
+
+
 }

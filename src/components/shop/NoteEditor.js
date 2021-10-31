@@ -84,10 +84,9 @@ const NoteEditor = ({
         errorMsg={errorMsg}
         errorText={errorText}
       />
-
-      <Typography variant="h4" color="white">
+      
         {editTitle}
-      </Typography>
+  
       <Typography variant="h4" color="white">
         ${price}
       </Typography>
