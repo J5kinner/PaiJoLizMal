@@ -6,8 +6,8 @@
     <p>   <a href="https://reactnative.dev/" target="_blank"> <img src="https://reactnative.dev/img/header_logo.svg" alt="reactnative" width="40" height="40" /> </a>
       <a href="https://www.mongodb.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40" />
  <a href="https://expressjs.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40" /> </a>
- <a href="https://getbootstrap.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40" /> </a>
-  <a href="https://heroku.com" target="_blank"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40" /> </a> 
+  <a href="https://mui.com/" rel="noopener" target="_blank"><img width="40" src="https://mui.com/static/logo.svg" alt="MUI logo"></a>
+  <a href="https://netlify.com" target="_blank"> <img src="https://api.iconify.design/logos/netlify.svg" alt="netlify" width="40" height="40" /> </a> </p>
 
 
 * **Time Tracking:** Paijolizmal makes it painless to keep track of productivity of its users using a `pomodoro` to keep track of time when the user starts and finishes a task. 
