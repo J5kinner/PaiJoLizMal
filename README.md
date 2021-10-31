@@ -6,7 +6,7 @@
     <p>   <a href="https://reactnative.dev/" target="_blank"> <img src="https://reactnative.dev/img/header_logo.svg" alt="reactnative" width="40" height="40" /> </a>
       <a href="https://www.mongodb.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40" />
  <a href="https://expressjs.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40" /> </a>
-  <a href="https://mui.com/" rel="noopener" target="_blank"><img width="150" src="https://mui.com/static/logo.svg" alt="MUI logo"></a></p>
+  <a href="https://mui.com/" rel="noopener" target="_blank"><img width="40" src="https://mui.com/static/logo.svg" alt="MUI logo"></a></p>
   <a href="https://netlify.com" target="_blank"> <img src="https://api.iconify.design/logos/netlify.svg" alt="netlify" width="40" height="40" /> </a> 
 
 
