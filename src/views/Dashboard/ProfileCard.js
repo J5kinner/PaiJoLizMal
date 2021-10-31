@@ -175,7 +175,7 @@ const ProfileCard = ({ user, setUsername }) => {
             error={inputErrors.username ? true : false}
             value={newUserInfo.username}
             InputLabelProps={{ shrink: true }}
-            label="userName"
+            label="user name"
             onChange={handleInfoChange("username")}
           />
           <FormHelperText
