@@ -13,13 +13,6 @@
   flex-wrap: wrap;
 }
 
-.dashboard {
-  display: flex;
-  flex-wrap: wrap;
-  width: 95vw;
-  justify-content: center;
-  background: $white;
-}
 .profile {
   display: flex;
 }
@@ -30,13 +23,15 @@
 
 .shop-front {
   display: flex;
-  width: 100vw;
-
-  // background-color: $smoke;
+  width: 94vw;
+  padding-left:0;
+  
 }
 
-// .slider {
-//   max-width: 700px;
-//   max-height: 1000px;
-// }
+.landscape {
+  @media only screen and (min-width: 600px) {
+    display: none;
+    
+  }
+}
 

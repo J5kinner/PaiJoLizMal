@@ -8,10 +8,14 @@
 @import "../../global/_colors.scss";
 
 .shop {
+  display: grid;
   margin: 1em;
   width: 100%;
   padding-right: 1em;
   position: relative;
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 }
 
 .shop-item-white {
@@ -19,27 +23,57 @@
   transform: skew(20deg);
 }
 
+.overlay {
+  position: absolute;
+  justify-content: space-between;
+  padding: 1em 10%;
+  margin-top: -2em;
+  width: 80%;
+  height: 10%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 101;
+  cursor: pointer;
+}
+
+.note-editor {
+  display: flex;
+
+  
+ 
+  h2, h3 {
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 3px 3px $smoke;
+  }
+ 
+}
+
 .editor {
   transform: skew(20deg);
+  padding-top: 4em;
+  margin-right: -4em;
+  padding-left: 4em;
+  color:white;
 }
 
 .editor-red {
+
   background-color: $orange;
+  color:white;
   width: 100%;
   height: 100%;
   transform: skew(-20deg);
-  padding-top: 10em;
-  .backgroun-red {
-    background-color: white;
-  }
+  
 }
 
 .editor-green {
-  background-color: $green;
+  background-color: #0e3530;
   width: 100%;
   height: 100%;
   transform: skew(-20deg);
-  padding-top: 10em;
 }
 
 .editor-blue {
@@ -47,7 +81,7 @@
   width: 100%;
   height: 100%;
   transform: skew(-20deg);
-  padding-top: 10em;
+  // padding-top: 10em;
 }
 
 .text {
@@ -55,27 +89,26 @@
   top: 60px;
   left: 50%;
   font-size: 45px;
-  color: white;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-}
-.overlay {
-  position: absolute;
-  justify-content: space-between;
-  padding: 20px 10%;
-  width: 80%;
-  height: 10%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 101;
-  cursor: pointer;
 }
 
 .slider {
   display: inline-block;
-
-
 }
+
+.textTitleInput {
+  width: 100%;
+  padding: 1em;
+}
+
+.textInput {
+  width: 100%;
+  height: 10%;
+  max-height: 300px;
+  border: none;
+  padding: 1em;
+}
+
+
+

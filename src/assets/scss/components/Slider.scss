@@ -62,11 +62,22 @@
   width: 100%;
   max-width: 100%;
 
+  //ADD MEDIA QUERIES HERE
+  // padding-left:400px;
+  // padding-right:-100px;
+  //width: 80%;
+  //  max-width: 1000px;
+
+
+
+
+
   &__wrapper {
     display: block;
     overflow: hidden;
     position: relative;
-    height: 60%;
+    height: 100%;
+    max-height: 100%;
     width: 100%;
   }
   &__container {
@@ -89,7 +100,7 @@
     width: 100%;
 
     > div {
-      height: 50%;
+      height: 100%;
       width: 100%;
       display: flex;
       align-items: center;
@@ -104,7 +115,7 @@
   &__content {
     @extend %fill-parent;
     // background-color: var(--content-background-color);
-    // overflow: hidden;
+    overflow: visible;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,7 +149,7 @@
       top: calc(50% - (0.5 * var(--control-button-height)));
       border: none;
       background-color: var(--control-button-background);
-      color: #fff;
+      color: $dark-green;
       cursor: pointer;
       .#{$root-element}__controls__arrow-left,
       .#{$root-element}__controls__arrow-right {
@@ -161,9 +172,9 @@
         transform: translate3d(100%, 0, 0);
       }
     }
-    // &--hidden {
-    //   display: none;
-    // }
+    &--hidden {
+      display: none;
+    }
     @media all and (max-width: 520px) {
       visibility: show;
     }
@@ -264,6 +275,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+
     button {
       @extend %clear-focus;
       padding: 0;

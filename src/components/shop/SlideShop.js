@@ -5,32 +5,40 @@
  *
  */
 
-import React from "react";
+import React, {useState} from "react";
 import NoteEditor from "./NoteEditor.js";
 import "../../assets/scss/components/Shop.scss";
 import "../../assets/scss/components/Button.scss";
 import AwesomeSlider from "react-awesome-slider";
 import "../../assets/scss/components/Slider.scss";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
-import forestText from "../../assets/img/Forest_Focuser.svg";
+import { ReactComponent as ChooseText } from '../../assets/img/Choose_your_Note.svg';
+import { ReactComponent as Zen } from '../../assets/img/Zen.svg';
+import { ReactComponent as Forest } from '../../assets/img/Forest.svg';
+import { ReactComponent as Racer } from '../../assets/img/Racer.svg';
+
+
+
 
 const SlideShop = ({ user, setUserBalance }) => {
+
   return (
     <div className="shop">
       <div>
         <div className="overlay">
-          <div className="text">CHOOSE your NOTE</div>
+          <div className="text"><ChooseText /></div>
         </div>
         <AwesomeSlider className="slider">
           <div className="editor-red">
             <div className="editor">
               {" "}
               <NoteEditor
-                editTitle={forestText}
+                svgTitle="Racer"
                 type="red"
                 user={user}
                 price="10"
                 setBalance={setUserBalance}
+     
               />
             </div>
           </div>
@@ -40,7 +48,7 @@ const SlideShop = ({ user, setUserBalance }) => {
             <div className="editor">
 
             <NoteEditor
-              editTitle="A wonderful green note"
+              svgTitle="Forest"
               type="green"
               user={user}
               price="20"
@@ -53,7 +61,7 @@ const SlideShop = ({ user, setUserBalance }) => {
             <div className="editor">
 
             <NoteEditor
-              editTitle="A wonderful blue note"
+              svgTitle="Zen"
               type="blue"
               user={user}
               price="30"
