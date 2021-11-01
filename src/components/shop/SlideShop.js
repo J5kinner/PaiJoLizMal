@@ -12,21 +12,19 @@ import "../../assets/scss/components/Button.scss";
 import AwesomeSlider from "react-awesome-slider";
 import "../../assets/scss/components/Slider.scss";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
-import { ReactComponent as ChooseText } from '../../assets/img/Choose_your_Note.svg';
+import { ReactComponent as ChooseText } from "../../assets/img/Choose_your_Note.svg";
 // import { ReactComponent as Zen } from '../../assets/img/Zen.svg';
 // import { ReactComponent as Forest } from '../../assets/img/Forest.svg';
 // import { ReactComponent as Racer } from '../../assets/img/Racer.svg';
 
-
-
-
 const SlideShop = ({ user, setUserBalance }) => {
-
   return (
     <div className="shop">
       <div>
         <div className="overlay">
-          <div className="text"><ChooseText /></div>
+          <div className="text">
+            <ChooseText />
+          </div>
         </div>
         <AwesomeSlider className="slider">
           <div className="editor-red">
@@ -38,7 +36,6 @@ const SlideShop = ({ user, setUserBalance }) => {
                 user={user}
                 price="10"
                 setBalance={setUserBalance}
-     
               />
             </div>
           </div>
@@ -46,28 +43,26 @@ const SlideShop = ({ user, setUserBalance }) => {
           <div className="editor-green">
             {" "}
             <div className="editor">
-
-            <NoteEditor
-              svgTitle="Forest"
-              type="green"
-              user={user}
-              price="20"
-              setBalance={setUserBalance}
-            />
-          </div>
+              <NoteEditor
+                svgTitle="Forest"
+                type="green"
+                user={user}
+                price="20"
+                setBalance={setUserBalance}
+              />
+            </div>
           </div>
           <div className="editor-blue">
             {" "}
             <div className="editor">
-
-            <NoteEditor
-              svgTitle="Zen"
-              type="blue"
-              user={user}
-              price="30"
-              setBalance={setUserBalance}
-            />
-          </div>
+              <NoteEditor
+                svgTitle="Zen"
+                type="blue"
+                user={user}
+                price="30"
+                setBalance={setUserBalance}
+              />
+            </div>
           </div>
         </AwesomeSlider>
       </div>
