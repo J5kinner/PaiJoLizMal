@@ -17,10 +17,9 @@ import Typography from "@mui/material/Typography";
 import ErrorPopUp from "../../views/Dashboard/ErrorPopUp.js";
 import "../../assets/scss/components/Shop.scss";
 
-
 const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
   const [coins, setCoins] = useState(0);
-  const [title, setTitle] = useState("");        
+  const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [openErrorPopUp, setOpenErrorPopUp] = useState(false);
   const [errorMsg, setErrorMsg] = useState(0);
@@ -51,7 +50,8 @@ const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
       NoteService.postNewNote(body, title, background)
         .then(() => redirectToHomepage())
         .catch((err) => console.log("there was an error"));
-    } if(title === "" || body ==="") {
+    }
+    if (title === "" || body === "") {
       setErrorMsg("Accidently left a piece of the note blank!");
       setErrorText(
         "Please fill out both the title and note body and try again"
@@ -113,10 +113,8 @@ const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
               placeholder=""
               onChange={handleTitleChange}
             />
-
           </Box>
           <Box className="textInput">
-       
             <TextField
               id="outlined-multiline-static"
               label="Enter your note here!"

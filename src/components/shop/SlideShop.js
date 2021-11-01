@@ -5,7 +5,7 @@
  *
  */
 
-import React, {useState} from "react";
+import React from "react";
 import NoteEditor from "./NoteEditor.js";
 import "../../assets/scss/components/Shop.scss";
 import "../../assets/scss/components/Button.scss";
@@ -13,9 +13,9 @@ import AwesomeSlider from "react-awesome-slider";
 import "../../assets/scss/components/Slider.scss";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
 import { ReactComponent as ChooseText } from '../../assets/img/Choose_your_Note.svg';
-import { ReactComponent as Zen } from '../../assets/img/Zen.svg';
-import { ReactComponent as Forest } from '../../assets/img/Forest.svg';
-import { ReactComponent as Racer } from '../../assets/img/Racer.svg';
+// import { ReactComponent as Zen } from '../../assets/img/Zen.svg';
+// import { ReactComponent as Forest } from '../../assets/img/Forest.svg';
+// import { ReactComponent as Racer } from '../../assets/img/Racer.svg';
 
 
 
