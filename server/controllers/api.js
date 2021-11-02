@@ -88,27 +88,39 @@ apiRouter.put('/api/user', (request, response) => {
         return response.status(401).json({error: "invalid token"})
     }
 
-    const {username, newUsername, password} = request.body
+    const {username, newUsername, oldPassword, password} = request.body
 
-    User.findOne({"username": newUsername}).then(exists => {
-        if (exists && (newUsername != username)) {
-            return response.status(401).json({error: "this username is not available"})
+    User.findOne({"username": username}).then(result => {
+        if (!result) {
+            return response.status(401).json({error: "invalid username or password"})
         }
-        User.findOne({"username": username}).then(exists => {
-            if (!exists) {
-                return response.status(401).json({error: "user not found"})
+
+        bcrypt.compare(oldPassword, result.password).then(match => {
+            if (!match) {
+                return response.status(401).json({error: "invalid username or password"})
             }
-            if (password) {
-                // User.updateOne({username: username}, {$set: {username: newUsername, password: result}})
-                User.updateOne({username: username}, {$set: {username: newUsername, password: password}})
-                .then(() => {
-                    return response.status(200).json({message: `Successfully updated user`, username: newUsername})
+
+            User.findOne({"username": newUsername}).then(exists => {
+                if (exists && (newUsername != username)) {
+                    return response.status(401).json({error: "this username is not available"})
+                }
+                User.findOne({"username": username}).then(exists => {
+                    if (!exists) {
+                        return response.status(401).json({error: "user not found"})
+                    }
+                    if (password) {
+                        // User.updateOne({username: username}, {$set: {username: newUsername, password: result}})
+                        User.updateOne({username: username}, {$set: {username: newUsername, password: password}})
+                        .then(() => {
+                            return response.status(200).json({message: `Successfully updated user`, username: newUsername})
+                        })
+                    } else {
+                        User.updateOne({username: username}, {$set: {username: newUsername}}).then(() => {
+                            return response.status(200).json({message: `Successfully updated user`, username: newUsername})
+                        })
+                    }
                 })
-            } else {
-                User.updateOne({username: username}, {$set: {username: newUsername}}).then(() => {
-                    return response.status(200).json({message: `Successfully updated user`, username: newUsername})
-                })
-            }
+            })
         })
     })
 })
