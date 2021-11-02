@@ -15,6 +15,10 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import ErrorPopUp from "../../views/Dashboard/ErrorPopUp.js";
+import Checkbox from "@mui/material/Checkbox";
+import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { blue } from "@mui/material/colors";
+
 import "../../assets/scss/components/Shop.scss";
 
 const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
@@ -24,6 +28,7 @@ const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
   const [openErrorPopUp, setOpenErrorPopUp] = useState(false);
   const [errorMsg, setErrorMsg] = useState(0);
   const [errorText, setErrorText] = useState(0);
+  const [checked, setChecked] = useState(false);
 
   const background = type;
   const maxCharacters = 200;
@@ -50,13 +55,6 @@ const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
       NoteService.postNewNote(body, title, background)
         .then(() => redirectToHomepage())
         .catch((err) => console.log("there was an error"));
-    }
-    if (title === "" || body === "") {
-      setErrorMsg("Accidently left a piece of the note blank!");
-      setErrorText(
-        "Please fill out both the title and note body and try again"
-      );
-      setOpenErrorPopUp(true);
     } else {
       setErrorMsg("Insufficient Coins");
       setErrorText(
@@ -71,6 +69,35 @@ const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
     setOpenErrorPopUp(false);
     setErrorMsg(0);
   };
+
+  const handleShowSubmit = () => {
+    if (title === "" || body === "") {
+      setErrorMsg("Oh no! a part of your note is blank!");
+      setErrorText("Please fill out title and body and try again");
+      setOpenErrorPopUp(true);
+      setChecked(false);
+      console.log("checked changed here to false");
+    } else if (!checked) {
+      setChecked(true);
+      console.log("checked changed here to true");
+    } else {
+      setChecked(false);
+      console.log("checked changed here to false");
+    }
+  };
+
+  const CustomCheckbox = styled(Checkbox)(({ theme }) => ({
+    color: theme.status.danger,
+    "&.Mui-checked": {
+      color: theme.status.danger,
+    },
+  }));
+
+  const theme = createTheme({
+    status: {
+      danger: blue[500],
+    },
+  });
 
   return (
     <div className="note-editor">
@@ -106,7 +133,7 @@ const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
             {price} coins
           </Typography>
         </Box>
-        <FormControl sx={{ border: noteColor, display: "block" }}>
+        <FormControl sx={{ border: "white", display: "block" }}>
           <Box className="textTitleInput">
             <TextField
               label="Note Title"
@@ -124,11 +151,22 @@ const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
               maxRows={10}
               inputProps={{ maxLength: maxCharacters }}
               helperText={`${body.length}/${maxCharacters}`}
+              sx={{
+                multilineColor: {
+                  color: "red",
+                },
+              }}
             />
           </Box>
-          <Button variant="contained" onClick={handleAddNote}>
-            Submit
-          </Button>
+          <ThemeProvider theme={theme}>
+            <strong>Are you sure?</strong>
+            <CustomCheckbox defaultUnChecked onClick={handleShowSubmit} />
+          </ThemeProvider>
+          {checked ? (
+            <Button variant="contained" onClick={handleAddNote}>
+              Submit
+            </Button>
+          ) : null}
         </FormControl>
       </Box>
     </div>

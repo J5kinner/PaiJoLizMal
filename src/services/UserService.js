@@ -8,7 +8,7 @@
 import axios from 'axios'
 import bcryptjs from 'bcryptjs'
 
-const baseUrl = 'http://localhost:3001/api'
+const baseUrl = '/api'
 
 // Call to log in a user
 const login = (username, password) => axios
@@ -36,10 +36,11 @@ const register = async (username, password) => {
 const updatePassword = async (oldPassword, newPassword) => {
     const token = JSON.parse(localStorage.getItem('jwt'))
     let hashedPassword = await bcryptjs.hash(newPassword, 10)
+    let oldHashedPassword = await bcryptjs.hash(oldPassword, 10)
     const username = JSON.parse(localStorage.getItem('loggedInUser')).username
     axios
     // eslint-disable-next-line no-dupe-keys
-    .put(`${baseUrl}/user`, {username, username, password: hashedPassword}, {
+    .put(`${baseUrl}/user`, {username, username, oldPassword: oldHashedPassword, password: hashedPassword}, {
         headers: { Authorization: `Bearer ${token}` }})
     .then(res => res.data)
     .catch(err => {
