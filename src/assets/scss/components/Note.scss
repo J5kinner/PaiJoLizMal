@@ -19,7 +19,33 @@
   .blobs:hover {
     transform: translate(100px, 100px) scale(0.0);
   }
+
+  p.note-title {
+    text-align: center;
+    font-size: 8px;
+    width: 100px;
+    color: white;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+  }
   
+  p.note-username {
+    text-align: center;
+    font-size: 7px;
+    width: 100px;
+    color: white;
+    font-style: italic;
+    overflow-wrap: anywhere;
+  }
+
+  p.note-body {
+    text-align: center;
+    font-size: 7px;
+    width: 100px;
+    color: white;
+    overflow-wrap: anywhere;
+  }
+
   @keyframes rotate {
     0% {
       transform: translate(100px, 100px) rotate(0deg);

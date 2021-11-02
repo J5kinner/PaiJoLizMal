@@ -5,17 +5,14 @@
  *
  */
 
+import { FormatLineSpacing } from "@mui/icons-material";
 import { React, useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Colours from "../assets/Colours";
 import "../assets/scss/components/Note.scss";
 
 
 const Note = ({ note }) => {
   const [background, setBackground] = useState('')
+  const [fontColour, setFontColour] = useState('')
   const GREEN = '#264653' 
   const YELLOW = '#e9c46a' 
   const RED = '#e76f51'
@@ -32,7 +29,7 @@ const Note = ({ note }) => {
   
   return (
     <div className="blob-background">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"  height="300" width="300">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"  height="380" width="380">
         <g>
           <svg
             className="blobs"
@@ -45,36 +42,13 @@ const Note = ({ note }) => {
             /> 
           </svg>
         </g>
-        <text x="10" y="20"> {note.title}
-        <tspan x="10" y="45">{note.username}</tspan>
-        <tspan x="10" y="70">{note.body}.</tspan>
-         </text>
+        <foreignObject x="60" y="35" width="100" height="200">
+          <p className="note-title">{note.title}</p>
+          <p className="note-username">{note.username}</p>
+          <p className="note-body">{note.body}</p>
+
+        </foreignObject>
         </svg>
-
-      
-{/* 
-
-      <Card
-        sx={{
-          height: 200,
-          boxShadow: 0,
-          background: `${note.background ? note.background : Colours.gray}`,
-        }}
-      >
-        <CardContent>
-          <Box color={note.text ? note.text : "inherit"}>
-            <Typography variant="h5">{note.title}</Typography>
-
-            <Typography sx={{ mb: 1.5 }} color="inherit">
-              {note.username}
-            </Typography>
-            <Typography variant="body2">
-              {note.body}
-              <br />
-            </Typography>
-          </Box>
-        </CardContent>
-      </Card> */}
     </div>
   );
 };
