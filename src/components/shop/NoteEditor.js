@@ -138,6 +138,7 @@ const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
             <TextField
               label="Note Title"
               placeholder=""
+              inputProps={{ maxLength: 36}}
               onChange={handleTitleChange}
             />
           </Box>

@@ -4,15 +4,12 @@
  * Authors: @J5kinner
  *
  */
-
-import { FormatLineSpacing } from "@mui/icons-material";
 import { React, useState, useEffect } from "react";
 import "../assets/scss/components/Note.scss";
 
 
 const Note = ({ note }) => {
   const [background, setBackground] = useState('')
-  const [fontColour, setFontColour] = useState('')
   const GREEN = '#264653' 
   const YELLOW = '#e9c46a' 
   const RED = '#e76f51'
@@ -46,7 +43,6 @@ const Note = ({ note }) => {
           <p className="note-title">{note.title}</p>
           <p className="note-username">{note.username}</p>
           <p className="note-body">{note.body}</p>
-
         </foreignObject>
         </svg>
     </div>
