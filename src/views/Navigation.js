@@ -42,8 +42,8 @@ export default function Navigation() {
       <Box sx={{ mt: 10, ml: 5, mr: 5 }}>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/signup" component={SignUpPage} />
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/signup" component={SignUpPage} />
           <AuthRoute
             path="/dashboard"
             component={DashboardPage}

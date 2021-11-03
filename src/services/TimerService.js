@@ -5,30 +5,38 @@
  *
  */
 
- import axios from 'axios'
- 
- const baseUrl = '/api'
+import axios from "axios";
 
- 
- const startTimer = (duration) => {
-    const token = localStorage.getItem('jwt')
-    const username = JSON.parse(localStorage.getItem('loggedInUser')).username
-    
-    return axios
-    .post(`${baseUrl}/timer`, {username, duration}, {
-        headers: { Authorization: `Bearer ${token}` }})
-    .then(res => res.data)
- }
+const baseUrl = "/api";
 
- const stopTimer = () => {
-    const token = localStorage.getItem('jwt')
-    const username = JSON.parse(localStorage.getItem('loggedInUser')).username
-    return axios
-    .put(`${baseUrl}/timer`, {username}, {
-        headers: { Authorization: `Bearer ${token}` }})
-    .then(res => res.data)
- }
+const startTimer = (duration) => {
+  const token = localStorage.getItem("jwt");
+  const username = JSON.parse(localStorage.getItem("loggedInUser")).username;
 
+  return axios
+    .post(
+      `${baseUrl}/timer`,
+      { username, duration },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+    .then((res) => res.data);
+};
 
-const TimerService = { startTimer, stopTimer}
-export default TimerService
+const stopTimer = () => {
+  const token = localStorage.getItem("jwt");
+  const username = JSON.parse(localStorage.getItem("loggedInUser")).username;
+  return axios
+    .put(
+      `${baseUrl}/timer`,
+      { username },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+    .then((res) => res.data);
+};
+
+const TimerService = { startTimer, stopTimer };
+export default TimerService;
