@@ -161,7 +161,7 @@ const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
           </Box>
           <ThemeProvider theme={theme}>
             <strong>Are you sure?</strong>
-            <CustomCheckbox defaultUnChecked onClick={handleShowSubmit} />
+            <CustomCheckbox checked={checked} onClick={handleShowSubmit} />
           </ThemeProvider>
           {checked ? (
             <Button variant="contained" onClick={handleAddNote}>

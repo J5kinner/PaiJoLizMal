@@ -31,7 +31,7 @@ const outerTheme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={outerTheme}>
+    <ThemeProvider theme={outerTheme || ""}>
     <div className="App">
       <Router>
         <Navigation />
