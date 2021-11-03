@@ -17,11 +17,12 @@ import { isAuthenticated } from "../services/Authentication";
 import DashboardPage from "./Dashboard/DashboardPage";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
-import AuthRoute from "./AuthRoute";
 import SignUpPage from "./SignUpPage";
 import Header from "../components/header/Header";
+import PrivateRoute from "./PrivateRoute";
 
 export default function Navigation() {
+
   const [user, setUser] = useState(false);
   // const history = useHistory();
 
@@ -44,7 +45,7 @@ export default function Navigation() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/signup" component={SignUpPage} />
-          <AuthRoute
+          <PrivateRoute
             path="/dashboard"
             component={DashboardPage}
             user={user}

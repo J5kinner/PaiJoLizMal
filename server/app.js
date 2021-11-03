@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(express.static('build'));
 app.use(apiRouter)
 app.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, 'build', 'build/index.html'));
+	response.sendFile(path.join(__dirname, '../build/index.html'));
 });
 
 
