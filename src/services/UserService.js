@@ -8,7 +8,7 @@
 import axios from 'axios'
 import bcryptjs from 'bcryptjs'
 
-const baseUrl = 'http://localhost:3001/api'
+const baseUrl = '/api'
 
 // Call to log in a user
 const login = (username, password) => axios
