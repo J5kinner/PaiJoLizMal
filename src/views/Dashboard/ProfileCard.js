@@ -28,14 +28,22 @@ import Colours from "../../assets/Colours";
 import { Button } from "@mui/material";
 
 const ProfileCard = ({ user, setUsername }) => {
-  const [editMode, setEditMode] = useState(false);
-  const [editPassword, setEditPassowrd] = useState(false);
+  const startState = {
+    editMode: false,
+    editPassword: false,
+    newUserInfo :{
+      username: ""
+    },
+    newPasswordInfo :{
+      oldPassword: "",
+      newPassword: "",
+    },
+  };
+  const [editMode, setEditMode] = useState(startState.editMode);
+  const [editPassword, setEditPassowrd] = useState(startState.editPassword);
 
-  const [newUserInfo, setNewUserInfo] = useState({ username: "" });
-  const [newPasswordInfo, setNewPasswordInfo] = useState({
-    oldPassword: "",
-    newPassword: "",
-  });
+  const [newUserInfo, setNewUserInfo] = useState(startState.newUserInfo.username);
+  const [newPasswordInfo, setNewPasswordInfo] = useState(startState.newPasswordInfo);
 
   const [inputErrors, setInputErrors] = useState(0);
 
@@ -112,6 +120,7 @@ const ProfileCard = ({ user, setUsername }) => {
   /*=== INPUT HANDLERS ===*/
 
   const handleInfoChange = (name) => (e) => {
+ 
     setNewUserInfo({
       ...newUserInfo,
       [name]: e.target.value,
@@ -173,7 +182,7 @@ const ProfileCard = ({ user, setUsername }) => {
           <TextField
             fullWidth
             error={inputErrors.username ? true : false}
-            value={newUserInfo.username}
+            value={newUserInfo.username || ""}
             InputLabelProps={{ shrink: true }}
             label="user name"
             onChange={handleInfoChange("username")}
