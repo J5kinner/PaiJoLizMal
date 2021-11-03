@@ -23,7 +23,7 @@ const Note = ({ note }) => {
     } else {
       setBackground(YELLOW)
     }
-  },[])
+  },[note.background])
   
   return (
     <div className="blob-background">
