@@ -56,5 +56,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ## Continuous Integration
 
 _Information about any use of Continuous Integration you have implemented._
-We intergrated Heroku pipeline to maintain our builds, so that whenever someone pushes to the master branch on our repository, then the build process begins on Heroku automatically. It also checks for errors in the build in terms of JS warnings or errors and will not complete a new build unless it compiles cleanly.
+
+We intergrated Heroku pipeline to maintain our builds, so that whenever someone pushes to the master branch on our repository, then the build process begins on Heroku automatically.
+
+It also checks for errors in the build in terms of JS warnings or errors and will not complete a new build unless it compiles cleanly.
 
