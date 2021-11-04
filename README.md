@@ -1,5 +1,5 @@
 
-# [Paijolizmal](https://reactjs.org/) &middot; ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)![npm version](https://img.shields.io/npm/v/react.svg?style=flat)![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+# [Paijolizmal](https://comp3120-group-x.herokuapp.com/) &middot; ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)![npm version](https://img.shields.io/npm/v/react.svg?style=flat)![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 ``Paijolizmal`` is a progressive web application which is for tracking productivity collaboratively built with React, MongoDB, Express, SASS and hosted with Heroku.
 <p align="left"> 
@@ -13,7 +13,7 @@
 
 * **Time Tracking:** Paijolizmal makes it painless to keep track of productivity of its users using a `pomodoro` to keep track of time when the user starts and finishes a task. 
 * **Transaction System:** After every `pomodoro` completion the user is rewarded with a coin which they can spend on creating special notes about their experience during their period of focused work. 
-* **Collaborative Homepage:** On the home page users notes will be visible to all users here where they can draw on inspiration or see other people working just as hard as they are, or even share their own tips on how they stayed productive in a fun and creative way. [HEROKU LINK HERE](https://reactnative.dev/).
+* **Collaborative Homepage:** On the home page users notes will be visible to all users here where they can draw on inspiration or see other people working just as hard as they are, or even share their own tips on how they stayed productive in a fun and creative way. [HEROKU LINK](https://comp3120-group-x.herokuapp.com/).
 
 
 
