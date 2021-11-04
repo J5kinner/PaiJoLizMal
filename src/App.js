@@ -17,6 +17,13 @@ const outerTheme = createTheme({
     primary: {
       main: Colours.teal,
     },
+    secondary: {
+      type: "dark",
+      main: Colours.white,
+      input: {
+        color: 'white'
+    }
+    }
   },
   typography: {
     title: {

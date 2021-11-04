@@ -22,6 +22,8 @@ import { blue } from "@mui/material/colors";
 import "../../assets/scss/components/Shop.scss";
 
 const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
+  const qString = "What's on your mind, " + user.username + "?";
+
   const [coins, setCoins] = useState(0);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -136,26 +138,46 @@ const NoteEditor = ({ noteColor, svgTitle, type, user, price }) => {
         <FormControl sx={{ border: "white", display: "block" }}>
           <Box className="textTitleInput">
             <TextField
-              label="Note Title"
+              label="Enter Note Title"
               placeholder=""
-              inputProps={{ maxLength: 36}}
+              inputProps={{ maxLength: 36, color:"white", colorSecondary:"white"}}
               onChange={handleTitleChange}
+              color="secondary"
+              style={{width:250}}
+
+              InputLabelProps= {{
+                style: {
+                  color: "white",
+                }
+              }}
+              InputProps= {{
+                style: {
+                  color: "white"
+                }
+              }}
             />
           </Box>
           <Box className="textInput">
             <TextField
               id="outlined-multiline-static"
-              label="Enter your note here!"
+              label={qString}
               multiline
+              color="secondary"
               onChange={handleNoteChange}
-              minRows={4}
+              minRows={5}
               maxRows={10}
-              inputProps={{ maxLength: maxCharacters }}
+              inputProps={{ maxLength: maxCharacters, color:"white" }}
               helperText={`${body.length}/${maxCharacters}`}
-              sx={{
-                multilineColor: {
-                  color: "red",
-                },
+              style={{width:250}}
+              InputProps= {{
+                style: {
+                  color: "white"
+                }
+              }}
+              InputLabelProps= {{
+                style: {
+                  color: "white",
+                }
               }}
             />
           </Box>
