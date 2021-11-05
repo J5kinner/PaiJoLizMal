@@ -44,6 +44,7 @@ const updatePassword = async (oldPassword, newPassword) => {
       `${baseUrl}/user`,
       {
         username,
+        // eslint-disable-next-line no-dupe-keys
         username,
         oldPassword: oldHashedPassword,
         password: hashedPassword,
