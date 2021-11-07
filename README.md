@@ -100,8 +100,7 @@ Use session tokens to manage the frontend login session instead of a `jwt` token
 
 ## Communication & Roles
 ### Communication
-* [Trello](https://trello.com/b/Qfrxz3KY/group-project-comp3120)  
-Trello is a collaborative tool, useful for agile development. Trello tickets have the capability to assign members, add comments, establish checklists, attach deadlines, add labels (e.g. `blocked`, or `done`) and more. These features enabled group members to communicate their progress, constraints, as well as pass on directly relevant information. Group X used multiple lists throughout the project that contained tracked tasks to be completed. Notable lists were:
+* [Trello](https://trello.com/b/Qfrxz3KY/group-project-comp3120) is a collaborative tool, useful for agile development. Trello tickets have the capability to assign members, add comments, establish checklists, attach deadlines, add labels (e.g. `blocked`, or `done`) and more. These features enabled group members to communicate their progress, constraints, as well as pass on directly relevant information. Group X used multiple lists throughout the project that contained tracked tasks to be completed. Notable lists were:
    * Product Backlog: included the tickets to be completed in the project overall (scrum, comments, labels)
    * Sprint Backlog: contained the tickets to be completed in the current sprint
    * Increment: included completed tasks from all the completed sprints
