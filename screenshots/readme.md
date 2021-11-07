@@ -6,6 +6,9 @@ The following screenshots provide a visual glimpse of the application.
 
 This image shows the homepage of the application. This is the page displayed when the page is first loaded.
 
+[Homepage](https://github.com/MQCOMP3120-2021/group-web-project-group-x/screenshots/Homepage.png)
+
+
 ## Login.png
 
 This window is shown if a user clicks on the "Login" button or tries to access the dashboard while not authenticated. If the user does not have an account, they can click the "Sign Up" button to create one.
