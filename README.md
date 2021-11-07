@@ -20,7 +20,6 @@ Prolonged focused work is hard to achieve with the ever present distractions of 
 
 ## Application Breakdown
 
-<<<<<<< HEAD
 * **Time Tracking:**
 The main tracking services which ``Paijolizmal`` provides are in the form of *Pomodoro* style timed sessions. The *Pomodoro* method is a method for maintaining a sustained workflow over prolonged periods of time. In the traditional *Pomodoro* method, individuals usually set a focused work time of 30 to 50 minutes followed by a break time of 5 to 10 minutes, which are repeated for multiple hours. Participating in bursts of intense focused work for less than 1 hour, followed by reasonable breaks, has been shown to greatly improve effectiveness and efficiency, as well as provide a more sustainable method of work. Paijolismal provides users the ability to start timed sessions of up to 1 hour, ensuring that members take the necessary breaks to sustain their work and maintain their health. The timer implemented is intended to be easy to use and provide the minimal amount of friction to users starting their work.
 
@@ -100,12 +99,6 @@ The MVP of Paijolozmal required a reasonable list of client side components to m
 This MVP was completed on 7/1//2021. You can improve it by sending pull requests to [this repository](https://github.com/reactjs/reactjs.org).
 
 ## Where the most work has been done
-
-=======
-You can improve it by sending pull requests to [this repository](https://github.com/reactjs/reactjs.org).
-
-## Where the most work has been done
->>>>>>> 82325b7f189d7940b2b312945e590c28383c8581
 📦group-web-project-group-x  
  ┣ 📂SCREENSHOTS  
  ┣ 📂public  
@@ -136,8 +129,6 @@ You can improve it by sending pull requests to [this repository](https://github.
  ┣ 📜package-lock.json  
  ┣ 📜package.json  
  ┗ 📜static.json  
-<<<<<<< HEAD
-=======
 
 
 `Paijolizmal` is a full-stack application composed of a frontend and backend section.
@@ -190,7 +181,6 @@ The backend code can be found in the `server` directory. The backend uses Node/E
 * `controllers` directory: contains the routing for each request made for/to the objects in the database
 * `testRequests` directory: contains a file for each request that allows for API requests to be made without the need of a frontend client
 * `tests` directory: contains the various `jest` tests for the backend, including a configured test environment
->>>>>>> 82325b7f189d7940b2b312945e590c28383c8581
 
 
 ## Next Steps
