@@ -53,6 +53,12 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `git push heroku master`
+
+Pushes the application to heroku, which then builds the application and runs it.
+
+
+
 ## Continuous Integration
 
 _Information about any use of Continuous Integration you have implemented._
