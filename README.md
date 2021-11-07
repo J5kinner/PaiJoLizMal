@@ -100,26 +100,22 @@ Use session tokens to manage the frontend login session instead of a `jwt` token
 
 ## Communication & Roles
 ### Communication
-[Trello](https://trello.com/b/Qfrxz3KY/group-project-comp3120)  
+* [Trello](https://trello.com/b/Qfrxz3KY/group-project-comp3120)  
 Trello is a collaborative tool, useful for agile development. Trello tickets have the capability to assign members, add comments, establish checklists, attach deadlines, add labels (e.g. `blocked`, or `done`) and more. These features enabled group members to communicate their progress, constraints, as well as pass on directly relevant information. Group X used multiple lists throughout the project that contained tracked tasks to be completed. Notable lists were:
-* Product Backlog: included the tickets to be completed in the project overall (scrum, comments, labels)
-* Sprint Backlog: contained the tickets to be completed in the current sprint
-* Increment: included completed tasks from all the completed sprints
-* Action Items: miscellaneous and non-coding related tasks
-* Bugs: the record of unexpected behaviours to address
+   * Product Backlog: included the tickets to be completed in the project overall (scrum, comments, labels)
+   * Sprint Backlog: contained the tickets to be completed in the current sprint
+   * Increment: included completed tasks from all the completed sprints
+   * Action Items: miscellaneous and non-coding related tasks
+   * Bugs: the record of unexpected behaviours to address
 
 
-[Discord Server](https://discord.com/) 
-Discord serves as the primary communication platform for team members. Discord allows for the creation of separate channels in a private server for members to use, thus making it easier to track information shared by others, such as essential links or announcements. It also has voice channels, which was used to host weekly 1 hour meetings throughout the project.
+* [Discord](https://discord.com/) serves as the primary communication platform for team members. Discord allows for the creation of separate channels in a private server for members to use, thus making it easier to track information shared by others, such as essential links or announcements. It also has voice channels, which was used to host weekly 1 hour meetings throughout the project.
 
-[Google Drive](https://docs.google.com/document/d/13KKy5rsJJ_vo6XVw1Ib0G1EyBDpnYyWprtSj0C4mlhw/edit?usp=sharing)
-Google Drive is a cloud platform to share and store relevant files for the project accessible by members of the group.
+* [Google Drive](https://docs.google.com/document/d/13KKy5rsJJ_vo6XVw1Ib0G1EyBDpnYyWprtSj0C4mlhw/edit?usp=sharing) is a cloud platform which was used to share and store relevant files for the project accessible by members of the group.
 
-[GitHub](https://github.com/MQCOMP3120-2021/group-web-project-group-x)
-GitHub is a version control platform that was used throughout development. To avoid clashes during development, members would break off into separate branches (for each feature). Once the feature was completed, a pull request would be created and reviewed by other members before being merged into the `master` branch.
+* [GitHub](https://github.com/MQCOMP3120-2021/group-web-project-group-x) is a version control platform that was used throughout development. To avoid clashes during development, members would break off into separate branches (for each feature). Once the feature was completed, a pull request would be created and reviewed by other members before being merged into the `master` branch.
 
-[Figma](https://www.figma.com/file/F0mzjtvkoUU5UOSzJtzv1L/The-Second-Draft?node-id=0%3A1)
-Figma was a visual tool used for various purposes. Initially it had been used to brainstorm ideas for the application, as multiple users can make changes simultaneously. Once the outline for the application had finished, wireframes for each page were constructed by the team to further solidify the design and flow for the application. The project's lead designer then built on the wireframes for a preliminary design and theme for the website. After the website had matured, the final theme and design were established and used as a reference for the developer to finalise the styling.
+* [Figma](https://www.figma.com/file/F0mzjtvkoUU5UOSzJtzv1L/The-Second-Draft?node-id=0%3A1) is a visual tool used for various purposes. Initially it had been used to brainstorm ideas for the application, as multiple users can make changes simultaneously. Once the outline for the application had finished, wireframes for each page were constructed by the team to further solidify the design and flow for the application. The project's lead designer then built on the wireframes for a preliminary design and theme for the website. After the website had matured, the final theme and design were established and used as a reference for the developer to finalise the styling.
 
 
  ### Roles 
