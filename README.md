@@ -52,49 +52,49 @@ Following is a detailed review of all notable components which were implemented 
 
 ![MVPwalkthrough](src\assets\img\paijolizmalMVP.gif)
 
-### Technical components
+### **Technical components**
 
->**Backend:** The MVP ``Paijolizmal`` application has a MongoDB database with NodeJs, express and mongoose middleware implemented. The database collection has three main documents, notes, timers and users, with one supplementary document notetypes.
->
->* **Users:** the users document specified a list of all members of the ``Paijolizmal`` application. Each user consisted of a user id, username, password, stats, and coins. Services were provided to allow the creation of users, secure retrieval of user information validated through logging in, and the updating of users.
->
->* **Timers:** the timers document provides stored data which references timed user work sessions. The purpose of this document is to store valid timer data which may be utilised to verify a user's worked sessions. Each entry consists of an associated user, a session start time and a duration. The entries in this document are automatically removed upon verification of a timed session's completion.
->
->* **Notes:** the notes document provides a list of all the ``RANTS`` produced by users. The entries are detailed with an id, title, body or text content, associated user, and visualisation data. Services are provided to allow for the creation and retrieval of notes.
->
->* **Notetypes:** notetypes is a document utilised to store note variations. This allows for new note variations to be added and dynamically allowed for the generation of notes. A notetype is defined by an id, background colour and cost.
->
->**Frontend:** The ``Paijolizmal`` is a React application. The app implements Material UI (MUI) and Sass for the styling of the user interfaces. This allows for the applications to implement reactive design. All pages of the application are implemented to allow compatibility with a range of divides. The app can be comfortably accessed on mobile devices, larger tablets and desktop/laptop setups with wide screen monitors.
->
->**Security:**
+* **Backend:** The MVP ``Paijolizmal`` application has a MongoDB database with NodeJs, express and mongoose middleware implemented. The database collection has three main documents, notes, timers and users, with one supplementary document notetypes.
+
+    * **Users:** the users document specified a list of all members of the ``Paijolizmal`` application. Each user consisted of a user id, username, password, stats, and coins. Services were provided to allow the creation of users, secure retrieval of user information validated through logging in, and the updating of users.
+
+    * **Timers:** the timers document provides stored data which references timed user work sessions. The purpose of this document is to store valid timer data which may be utilised to verify a user's worked sessions. Each entry consists of an associated user, a session start time and a duration. The entries in this document are automatically removed upon verification of a timed session's completion.
+
+    * **Notes:** the notes document provides a list of all the ``RANTS`` produced by users. The entries are detailed with an id, title, body or text content, associated user, and visualisation data. Services are provided to allow for the creation and retrieval of notes.
+
+    * **Notetypes:** notetypes is a document utilised to store note variations. This allows for new note variations to be added and dynamically allowed for the generation of notes. A notetype is defined by an id, background colour and cost.
+
+* **Frontend:** The ``Paijolizmal`` is a React application. The app implements Material UI (MUI) and Sass for the styling of the user interfaces. This allows for the applications to implement reactive design. All pages of the application are implemented to allow compatibility with a range of divides. The app can be comfortably accessed on mobile devices, larger tablets and desktop/laptop setups with wide screen monitors.
+
+* **Security:**
 ``Paijolizmal`` handles very little sensitive data and this is by design. The application is not meant to be intrusive or provide high barriers to entry, the application is simply meant to be an easily accessible community that encourages interaction through sharing somewhat anonymously. Despite this though the application still implements reasonable security measures.
->
->* **Token authentication** is implemented into user sessions. Any user specific data or full application access requires a valid authentication token. Authentication tokens are passed to the server in request headers and stored locally on the client end in local storage.
->
->* **Password hashing** is implemented using the bcrypt library. A password is hashed the moment it is created and is never passed over a network unencrypted. Newly created passwords are hashed before being sent and stored in the database. Any future password comparisons are performed on the server side of the application, as a hashed password may be passed and then compared without ever having to decrypt the hashed passwords. Passwords are also not passed to the frontend client from the database.
->
->* **Validation:** Some minor security measures were also implemented to ensure that the timed sessions were validated. As the timer is a client side implementation, users may bypass the timed session to earn coins through altering their local computers state. In order to make the application more secure against such tactics, server side verification of timed sessions is implemented. When a timed session is started a timer entry is sent to the database using UTC time to define the start time and duration which may be verified by the server. This time is stored and once the session is completed another request is sent to the server which validates that the correct amount of time has passed. This secures the coin transaction process by ensuring that recipients actually deserve the coins they are receiving.
->
->**Deployment:**
+
+    * **Token authentication** is implemented into user sessions. Any user specific data or full application access requires a valid authentication token. Authentication tokens are passed to the server in request headers and stored locally on the client end in local storage.
+
+    * **Password hashing** is implemented using the bcrypt library. A password is hashed the moment it is created and is never passed over a network unencrypted. Newly created passwords are hashed before being sent and stored in the database. Any future password comparisons are performed on the server side of the application, as a hashed password may be passed and then compared without ever having to decrypt the hashed passwords. Passwords are also not passed to the frontend client from the database.
+
+    * **Validation:** Some minor security measures were also implemented to ensure that the timed sessions were validated. As the timer is a client side implementation, users may bypass the timed session to earn coins through altering their local computers state. In order to make the application more secure against such tactics, server side verification of timed sessions is implemented. When a timed session is started a timer entry is sent to the database using UTC time to define the start time and duration which may be verified by the server. This time is stored and once the session is completed another request is sent to the server which validates that the correct amount of time has passed. This secures the coin transaction process by ensuring that recipients actually deserve the coins they are receiving.
+
+* **Deployment:**
 ``Paijolizmal`` is deployed and hosted on Heroku at [Paijolizmal](https://comp3120-group-x.herokuapp.com/) (note that this link will not be indefinitely supported).
 
-### Page Breakdown
+### **Pages Breakdown**
 
 The MVP of Paijolozmal required a reasonable list of client side components to make the application usable. The following section will break the application doen by pages and detail each of the components implemented as a part of this MVP.
-> 
-> **Navigation Page:** A top navigation bar was included in the MVP to allow users to navigate between the home page, dashboard and login/out pages. If a user is logged in then the navigation bar will also provide the option for a user to logout. The navigation bar is styled with the custom colour pallet and features the application title logo.
->
-> **Login and Logout Page:** The login page provides a form which is equipped with error handling to create a more seamless user experience. The page also directs the user to their dashboard upon successfully logging in. The sign up page allows for a user to create a new account and again is equipped to handle errors and display the appropriate messages to direct users.
->
-> **Home Page:** The home page is equipped with a grid display of ``RANTS`` which have been posted. The home page may be seen by all users, logged in or not. The page provides interesting visuals through the animation of each RANT which was implemented through the user of Sass.
->
-> **Dashboard Page:** The dashboard consists of three main components, the ``profile``, ``timer`` and ``shop``. Each of these components are organised to allow users on all devices to access their functionality. The styling is also kept consistent throughout by the overarching colour pallet of the application
->
->* The ``profile`` section of the dashboard allows users to view their personal information and statistics. The profile also allows users to edit and update their user information, including their username and password. The update form is styled using MUI compients and transitions to create a more pleasant user experience with a more reactive application.
->
->* The ``timer`` is implemented as a selection and display area. Times from 1 minute to 60 minutes may be selected to complete a timed session. A visitation of the time remaining in a session is provided through large circular progress bars which are animated. The timer automatically congratulates and updates the users balance once the session has completed and been validated.
->
->* Finally the ``shop`` section of the dashboard allows users to interact with a dynamic shop display. Users can scroll through custom selections of styled ``RANTS`` which they may then fill out with a title and body of text. The shop is animated and reactive creating an immersive experience in the application. The shop facilitates user transactions and if a purchase is successful will create users RANT and display it on the homepage for all users to view.
+
+* **Navigation Page:** A top navigation bar was included in the MVP to allow users to navigate between the home page, dashboard and login/out pages. If a user is logged in then the navigation bar will also provide the option for a user to logout. The navigation bar is styled with the custom colour pallet and features the application title logo.
+
+* **Login and Logout Page:** The login page provides a form which is equipped with error handling to create a more seamless user experience. The page also directs the user to their dashboard upon successfully logging in. The sign up page allows for a user to create a new account and again is equipped to handle errors and display the appropriate messages to direct users.
+
+* **Home Page:** The home page is equipped with a grid display of ``RANTS`` which have been posted. The home page may be seen by all users, logged in or not. The page provides interesting visuals through the animation of each RANT which was implemented through the user of Sass.
+
+* **Dashboard Page:** The dashboard consists of three main components, the ``profile``, ``timer`` and ``shop``. Each of these components are organised to allow users on all devices to access their functionality. The styling is also kept consistent throughout by the overarching colour pallet of the application
+
+    * The ``profile`` section of the dashboard allows users to view their personal information and statistics. The profile also allows users to edit and update their user information, including their username and password. The update form is styled using MUI compients and transitions to create a more pleasant user experience with a more reactive application.
+
+    * The ``timer`` is implemented as a selection and display area. Times from 1 minute to 60 minutes may be selected to complete a timed session. A visitation of the time remaining in a session is provided through large circular progress bars which are animated. The timer automatically congratulates and updates the users balance once the session has completed and been validated.
+
+    * Finally the ``shop`` section of the dashboard allows users to interact with a dynamic shop display. Users can scroll through custom selections of styled ``RANTS`` which they may then fill out with a title and body of text. The shop is animated and reactive creating an immersive experience in the application. The shop facilitates user transactions and if a purchase is successful will create users RANT and display it on the homepage for all users to view.
 
 This MVP was completed on 7/1//2021. You can improve it by sending pull requests to [this repository](https://github.com/reactjs/reactjs.org).
 
