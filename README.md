@@ -50,7 +50,7 @@ As was expected, the aforementioned milestones simply served as a guide to devel
 
 Following is a detailed review of all notable components which were implemented in the MVP produced. First the technical aspects of the applicaiton are detailed, followed by a breakdown of each page and the functionality achieved:
 
-![MVPwalkthrough](paijolizmalMVP.gif)
+![MVP walkthrough](paijolizmalMVP.gif)
 
 ### **Technical components**
 
@@ -81,6 +81,12 @@ Following is a detailed review of all notable components which were implemented 
 ### **Pages Breakdown**
 
 The MVP of Paijolozmal required a reasonable list of client side components to make the application usable. The following section will break the application doen by pages and detail each of the components implemented as a part of this MVP.
+
+<p align="center">
+    <img src="timerMVP.gif" alt="Paijolizmal Timer" width="500"/>
+</p>
+
+<!-- ![MVPwalkthrough](timerMVP.gif) -->
 
 * **Navigation Page:** A top navigation bar was included in the MVP to allow users to navigate between the home page, dashboard and login/out pages. If a user is logged in then the navigation bar will also provide the option for a user to logout. The navigation bar is styled with the custom colour pallet and features the application title logo.
 
