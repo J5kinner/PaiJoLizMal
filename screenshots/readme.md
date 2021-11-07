@@ -6,7 +6,7 @@ The following screenshots provide a visual glimpse of the application.
 
 This image shows the homepage of the application. This is the page displayed when the page is first loaded.
 
-[Homepage](https://github.com/MQCOMP3120-2021/group-web-project-group-x/screenshots/Homepage.png)
+![Homepage](Homepage.png)
 
 
 ## Login.png
