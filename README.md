@@ -102,7 +102,7 @@ The MVP of Paijolozmal required a reasonable list of client side components to m
 
     * Finally the ``shop`` section of the dashboard allows users to interact with a dynamic shop display. Users can scroll through custom selections of styled ``RANTS`` which they may then fill out with a title and body of text. The shop is animated and reactive creating an immersive experience in the application. The shop facilitates user transactions and if a purchase is successful will create users RANT and display it on the homepage for all users to view.
 
-This MVP was completed on 7/1//2021. You can improve it by sending pull requests to [this repository](https://github.com/reactjs/reactjs.org).
+This MVP was completed on 7/11/2021. You can improve it by sending pull requests to [this repository](https://github.com/reactjs/reactjs.org).
 
 # Where the most work has been done
 📦group-web-project-group-x  
