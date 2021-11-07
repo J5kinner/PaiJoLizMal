@@ -138,59 +138,63 @@ Trello is a collaborative tool, useful for agile development. Trello tickets hav
 
 
 [Discord Server](https://discord.com/) 
+
 Discord serves as the primary communication platform for team members. Discord allows for the creation of separate channels in a private server for members to use, thus making it easier to track information shared by others, such as essential links or announcements. It also has voice channels, which was used to host weekly 1 hour meetings throughout the project.
 
 [Google Drive](https://docs.google.com/document/d/13KKy5rsJJ_vo6XVw1Ib0G1EyBDpnYyWprtSj0C4mlhw/edit?usp=sharing)
+
 Google Drive is a cloud platform to share and store relevant files for the project accessible by members of the group.
 
 [GitHub](https://github.com/MQCOMP3120-2021/group-web-project-group-x)
+
 GitHub is a version control platform that was used throughout development. To avoid clashes during development, members would break off into separate branches (for each feature). Once the feature was completed, a pull request would be created and reviewed by other members before being merged into the `master` branch.
 
 [Figma](https://www.figma.com/file/F0mzjtvkoUU5UOSzJtzv1L/The-Second-Draft?node-id=0%3A1)
+
 Figma was a visual tool used for various purposes. Initially it had been used to brainstorm ideas for the application, as multiple users can make changes simultaneously. Once the outline for the application had finished, wireframes for each page were constructed by the team to further solidify the design and flow for the application. The project's lead designer then built on the wireframes for a preliminary design and theme for the website. After the website had matured, the final theme and design were established and used as a reference for the developer to finalise the styling.
 
 
  ### Roles 
- * Front-End Software Engineer/Lead Designer: [Jonah Skinner](https://github.com/J5kinner)
+ * **Front-End Software Engineer/Lead Designer**: [Jonah Skinner](https://github.com/J5kinner)
  
-    **Main Responsibilities**
+    Main Responsibilities
     * Produce designs for the application, including the structure of visual elements and colour themes
     * Polish existing styling already live on the website
     * Communicate and distribute design elements to team members
 
-    **Additional Contributions**
+    Additional Contributions
     * Deployment on Heroku
     * Shop development
     * Testing
 
  * Middleware Software Engineer: [Elizabeth Laham](https://github.com/elizabetht94)
 
-    **Main Responsibilities**
+    Main Responsibilities
     * Handle and streamline communication from the client-side to server-side
 
-    **Additional Contributions**
+    Additional Contributions
     * User sign up/login and client-side authentication
     * Helped with deployment
     * Add styling to various components on client-side
 
  * Frontend Software Engineer: [Paige Anthony](https://github.com/paigelea)
 
-    **Main Responsibilities**
+    Main Responsibilities
     * Implement functionality for various components for the client-side application
     * Add in design to elements to the application
 
-    **Additional Contributions**
+    Additional Contributions
     * Documentation
     * Establish the application logic for the timer
 
  * Backend Software Engineer:  [Malachi Mashiah](https://github.com/Ner0theHer0)
 
-    **Main Responsibilities**
+    Main Responsibilities
     * Set up database and server
     * Configure object models
     * Configure backend routing for object interaction/creation
 
-    **Additional Contributions**
+    Additional Contributions
     * User authentication/token handling
 
 
