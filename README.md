@@ -50,7 +50,7 @@ As was expected, the aforementioned milestones simply served as a guide to devel
 
 Following is a detailed review of all notable components which were implemented in the MVP produced. First the technical aspects of the applicaiton are detailed, followed by a breakdown of each page and the functionality achieved:
 
-![MVPwalkthrough](src\assets\img\paijolizmalMVP.gif)
+![MVPwalkthrough](paijolizmalMVP.gif)
 
 ### **Technical components**
 
