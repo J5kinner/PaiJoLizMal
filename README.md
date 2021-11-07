@@ -167,7 +167,7 @@ Figma was a visual tool used for various purposes. Initially it had been used to
     * Shop development
     * Testing
 
- * Middleware Software Engineer: [Elizabeth Laham](https://github.com/elizabetht94)
+ * **Middleware Software Engineer**: [Elizabeth Laham](https://github.com/elizabetht94)
 
     Main Responsibilities
     * Handle and streamline communication from the client-side to server-side
@@ -177,7 +177,7 @@ Figma was a visual tool used for various purposes. Initially it had been used to
     * Helped with deployment
     * Add styling to various components on client-side
 
- * Frontend Software Engineer: [Paige Anthony](https://github.com/paigelea)
+ * **Frontend Software Engineer**: [Paige Anthony](https://github.com/paigelea)
 
     Main Responsibilities
     * Implement functionality for various components for the client-side application
@@ -187,7 +187,7 @@ Figma was a visual tool used for various purposes. Initially it had been used to
     * Documentation
     * Establish the application logic for the timer
 
- * Backend Software Engineer:  [Malachi Mashiah](https://github.com/Ner0theHer0)
+ * **Backend Software Engineer**:  [Malachi Mashiah](https://github.com/Ner0theHer0)
 
     Main Responsibilities
     * Set up database and server
