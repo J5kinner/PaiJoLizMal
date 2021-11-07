@@ -15,11 +15,11 @@ This window is shown if a user clicks on the "Login" button or tries to access t
 
 ![Login](Login.png)
 
-## Create User.png
+## Create_User.png
 
 This page is shown if a user clicked the "Sign Up" button, where they can specify a username and password for account creation
 
-![Create User](Create User.png)
+![Create_User](Create_User.png)
 
 ## Dashboard.png
 
@@ -27,17 +27,17 @@ This page contains the main functionality of the application. It shows the user 
 
 ![Dashboard](Dashboard.png)
 
-## Timer Progress.png
+## Timer_Progress.png
 
 A screenshot of an in-progress pomodoro timer.
 
-![Timer Progress](Timer Progress.png)
+![Timer_Progress](Timer_Progress.png)
 
-## Finished Timer.png
+## Finished_Timer.png
 
 Dialog displayed once the timer has been successfully finished.
 
-![Finished Timer](Finished Timer.png)
+![Finished_Timer](Finished_Timer.png)
 
 ## Username.png
 
