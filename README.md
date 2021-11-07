@@ -98,7 +98,7 @@ The MVP of Paijolozmal required a reasonable list of client side components to m
 
 This MVP was completed on 7/1//2021. You can improve it by sending pull requests to [this repository](https://github.com/reactjs/reactjs.org).
 
-## Where the most work has been done
+# Where the most work has been done
 📦group-web-project-group-x  
  ┣ 📂SCREENSHOTS  
  ┣ 📂public  
@@ -183,7 +183,7 @@ The backend code can be found in the `server` directory. The backend uses Node/E
 * `tests` directory: contains the various `jest` tests for the backend, including a configured test environment
 
 
-## Next Steps
+# Next Steps
 Given extra time to work on the application, there are a number of possible improvements.        
         
 **Additional Note Designs**
