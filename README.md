@@ -118,7 +118,7 @@ Use session tokens to manage the frontend login session instead of a `jwt` token
 
 
  ### Roles 
- * Front-End Software Engineer/Lead Designer: [Jonah Skinner](https://github.com/J5kinner)
+ * Front-End Software Engineer/Lead Designer: [Jonah Skinner](https://github.com/J5kinner)  
     **Main Responsibilities**
     * Produce designs for the application, including the structure of visual elements and colour themes
     * Polish existing styling already live on the website
@@ -129,7 +129,7 @@ Use session tokens to manage the frontend login session instead of a `jwt` token
     * Shop development
     * Testing
 
- * Middleware Software Engineer: [Elizabeth Laham](https://github.com/elizabetht94)
+ * Middleware Software Engineer: [Elizabeth Laham](https://github.com/elizabetht94)  
     **Main Responsibilities**
     * Handle and streamline communication from the client-side to server-side
 
@@ -138,7 +138,7 @@ Use session tokens to manage the frontend login session instead of a `jwt` token
     * Helped with deployment
     * Add styling to various components on client-side
 
- * Frontend Software Engineer: [Paige Anthony](https://github.com/paigelea)
+ * Frontend Software Engineer: [Paige Anthony](https://github.com/paigelea)  
     **Main Responsibilities**
     * Implement functionality for various components for the client-side application
     * Add in design to elements to the application
@@ -147,7 +147,7 @@ Use session tokens to manage the frontend login session instead of a `jwt` token
     * Documentation
     * Establish the application logic for the timer
 
- * Backend Software Engineer:  [Malachi Mashiah](https://github.com/Ner0theHer0)
+ * Backend Software Engineer:  [Malachi Mashiah](https://github.com/Ner0theHer0)  
     **Main Responsibilities**
     * Set up database and server
     * Configure object models
