@@ -23,65 +23,36 @@ You can improve it by sending pull requests to [this repository](https://github.
 
 ## Where the most work has been done
 📦group-web-project-group-x  
-
  ┣ 📂SCREENSHOTS  
-
  ┣ 📂public  
-
  ┣ 📂server  
-
  ┃ ┣ 📂controllers  
-
  ┃ ┣ 📂models  
-
  ┃ ┣ 📂testRequests  
-
  ┃ ┣ 📂tests  
-
  ┣ 📂src  
-
  ┃ ┣ 📂assets  
-
  ┃ ┃ ┣ 📂global  
-
  ┃ ┃ ┣ 📂img  
-
  ┃ ┃ ┣ 📂scss  
-
  ┃ ┃ ┃ ┣ 📂components  
-
  ┃ ┃ ┃ ┣ 📂layout  
-
  ┃ ┃ ┃ ┗ 📂views  
-
  ┃ ┣ 📂components  
-
  ┃ ┃ ┣ 📂header  
-
  ┃ ┃ ┣ 📂shop  
-
  ┃ ┣ 📂services  
-
  ┃ ┣ 📂tests  
-
  ┃ ┣ 📂views  
-
  ┃ ┃ ┣ 📂Dashboard  
-
  ┣ 📜DEPLOYMENT.md  
-
  ┣ 📜Procfile  
-
  ┣ 📜README.md  
-
  ┣ 📜jest.all.config.js  
-
  ┣ 📜package-lock.json  
-
  ┣ 📜package.json  
-
  ┗ 📜static.json  
- 
+
 
 `Paijolizmal` is a full-stack application composed of a frontend and backend section.
 
