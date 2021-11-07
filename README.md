@@ -22,37 +22,8 @@
 You can improve it by sending pull requests to [this repository](https://github.com/reactjs/reactjs.org).
 
 ## Where the most work has been done
-📦group-web-project-group-x  
- ┣ 📂SCREENSHOTS  
- ┣ 📂public  
- ┣ 📂server  
- ┃ ┣ 📂controllers  
- ┃ ┣ 📂models  
- ┃ ┣ 📂testRequests  
- ┃ ┣ 📂tests  
- ┣ 📂src  
- ┃ ┣ 📂assets  
- ┃ ┃ ┣ 📂global  
- ┃ ┃ ┣ 📂img  
- ┃ ┃ ┣ 📂scss  
- ┃ ┃ ┃ ┣ 📂components  
- ┃ ┃ ┃ ┣ 📂layout  
- ┃ ┃ ┃ ┗ 📂views  
- ┃ ┣ 📂components  
- ┃ ┃ ┣ 📂header  
- ┃ ┃ ┣ 📂shop  
- ┃ ┣ 📂services  
- ┃ ┣ 📂tests  
- ┃ ┣ 📂views  
- ┃ ┃ ┣ 📂Dashboard  
- ┣ 📜DEPLOYMENT.md  
- ┣ 📜Procfile  
- ┣ 📜README.md  
- ┣ 📜jest.all.config.js  
- ┣ 📜package-lock.json  
- ┣ 📜package.json  
- ┗ 📜static.json  
 
+add file tree here
 
 `Paijolizmal` is a full-stack application composed of a frontend and backend section.
 
@@ -124,12 +95,12 @@ Breakdown statistics by task category and provide a more detailed visual view in
 **Enhanced Security** 
 Use session tokens to manage the frontend login session instead of a `jwt` token. Handle the `jwt` tokens entirely on the server side. This would prevent malicious attackers from simulating legitimate user requests.
 
-** Improved Scalability** Implement handling of many notes; this could either be listing notes by category or viewing notes by user groups or user associations. Currently, all existing notes are being displayed on the homepage, which could potentially get out of hand.
+**Improved Scalability** Implement handling of many notes; this could either be listing notes by category or viewing notes by user groups or user associations. Currently, all existing notes are being displayed on the homepage, which could potentially get out of hand.
 
 
 ## Communication & Roles
 ### Communication
-[Trello](https://trello.com/b/Qfrxz3KY/group-project-comp3120) 
+[Trello](https://trello.com/b/Qfrxz3KY/group-project-comp3120)  
 Trello is a collaborative tool, useful for agile development. Trello tickets have the capability to assign members, add comments, establish checklists, attach deadlines, add labels (e.g. `blocked`, or `done`) and more. These features enabled group members to communicate their progress, constraints, as well as pass on directly relevant information. Group X used multiple lists throughout the project that contained tracked tasks to be completed. Notable lists were:
 * Product Backlog: included the tickets to be completed in the project overall (scrum, comments, labels)
 * Sprint Backlog: contained the tickets to be completed in the current sprint
@@ -139,63 +110,55 @@ Trello is a collaborative tool, useful for agile development. Trello tickets hav
 
 
 [Discord Server](https://discord.com/) 
-
 Discord serves as the primary communication platform for team members. Discord allows for the creation of separate channels in a private server for members to use, thus making it easier to track information shared by others, such as essential links or announcements. It also has voice channels, which was used to host weekly 1 hour meetings throughout the project.
 
 [Google Drive](https://docs.google.com/document/d/13KKy5rsJJ_vo6XVw1Ib0G1EyBDpnYyWprtSj0C4mlhw/edit?usp=sharing)
-
 Google Drive is a cloud platform to share and store relevant files for the project accessible by members of the group.
 
 [GitHub](https://github.com/MQCOMP3120-2021/group-web-project-group-x)
-
 GitHub is a version control platform that was used throughout development. To avoid clashes during development, members would break off into separate branches (for each feature). Once the feature was completed, a pull request would be created and reviewed by other members before being merged into the `master` branch.
 
 [Figma](https://www.figma.com/file/F0mzjtvkoUU5UOSzJtzv1L/The-Second-Draft?node-id=0%3A1)
-
 Figma was a visual tool used for various purposes. Initially it had been used to brainstorm ideas for the application, as multiple users can make changes simultaneously. Once the outline for the application had finished, wireframes for each page were constructed by the team to further solidify the design and flow for the application. The project's lead designer then built on the wireframes for a preliminary design and theme for the website. After the website had matured, the final theme and design were established and used as a reference for the developer to finalise the styling.
 
 
  ### Roles 
- * **Front-End Software Engineer/Lead Designer**: [Jonah Skinner](https://github.com/J5kinner)
- 
-    Main Responsibilities
+ * Front-End Software Engineer/Lead Designer: [Jonah Skinner](https://github.com/J5kinner)
+    **Main Responsibilities**
     * Produce designs for the application, including the structure of visual elements and colour themes
     * Polish existing styling already live on the website
     * Communicate and distribute design elements to team members
 
-    Additional Contributions
+    **Additional Contributions**
     * Deployment on Heroku
     * Shop development
     * Testing
 
- * **Middleware Software Engineer**: [Elizabeth Laham](https://github.com/elizabetht94)
-
-    Main Responsibilities
+ * Middleware Software Engineer: [Elizabeth Laham](https://github.com/elizabetht94)
+    **Main Responsibilities**
     * Handle and streamline communication from the client-side to server-side
 
-    Additional Contributions
+    **Additional Contributions**
     * User sign up/login and client-side authentication
     * Helped with deployment
     * Add styling to various components on client-side
 
- * **Frontend Software Engineer**: [Paige Anthony](https://github.com/paigelea)
-
-    Main Responsibilities
+ * Frontend Software Engineer: [Paige Anthony](https://github.com/paigelea)
+    **Main Responsibilities**
     * Implement functionality for various components for the client-side application
     * Add in design to elements to the application
 
-    Additional Contributions
+    **Additional Contributions**
     * Documentation
     * Establish the application logic for the timer
 
- * **Backend Software Engineer**:  [Malachi Mashiah](https://github.com/Ner0theHer0)
-
-    Main Responsibilities
+ * Backend Software Engineer:  [Malachi Mashiah](https://github.com/Ner0theHer0)
+    **Main Responsibilities**
     * Set up database and server
     * Configure object models
     * Configure backend routing for object interaction/creation
 
-    Additional Contributions
+    **Additional Contributions**
     * User authentication/token handling
 
 
