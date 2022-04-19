@@ -101,7 +101,7 @@ apiRouter.put('/api/user', (request, response) => {
             }
 
             User.findOne({"username": newUsername}).then(exists => {
-                if (exists && (newUsername != username)) {
+                if (exists && (newUsername !== username)) {
                     return response.status(401).json({error: "this username is not available"})
                 }
                 User.findOne({"username": username}).then(exists => {
@@ -233,6 +233,7 @@ apiRouter.post('/api/timer', (request, response) => {
 // Finish timer
 apiRouter.put('/api/timer', (request, response) => {
     const token = getTokenFrom(request)
+    const coinMultiplier = 10;
 
     let decodedToken = null
 
@@ -259,9 +260,9 @@ apiRouter.put('/api/timer', (request, response) => {
         if (((diffMs/1000) + 2) < (currentTimer.duration*60)) {
             return response.status(400).json({error: "this timer is not valid"})
         }
-        User.findOneAndUpdate({username: username}, {$inc: {coins: currentTimer.duration}}).then(u => {
+        User.findOneAndUpdate({username: username}, {$inc: {coins: currentTimer.duration }}).then(u => {
             Timer.deleteOne({"user": username}).then(() => {
-                var bal = u.coins + currentTimer.duration
+                var bal = u.coins + currentTimer.duration * coinMultiplier
                 return response.status(200).json({message: `Successfully finished timer`, balance: bal})
             })
         })

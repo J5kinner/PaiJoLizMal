@@ -1,17 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import LoginPage from "../views/LoginPage";
-import HomePage from "../views/HomePage";
-import Navigation from "../views/Navigation";
 import SignUpPage from "../views/SignUpPage";
-import PrivateRoute from "../views/PrivateRoute";
-import DashboardPage from "../views/Dashboard/DashboardPage";
-import EarnedPopUp from "../views/Dashboard/EarnedPopUp";
 import PomodoroTimer from "../views/Dashboard/PomodoroTimer";
-import ErrorPopUp from "../views/Dashboard/ErrorPopUp";
-import Btn from "../components/Btn";
-import Note from "../components/Note";
-import SlideShop from "../components/shop/SlideShop";
 
 it("renders Login Page correctly", () => {
   const tree = renderer.create(<LoginPage />).toJSON();

@@ -65,6 +65,6 @@
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@shelf/jest-mongodb": "^2.1.0",
     "sass": "^1.42.1",
-    "supertest": "^6.1.6"
+    "supertest": "^6.2.2"
   }
 }

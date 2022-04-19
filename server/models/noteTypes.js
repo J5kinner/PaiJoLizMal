@@ -15,6 +15,7 @@ mongoose.connect(url)
 const noteTypeSchema = new mongoose.Schema({
   background: String,
   cost: Number,
+  time: Number,
 })
 
 noteTypeSchema.set('toJSON', {

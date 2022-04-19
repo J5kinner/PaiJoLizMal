@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
   username: String,
   password: String,
   totalTime: Number,
-  coins: Number
+  coins: Number, 
+  posts: Number,
 })
 
 userSchema.set('toJSON', {
